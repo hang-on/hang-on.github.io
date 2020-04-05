@@ -1,36 +1,47 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-
+  <script src="globals.js"></script>
 </head>
-<body onload="populateDropDown()">
+<body onload="populateDropDownLists(heroes);">
   <h1>Heroes</h1>
 
   <p>Select heroes:</p>
-  <select id="heroSelect"></select>
-
+  <select id="heroSelect0"></select>
+  <select id="heroSelect1"></select>
+  <select id="heroSelect2"></select>
+  <select id="heroSelect3"></select>
+  <script>
+    function populateDropDownLists(optionSource){
+      for (var i=0; i < optionSource.length;++i){
+        addOption('heroSelect0', optionSource[i]);
+        addOption('heroSelect1', optionSource[i]);
+        addOption('heroSelect2', optionSource[i]);
+        addOption('heroSelect3', optionSource[i]);
+      }
+    }
+    function addOption(element,text){
+      var x = document.getElementById(element);
+      var option = document.createElement("option");
+      option.text = text;
+      x.add(option);
+    }
+  </script>
   <div>
-    <a href="destinyPhase.html">Start Quest</a>
+    <br>
+    <button onclick="startQuest()">Start Quest</button>
+    <script>
+      function startQuest(){
+        // Save Party
+        var party = new Array();
+        party[0] = heroSelect0.value
+        party[1] = heroSelect1.value
+        party[2] = heroSelect2.value
+        party[3] = heroSelect3.value
+        alert(party);
+      }
+    </script>
   </div>
+
 </body>
 </html>
-
-<script>
-  var heroes = new Array("Mistweaver Saih","Tenebrael Shard",
-                        "Fyreslayer Doomseeker","Knight Questor");
-
-  // ----------------------------------------------------------------------------
-
-  function addOption(element,text){
-    var x = document.getElementById(element);
-    var option = document.createElement("option");
-    option.text = text;
-    x.add(option);
-  }
-
-  function populateDropDown(){
-    for (var i=0; i < heroes.length;++i){
-      addOption('heroSelect', heroes[i]);
-    }
-  }
-</script>
