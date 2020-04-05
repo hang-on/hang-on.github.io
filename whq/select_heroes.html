@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>Warhammer Quest Helper</p>
+
+  <script>
+
+  </script>
+
+  <h1>Heroes</h1>
+
+  <p>Select heroes:</p>
+
+  <label for="hero_1">First hero:</label>
+
+  <select id="hero_1" select onchange="myFunction()">
+    <option value="Castellant">Castellant</option>
+    <option value="Sorceress">Sorceress</option>
+    <option value="Cogsmith">Cogsmith</option>
+    <option value="Mistweaver">Mistweaver</option>
+  </select>
+
+  <label for="hero_2">Second hero:</label>
+
+  <select id="hero_2">
+    <option value="Castellant">Castellant</option>
+    <option value="Sorceress">Sorceress</option>
+    <option value="Cogsmith">Cogsmith</option>
+    <option value="Mistweaver">Mistweaver</option>
+  </select>
+
+<p id="demo"></p>
+
+<div>
+  <a href="hero1.html">Hero 1</a>
+</div>
+
+  <script>
+  function myFunction() {
+    var x = document.getElementById("hero_1").value;
+    localStorage.setItem("hero1",x);
+    document.getElementById("demo").innerHTML = "You selected: " + x;
+  }
+
+  //HTML5 local storage
+
+  // Receiving the data:
+  // localStorage.getItem("variableName");
+
+  </script>
+
+</body>
+
+</html>
