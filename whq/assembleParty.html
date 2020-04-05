@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  //<script src="scriptLibrary.js"></script>
+</head>
+<body onload="populateDropDown()">
+  <h1>Heroes</h1>
+
+  <p>Select heroes:</p>
+  <select id="heroSelect"></select>
+
+  <div>
+    <a href="destinyPhase.html">Start Quest</a>
+  </div>
+</body>
+</html>
+
+<script>
+  var heroes = new Array("Mistweaver Saih","Tenebrael Shard",
+                        "Fyreslayer Doomseeker","Knight Questor");
+
+  // ----------------------------------------------------------------------------
+
+  function addOption(element,text){
+    var x = document.getElementById(element);
+    var option = document.createElement("option");
+    option.text = text;
+    x.add(option);
+  }
+
+  function populateDropDown(){
+    for (var i=0; i < heroes.length;++i){
+      addOption('heroSelect', heroes[i]);
+    }
+  }
+</script>

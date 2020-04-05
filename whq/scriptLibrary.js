@@ -1,17 +1,5 @@
+// scriptLibrary.js
 
-function addOption(element,text){
-  var x = document.getElementById(element);
-  var option = document.createElement("option");
-  option.text = text;
-  x.add(option);
-}
-
-function populateDropDown(){
-  var heroes = new Array("Mistweaver Saih","Tenebrael Shard","Fyreslayer Doomseeker","Knight Questor");
-  for (var i=0; i < heroes.length;++i){
-    addOption('heroSelect', heroes[i]);
-  }
-}
 
 
 
