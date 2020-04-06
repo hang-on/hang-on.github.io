@@ -5,3 +5,10 @@
     border: 1px solid #000;
     background: #eee;
 }
+
+.main {
+  width: 95%;
+  float: center;
+  padding: 15px;
+  border: 1px solid red;
+}
