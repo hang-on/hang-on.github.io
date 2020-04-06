@@ -2,7 +2,9 @@
 <html>
 <head>
   <script src="globals.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body onload="populateDropDownLists(heroes);">
   <h1>Heroes</h1>
 
@@ -29,19 +31,21 @@
   </script>
   <div>
     <br>
-    <button onclick="startQuest()">Start Quest</button>
+    <a href="destinyPhase.html" class="button" onclick="initializeQuest()">START QUEST</a>
     <script>
-      function startQuest(){
-        // Save Party
+      function initializeQuest(){
+        // Save Party.
         var party = new Array();
         party[0] = heroSelect0.value
         party[1] = heroSelect1.value
         party[2] = heroSelect2.value
         party[3] = heroSelect3.value
-        alert(party);
+        localStorage.setItem("Party",JSON.stringify(party));
+        // Initialize Variables.
+        localStorage.setItem("torchbearer",0)
+        localStorage.setItem("currentHero",0)        
       }
     </script>
   </div>
-
 </body>
 </html>
