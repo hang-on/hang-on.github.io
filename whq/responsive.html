@@ -35,7 +35,7 @@
 
 select {
   margin: 2%;
-  width: 95%;
+  width: 70%;
   padding: 5px 35px 5px 5px;
   font-size: 16px;
   border: 1px solid #CCC;
@@ -49,6 +49,14 @@ select {
 body {
   font-family:Verdana;
   color:#aaaaaa;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
 }
 
 @media only screen and (max-width:620px) {
@@ -75,10 +83,26 @@ body {
   </div>
 
   <div class="main">
-  <h2>Hero</h2>
-  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-  <select id="heroSelect0"></select><br>
-
+  <h2>Heroes</h2>
+  Hero 1: <select id="heroSelect0"></select><br>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+    nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+  <p>
+    <table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+  <tr>
+    <td>Peter</td>
+    <td>Griffin</td>
+  </tr>
+  <tr>
+    <td>Lois</td>
+    <td>Griffin</td>
+  </tr>
+</table>
+  </p>
 
   <br>
   <br>
