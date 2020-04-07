@@ -43,7 +43,6 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
 }
 
 body {
@@ -53,10 +52,6 @@ body {
 
 table {
   border-collapse: collapse;
-}
-
-table, td, th {
-  /* border: 1px solid black; */
 }
 
 @media only screen and (max-width:620px) {
@@ -101,19 +96,17 @@ table, td, th {
   }
   </style>
   <table style="width:100%">
-  <tr>
-    <th style="width:33%">MOVE</th>
-    <th style="width:33%">SAVE</th>
-    <th style="width:33%">AGILITY</th>
-  </tr>
-  <tr>
-    <td align="center">3</td>
-    <td align="center">4+</td>
-    <td align="center">6+</td>
-  </tr>
-</table>
-
-
+    <tr>
+      <th style="width:33%">MOVE</th>
+      <th style="width:33%">SAVE</th>
+      <th style="width:33%">AGILITY</th>
+    </tr>
+    <tr>
+      <td align="center">3</td>
+      <td align="center">4+</td>
+      <td align="center">6+</td>
+    </tr>
+  </table>
   <script>
     // Initial state of the markers for hero 1:
     var markerState = [0,0,0,0];
@@ -138,11 +131,41 @@ table, td, th {
           break;
         default:
       }
-
     }
   </script>
 
   <br>
+
+  <table width=100%>
+    <tr>
+      <th align="center">WEAPON ACTION</th>
+      <th align="center">Range</th>
+      <th align="center">Hit</th>
+      <th align="center">Damage</th>
+    </tr>
+    <tr>
+      <td align="center">Runic War-Iron (1+)</td>
+      <td align="center">Combat</td>
+      <td align="center">2+</td>
+      <td align="center">1</td>
+    </tr>
+    <tr>
+      <td align="center">Doomseeker Axe (5+)</td>
+      <td align="center">Combat</td>
+      <td align="center">3+</td>
+      <td align="center">D3</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+    </tr>
+
+  </table>
+
+
+
   <br>
   <br>
   <br>
