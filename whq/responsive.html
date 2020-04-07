@@ -48,7 +48,7 @@ select {
 
 body {
   font-family:Verdana;
-  color:#aaaaaa;
+  color:#000000;
 }
 
 table {
@@ -93,6 +93,26 @@ table, td, th {
       <td style="text-align: center;" height=50px><img id="marker3" src="die.jpg" onclick="switchMarker('marker3',3)"></td>
     </tr>
   </table>
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+  }
+  </style>
+  <table style="width:100%">
+  <tr>
+    <th style="width:33%">MOVE</th>
+    <th style="width:33%">SAVE</th>
+    <th style="width:33%">AGILITY</th>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">4+</td>
+    <td align="center">6+</td>
+  </tr>
+</table>
+
 
   <script>
     // Initial state of the markers for hero 1:
