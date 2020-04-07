@@ -87,12 +87,40 @@ table, td, th {
   Hero 1: <select id="heroSelect0"></select><br>
   <table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
     <tr>
-      <td style="text-align: center;" height=50px><img src="grievousWound.jpg"></td>
-      <td style="text-align: center;" height=50px><img src="wound.jpg"></td>
-      <td style="text-align: center;" height=50px><img src="stun.jpg"></td>
-      <td style="text-align: center;" height=50px><img src="die2.jpg"></td>
+      <td style="text-align: center;" height=50px><img id="marker0" src="die.jpg" onclick="switchMarker('marker0',0)"></td>
+      <td style="text-align: center;" height=50px><img id="marker1" src="die.jpg" onclick="switchMarker('marker1',1)"></td>
+      <td style="text-align: center;" height=50px><img id="marker2" src="die.jpg" onclick="switchMarker('marker2',2)"></td>
+      <td style="text-align: center;" height=50px><img id="marker3" src="die.jpg" onclick="switchMarker('marker3',3)"></td>
     </tr>
   </table>
+
+  <script>
+    // Initial state of the markers for hero 1:
+    var markerState = [0,0,0,0];
+
+    function switchMarker(target,offset){
+      switch (markerState[offset]) {
+        case 0:
+          document.getElementById(target).src = "stun.jpg";
+          markerState[offset]++;
+          break;
+        case 1:
+          document.getElementById(target).src = "wound.jpg";
+          markerState[offset]++;
+          break;
+        case 2:
+          document.getElementById(target).src = "grievousWound.jpg";
+          markerState[offset]++;
+          break;
+        case 3:
+          document.getElementById(target).src = "die.jpg";
+          markerState[offset]=0;
+          break;
+        default:
+      }
+
+    }
+  </script>
 
   <br>
   <br>
