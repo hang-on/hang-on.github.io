@@ -79,7 +79,7 @@ table {
 
   <div class="main">
   <h2>Heroes</h2>
-  Hero 1: <select id="heroSelect0"></select><br>
+  Slot 0: <select id="heroSelect0"></select><br>
   <table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
     <tr>
       <td style="text-align: center;" height=50px><img id="marker0" src="die.jpg" onclick="switchMarker('marker0',0)"></td>
@@ -190,12 +190,12 @@ table {
     <tr>
       <td class="skillName" align="left">Runic Power</td>
       <td class="skillType" align="left">Action</td>
-      <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(0)"></a></td>
+      <td align="center"></td>
     </tr>
     <tr>
       <td class="skillName" align="left">Colossus</td>
       <td class="skillType" align="left">Action</td>
-      <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(1)"></a></td>
+      <td align="center"></td>
     </tr>
     <tr>
       <td class="skillName" align="left">Stardazzle</td>
@@ -236,7 +236,8 @@ table {
         default:
       }
       var x = document.getElementsByClassName("focusHero");
-      x[0].innerHTML = focusHero
+      x[0].innerHTML = focusHero;
+      focusHeroSlot = index;
     }
 
     function deleteSkill(index){
@@ -278,9 +279,29 @@ table {
 <br>
 <h2 id="learnSkill">Learn New Skill</h2>
 <p class = "focusHero"> </p>
+<select id="skill">
+  <option value="0">Battlewrath</option>
+  <option value="1">Honed Mind</option>
+</select><button onclick="learnSkill();">Learn!</button>
+<script>
+  function learnSkill(){
+    // Search for empty skill slot
+    var index = focusHeroSlot * 6 // Foward to focus hero's first skill.
+    var x = document.getElementsByClassName("skillName");
+    for (var i = index; i < index+6; i++) {
+      if (x[i].innerHTML == "") { break; }
+    }
+    if (i == index+6){
+      alert ("Error: This hero is already at max skill capacity!");
+    } else {
+      x[i].innerHTML = "!";
+    }
 
+    window.history.back();
+  }
+</script>
 <br>
-
+<br><br><br><br><br><br>
 
   <table width=100%>
     <tr>
