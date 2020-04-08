@@ -339,21 +339,22 @@ table {
 <h2 id="learnSkill">Learn New Skill</h2>
 <p class = "focusHero"> </p>
 <select id="skill">
-  <option value="0">Battlewrath</option>
-  <option value="1">Honed Mind</option>
+
 </select><button onclick="learnSkill();">Learn!</button>
 <script>
   function learnSkill(){
     // Search for empty skill slot
     var index = focusHeroSlot * 6 // Foward to focus hero's first skill.
     var x = document.getElementsByClassName("skillName");
+    var y = document.getElementsByClassName("skillType");
     for (var i = index; i < index+6; i++) {
       if (x[i].innerHTML == "") { break; }
     }
     if (i == index+6){
       alert ("Error: This hero is already at max skill capacity!");
     } else {
-      x[i].innerHTML = "!";
+      x[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['name'];
+      y[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['type'];
     }
 
     window.history.back();
@@ -401,11 +402,11 @@ const allHeroes =
     "skills" : [
       {
       "name" : "Runic Power",
-      "type" : "Action"
+      "type" : "Hero"
       },
       {
       "name" : "Throwing Axe",
-      "type" : "Action"
+      "type" : "Hero"
       }]
     },
     {
@@ -437,7 +438,7 @@ const allHeroes =
     "skills" : [
       {
       "name" : "Challenge (2+)",
-      "type" : "Action"
+      "type" : "Hero"
       },
       {
       "name" : "Guard Stance (3+)",
@@ -499,7 +500,20 @@ const allHeroes =
     ] // Afsluttes members
   } // Afsluttes allheroes
 
-  document.getElementById("demow").innerHTML = allHeroes['members'][1]['weapons'][0]['name'];
+
+
+  const allSkills = {"skills":[
+  {"name":"One Step Ahead","type":"Behavior" },
+  {"name":"Wardancer","type":"Hero" },
+  {"name":"Battlewrath","type":"Hero" },
+  {"name":"Vengeful Strike","type":"Save" },
+  {"name":"Wellspring","type":"Action" },
+  {"name":"Fires of Battle","type":"Action" }]};
+
+  document.getElementById("demow").innerHTML = allSkills['skills'][0]['name'];
+
+
+
 </script>
 
 
@@ -516,9 +530,20 @@ const allHeroes =
 
 
 function populateDropDownLists(optionSource){
+  // Get the heroes:
   for (var i=0; i < heroesTotal;++i){
     addOption('heroSelect0', allHeroes['members'][i]['name']);
   }
+  // Get the skills:
+  for (var i=0; i < skillsTotal;++i){
+    addOption('skill', allSkills['skills'][i]['name']);
+  }
+  // Force init of the heroes in the default drop down lists.
+  loadHero(0);
+  loadHero(1);
+  loadHero(2);
+  loadHero(3);
+
 }
 
       // function populateDropDownLists(optionSource){
