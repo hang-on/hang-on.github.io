@@ -5,5 +5,5 @@ var heroes = new Array("Mistweaver Saih","Tenebrael Shard",
 
 var focusHero = ""; // Name of focus Hero
 var focusHeroSlot = 0; // Active slot 0-3.
-var heroesTotal = 2 // Heroes 
+var heroesTotal = 4 // Heroes 
 // document.getElementById("result").innerHTML = localStorage.getItem("Party");
