@@ -92,24 +92,10 @@ table {
   <br><hr><br>
 
 
-  <h2 id="heroSlot0" onclick="showTraits(0);">Slot 0: Hero</h2>
+  <h2 id="heroSlot0" onclick="showTraits();">Slot 0: Hero</h2>
   <script>
-    function showTraits(index){
-      switch (index) {
-        case 0:
-          alert(allHeroes['members'][(document.getElementById("heroSelect0").selectedIndex)]['traits']);
-          break;
-        case 1:
-          alert(allHeroes['members'][(document.getElementById("heroSelect1").selectedIndex)]['traits']);
-          break;
-        case 2:
-          alert(allHeroes['members'][(document.getElementById("heroSelect2").selectedIndex)]['traits']);
-          break;
-        case 3:
-          alert(allHeroes['members'][(document.getElementById("heroSelect3").selectedIndex)]['traits']);
-          break;
-        default:
-      }
+    function showTraits(){
+      alert(allHeroes['members'][(document.getElementById("heroSelect0").selectedIndex)]['traits']);
     }
   </script>
   <table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
@@ -168,35 +154,6 @@ table {
           document.getElementById("heroSlot0").innerHTML = allHeroes['members'][x]['name'];
           var a = document.getElementsByClassName("skillName");
           var b = document.getElementsByClassName("skillType");
-          a[0].innerHTML = allHeroes['members'][x]['skills'][0]['name'];
-          b[0].innerHTML = allHeroes['members'][x]['skills'][0]['type'];
-          a[1].innerHTML = allHeroes['members'][x]['skills'][1]['name'];
-          b[1].innerHTML = allHeroes['members'][x]['skills'][1]['type'];
-        case 1:
-          var x = document.getElementById("heroSelect1").selectedIndex;
-          document.getElementById("heroMove1").innerHTML = (allHeroes['members'][x]['move']);
-          document.getElementById("heroSave1").innerHTML = (allHeroes['members'][x]['save']);
-          document.getElementById("heroAgility1").innerHTML = (allHeroes['members'][x]['agility']);
-          // Weapon 1
-          document.getElementById("heroFirstWeaponName1").innerHTML = (allHeroes['members'][x]['weapons'][0]['name']);
-          document.getElementById("heroFirstWeaponRange1").innerHTML = (allHeroes['members'][x]['weapons'][0]['range']);
-          document.getElementById("heroFirstWeaponHit1").innerHTML = (allHeroes['members'][x]['weapons'][0]['hit']);
-          document.getElementById("heroFirstWeaponDamage1").innerHTML = (allHeroes['members'][x]['weapons'][0]['damage']);
-          // Weapon 2
-          document.getElementById("heroSecondWeaponName1").innerHTML = (allHeroes['members'][x]['weapons'][1]['name']);
-          document.getElementById("heroSecondWeaponRange1").innerHTML = (allHeroes['members'][x]['weapons'][1]['range']);
-          document.getElementById("heroSecondWeaponHit1").innerHTML = (allHeroes['members'][x]['weapons'][1]['hit']);
-          document.getElementById("heroSecondWeaponDamage1").innerHTML = (allHeroes['members'][x]['weapons'][1]['damage']);
-          // Weapon 3
-          document.getElementById("heroThirdWeaponName1").innerHTML = (allHeroes['members'][x]['weapons'][2]['name']);
-          document.getElementById("heroThirdWeaponRange1").innerHTML = (allHeroes['members'][x]['weapons'][2]['range']);
-          document.getElementById("heroThirdWeaponHit1").innerHTML = (allHeroes['members'][x]['weapons'][2]['hit']);
-          document.getElementById("heroThirdWeaponDamage1").innerHTML = (allHeroes['members'][x]['weapons'][2]['damage']);
-          // Reknown boost
-          document.getElementById("reknownBoost1").innerHTML = allHeroes['members'][x]['boost'];
-          document.getElementById("heroSlot1").innerHTML = allHeroes['members'][x]['name'];
-          var a = document.getElementsByClassName("skillName1");
-          var b = document.getElementsByClassName("skillType1");
           a[0].innerHTML = allHeroes['members'][x]['skills'][0]['name'];
           b[0].innerHTML = allHeroes['members'][x]['skills'][0]['type'];
           a[1].innerHTML = allHeroes['members'][x]['skills'][1]['name'];
@@ -340,18 +297,8 @@ table {
 
     function deleteSkill(index){
       // confirm("Really delete skill " + x +"?");
-      switch (focusHeroSlot) {
-        case 0:
-          var x = document.getElementsByClassName("skillName");
-          var y = document.getElementsByClassName("skillType");
-        case 1:
-          var x = document.getElementsByClassName("skillName1");
-          var y = document.getElementsByClassName("skillType1");
-
-          break;
-        default:
-
-      }
+      var x = document.getElementsByClassName("skillName");
+      var y = document.getElementsByClassName("skillType");
       if (confirm("Unlearn " + (x[index].innerHTML) + "?")) {
         x[index].innerHTML = "";
         y[index].innerHTML = "";
@@ -390,179 +337,7 @@ table {
     </tr>
   </table>
 
-<p align="right"><a href="#heroSlot1" onclick="setFocusHero(1);">>Next hero</a></p>
-
-//-----------------------------------------
-<h2 id="heroSlot1" onclick="showTraits();">Slot 1: Hero</h2>
-<table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
-  <tr>
-    <td style="text-align: center;" height=50px><img id="marker4" src="die.jpg" onclick="switchMarker('marker4',4)"></td>
-    <td style="text-align: center;" height=50px><img id="marker5" src="die.jpg" onclick="switchMarker('marker5',5)"></td>
-    <td style="text-align: center;" height=50px><img id="marker6" src="die.jpg" onclick="switchMarker('marker6',6)"></td>
-    <td style="text-align: center;" height=50px><img id="marker7" src="die.jpg" onclick="switchMarker('marker7',7)"></td>
-  </tr>
-</table>
-
-<style>
-  table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
-<table style="width:100%">
-  <tr>
-    <th style="width:33%">MOVE</th>
-    <th style="width:33%">SAVE</th>
-    <th style="width:33%">AGILITY</th>
-  </tr>
-  <tr>
-    <td id="heroMove1" align="center">3</td>
-    <td id="heroSave1" align="center">4+</td>
-    <td id="heroAgility1" align="center">6+</td>
-  </tr>
-</table>
-<script>
-  // Initial state of the markers for heroes
-  var markerState = [0,0,0,0,0,0,0,0];
-
-  function switchMarker(target,offset){
-    switch (markerState[offset]) {
-      case 0:
-        document.getElementById(target).src = "stun.jpg";
-        markerState[offset]++;
-        break;
-      case 1:
-        document.getElementById(target).src = "wound.jpg";
-        markerState[offset]++;
-        break;
-      case 2:
-        document.getElementById(target).src = "grievousWound.jpg";
-        markerState[offset]++;
-        break;
-      case 3:
-        document.getElementById(target).src = "die.jpg";
-        markerState[offset]=0;
-        break;
-      default:
-    }
-  }
-</script>
-
-<br>
-
-<table width=100%>
-  <tr>
-    <th align="center">WEAPON ACTION</th>
-    <th align="center">Rng</th>
-    <th align="center">Hit</th>
-    <th align="center">Dam</th>
-  </tr>
-  <tr>
-    <td id="heroFirstWeaponName1" align="center"></td>
-    <td id="heroFirstWeaponRange1"align="center"></td>
-    <td id="heroFirstWeaponHit1" align="center"></td>
-    <td id="heroFirstWeaponDamage1" align="center"></td>
-  </tr>
-  <tr>
-    <td id="heroSecondWeaponName1" align="center"></td>
-    <td id="heroSecondWeaponRange1"align="center"></td>
-    <td id="heroSecondWeaponHit1" align="center"></td>
-    <td id="heroSecondWeaponDamage1" align="center"></td>
-  </tr>
-  <tr>
-    <td id="heroThirdWeaponName1" align="center"></td>
-    <td id="heroThirdWeaponRange1"align="center"></td>
-    <td id="heroThirdWeaponHit1" align="center"></td>
-    <td id="heroThirdWeaponDamage1" align="center"></td>
-  </tr>
-</table>
-  Reknown:
-  <select id="reknown1">
-    <option value="0">0</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-
-  </select>
-  <p id="reknownBoost1">!!</p>
-
-
-<table class="skills1" width=100%>
-  <tr>
-    <th align="left" width=70%><a href="#learnSkill" onclick="setFocusHero(1);">SKILL</a></th>
-    <th align="left" width=20%>TYPE</th>
-    <th align="center" width=10%></th>
-  </tr>
-  <tr>
-    <td class="skillName1" align="left"></td>
-    <td class="skillType1" align="left"></td>
-    <td align="center"></td>
-  </tr>
-  <tr>
-    <td class="skillName1" align="left"></td>
-    <td class="skillType1" align="left"></td>
-    <td align="center"></td>
-  </tr>
-  <tr>
-    <td class="skillName1" align="left"></td>
-    <td class="skillType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(2)"></a></td>
-  </tr>
-  <tr>
-    <td class="skillName1" align="left"></td>
-    <td class="skillType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(3)"></a></td>
-  </tr>
-  <tr>
-    <td class="skillName1" align="left"></td>
-    <td class="skillType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(4)"></a></td>
-  </tr>
-  <tr>
-    <td class="skillName1" align="left"></td>
-    <td class="skillType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(5)"></a></td>
-  </tr>
-</table>
-
-<br>
-
-<table class="items1" width=100%>
-  <tr>
-    <th align="left" width=70%><a href="#getItem" onclick="setFocusHero(1);">ITEM</a></th>
-    <th align="left" width=20%>TYPE</th>
-    <th align="center" width=10%></th>
-  </tr>
-  <tr>
-    <td class="itemName1" align="left"></td>
-    <td class="itemType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(0)"></a></td>
-  </tr>
-  <tr>
-    <td class="itemName1" align="left"></td>
-    <td class="itemType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(1)"></a></td>
-  </tr>
-  <tr>
-    <td class="itemName1" align="left"></td>
-    <td class="itemType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(2)"></a></td>
-  </tr>
-  <tr>
-    <td class="itemName1" align="left"></td>
-    <td class="itemType1" align="left"></td>
-    <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(3)"></a></td>
-  </tr>
-</table>
-
-
-
+<p align="right"><a href="#heroSlot1">>Next hero</a></p>
 <br><hr><br>
 
 <br>
@@ -572,56 +347,25 @@ table {
 </select><button onclick="learnSkill();">Learn!</button>
 <script>
   function learnSkill(){
-    switch (focusHeroSlot) {
-      case 0:
-        // Search for empty skill slot
-        var index = 0 // Foward to focus hero's first skill.
-        var x = document.getElementsByClassName("skillName");
-        var y = document.getElementsByClassName("skillType");
-        for (var i = index; i < index+6; i++) {
-          if (x[i].innerHTML == "") { break; }
-        }
-        if (i == index+6){
-          alert ("Error: This hero is already at max skill capacity!");
-        } else {
-          x[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['name'];
-          y[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['type'];
-        }
-      case 1:
-      // Search for empty skill slot
-      var index = 0 // Foward to focus hero's first skill.
-      var x = document.getElementsByClassName("skillName1");
-      var y = document.getElementsByClassName("skillType1");
-      for (var i = index; i < index+6; i++) {
-        if (x[i].innerHTML == "") { break; }
-      }
-      if (i == index+6){
-        alert ("Error: This hero is already at max skill capacity!");
-      } else {
-        x[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['name'];
-        y[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['type'];
-      }
-
-        break;
-      default:
-
+    // Search for empty skill slot
+    var index = focusHeroSlot * 6 // Foward to focus hero's first skill.
+    var x = document.getElementsByClassName("skillName");
+    var y = document.getElementsByClassName("skillType");
+    for (var i = index; i < index+6; i++) {
+      if (x[i].innerHTML == "") { break; }
+    }
+    if (i == index+6){
+      alert ("Error: This hero is already at max skill capacity!");
+    } else {
+      x[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['name'];
+      y[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['type'];
     }
 
     window.history.back();
   }
   function deleteItem(index){
-    switch (focusHeroSlot) {
-      case 0:
-      var x = document.getElementsByClassName("itemName");
-      var y = document.getElementsByClassName("itemType");
-      case 1:
-      var x = document.getElementsByClassName("itemName1");
-      var y = document.getElementsByClassName("itemType1");
-
-        break;
-      default:
-
-    }
+    var x = document.getElementsByClassName("itemName");
+    var y = document.getElementsByClassName("itemType");
     if (confirm("Remove " + (x[index].innerHTML) + "?")) {
       x[index].innerHTML = "";
       y[index].innerHTML = "";
@@ -640,18 +384,9 @@ table {
 <script>
   function getItem(){
     // Search for empty item slot
-    var index = 0 // Foward to focus hero's first item.
-    switch (focusHeroSlot) {
-      case 0:
-        var x = document.getElementsByClassName("itemName");
-        var y = document.getElementsByClassName("itemType");
-      case 1:
-        var x = document.getElementsByClassName("itemName1");
-        var y = document.getElementsByClassName("itemType1");
-        break;
-      default:
-
-    }
+    var index = focusHeroSlot * 4 // Foward to focus hero's first item.
+    var x = document.getElementsByClassName("itemName");
+    var y = document.getElementsByClassName("itemType");
     for (var i = index; i < index+4; i++) {
       if (x[i].innerHTML == "") { break; }
     }
@@ -872,8 +607,6 @@ function populateDropDownLists(optionSource){
   // Get the heroes:
   for (var i=0; i < heroesTotal;++i){
     addOption('heroSelect0', allHeroes['members'][i]['name']);
-    addOption('heroSelect1', allHeroes['members'][i]['name']);
-
   }
   // Get the skills:
   for (var i=0; i < skillsTotal;++i){
