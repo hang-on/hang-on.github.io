@@ -304,7 +304,7 @@ table {
 
   <br>
 
-  <table class="skills" width=100%>
+  <table class="items" width=100%>
     <tr>
       <th align="left" width=70%><a href="#getItem" onclick="setFocusHero(0);">ITEM</a></th>
       <th align="left" width=20%>TYPE</th>
@@ -355,6 +355,33 @@ table {
     } else {
       x[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['name'];
       y[i].innerHTML = allSkills['skills'][(document.getElementById("skill").selectedIndex)]['type'];
+    }
+
+    window.history.back();
+  }
+</script>
+
+
+<br><hr><br>
+
+<br>
+<h2 id="getItem">Get New Item</h2>
+<p class = "focusHero"> </p>
+<select id="itemSelect"></select><button onclick="getItem();">Get!</button>
+<script>
+  function getItem(){
+    // Search for empty item slot
+    var index = focusHeroSlot * 4 // Foward to focus hero's first item.
+    var x = document.getElementsByClassName("itemName");
+    var y = document.getElementsByClassName("itemType");
+    for (var i = index; i < index+4; i++) {
+      if (x[i].innerHTML == "") { break; }
+    }
+    if (i == index+4){
+      alert ("Error: This hero is already at max item capacity!");
+    } else {
+      x[i].innerHTML = allItems['items'][(document.getElementById("itemSelect").selectedIndex)]['name'];
+      y[i].innerHTML = allItems['items'][(document.getElementById("itemSelect").selectedIndex)]['type'];
     }
 
     window.history.back();
@@ -510,7 +537,16 @@ const allHeroes =
   {"name":"Wellspring","type":"Action" },
   {"name":"Fires of Battle","type":"Action" }]};
 
-  document.getElementById("demow").innerHTML = allSkills['skills'][0]['name'];
+  const allItems = {"items":[
+  {"name":"Unseen Amulet","type":"Adversary" },
+  {"name":"Ring of Celerity","type":"Hero" },
+  {"name":"Warpstone Bomb","type":"Hero" },
+  {"name":"Sorcerous Shield","type":"Save" },
+  {"name":"Death Rune","type":"Hero" },
+  {"name":"Casket of Azyr","type":"Action" }]};
+
+
+  document.getElementById("demow").innerHTML = allItems['items'][0]['name'];
 
 
 
@@ -538,6 +574,11 @@ function populateDropDownLists(optionSource){
   for (var i=0; i < skillsTotal;++i){
     addOption('skill', allSkills['skills'][i]['name']);
   }
+  // Get the items:
+  for (var i=0; i < itemsTotal;++i){
+    addOption('itemSelect', allItems['items'][i]['name']);
+  }
+
   // Force init of the heroes in the default drop down lists.
   loadHero(0);
   loadHero(1);
