@@ -78,8 +78,21 @@ table {
   </div>
 
   <div class="main">
-  <h2>Heroes</h2>
+  <h2 id="selectHeroes">SELECT HEROES</h2>
   Slot 0: <select id="heroSelect0" onchange="loadHero(0)"></select><br>
+  Slot 1: <select id="heroSelect1" onchange="loadHero(1)"></select><br>
+  Slot 2: <select id="heroSelect2" onchange="loadHero(2)"></select><br>
+  Slot 3: <select id="heroSelect3" onchange="loadHero(3)"></select><br>
+  <p align="right"><a href="#destinyPhase">>Destiny Phase</a></p>
+  <br><hr><br>
+
+  <h2 id="destinyPhase">DESTINY PHASE</h2>
+  <p>Perform the destiny phase steps: ....</p>
+  <p align="right"><a href="#heroSlot0">>First hero</a></p>
+  <br><hr><br>
+
+
+  <h2 id="heroSlot0">Slot 0: Hero</h2>
   <table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
     <tr>
       <td style="text-align: center;" height=50px><img id="marker0" src="die.jpg" onclick="switchMarker('marker0',0)"></td>
@@ -88,6 +101,7 @@ table {
       <td style="text-align: center;" height=50px><img id="marker3" src="die.jpg" onclick="switchMarker('marker3',3)"></td>
     </tr>
   </table>
+
   <style>
     table, th, td {
     border: 1px solid black;
@@ -132,6 +146,7 @@ table {
           document.getElementById("heroThirdWeaponDamage0").innerHTML = (allHeroes['members'][x]['weapons'][2]['damage']);
           // Reknown boost
           document.getElementById("reknownBoost0").innerHTML = allHeroes['members'][x]['boost'];
+          document.getElementById("heroSlot0").innerHTML = allHeroes['members'][x]['name'];
 
           break;
         default:
@@ -305,7 +320,10 @@ table {
       <td align="left">Destiny</td>
     </tr>
   </table>
-<br>
+
+<p align="right"><a href="#heroSlot1">>Next hero</a></p>
+<br><hr><br>
+
 <br>
 <h2 id="learnSkill">Learn New Skill</h2>
 <p class = "focusHero"> </p>
@@ -330,7 +348,9 @@ table {
     window.history.back();
   }
 </script>
-<br>
+
+
+
 <p id="demow"></p>
 
 <br><br><br><br><br><br>
@@ -459,9 +479,6 @@ const allHeroes =
   <br>
   <br>
 
-  <select id="heroSelect1"></select><br>
-  <select id="heroSelect2"></select><br>
-  <select id="heroSelect3"></select><br>
 
 </div>
     <script>
