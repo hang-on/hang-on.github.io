@@ -92,7 +92,12 @@ table {
   <br><hr><br>
 
 
-  <h2 id="heroSlot0">Slot 0: Hero</h2>
+  <h2 id="heroSlot0" onclick="showTraits();">Slot 0: Hero</h2>
+  <script>
+    function showTraits(){
+      alert(allHeroes['members'][(document.getElementById("heroSelect0").selectedIndex)]['traits']);      
+    }
+  </script>
   <table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
     <tr>
       <td style="text-align: center;" height=50px><img id="marker0" src="die.jpg" onclick="switchMarker('marker0',0)"></td>
@@ -405,6 +410,7 @@ const allHeroes =
     "move" : 3,
     "save" : "4+",
     "agility" : "6+",
+    "traits" : "Unrelenting and Bladeborn",
     "boost" : "If you suffer two or more wounds in a phase, gain 2 reknown.",
     "weapons": [
       {
@@ -441,6 +447,7 @@ const allHeroes =
     "move" : 3,
     "save" : "4+",
     "agility" : "5+",
+    "traits" : "Celestial and Unrelenting",
     "boost" : "If any of your save rolls scores a 6, gain 1 reknown.",
     "weapons": [
       {
@@ -477,6 +484,7 @@ const allHeroes =
     "move" : 4,
     "save" : "6+",
     "agility" : "3+",
+    "traits" : "Arcane and Swift",
     "boost" : "If the attack roll for an Illusory Assault is 6, gain 1 reknown.",
     "weapons": [
       {
@@ -497,12 +505,23 @@ const allHeroes =
       "hit" : "3+",
       "damage" : "D3"
       }
-      ]},
+      ],
+      "skills" : [
+        {
+        "name" : "Glimmermist (3+)",
+        "type" : "Save"
+        },
+        {
+        "name" : "--",
+        "type" : "--"
+        }]
+      },
     {
       "name" : "Tenebrael Shard",
       "move" : 4,
       "save" : "5+",
       "agility" : "1+",
+      "traits" : "Bladeborn & Swift",
       "boost" : "If you wound 3 adversaries in your turn, gain 2 reknown.",
       "weapons": [
         {
@@ -523,7 +542,18 @@ const allHeroes =
         "hit" : "--",
         "damage" : "--"
         }
-      ]}
+      ],
+      "skills" : [
+        {
+        "name" : "Graceful Killer",
+        "type" : "Hero"
+        },
+        {
+        "name" : "Shadowstrike(6+)",
+        "type" : "Hero"
+        }
+      ]
+    }
     ] // Afsluttes members
   } // Afsluttes allheroes
 
