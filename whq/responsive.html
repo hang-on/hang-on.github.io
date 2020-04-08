@@ -79,7 +79,7 @@ table {
 
   <div class="main">
   <h2>Heroes</h2>
-  Slot 0: <select id="heroSelect0"></select><br>
+  Slot 0: <select id="heroSelect0" onclick="loadHero(0)"></select><br>
   <table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
     <tr>
       <td style="text-align: center;" height=50px><img id="marker0" src="die.jpg" onclick="switchMarker('marker0',0)"></td>
@@ -101,12 +101,24 @@ table {
       <th style="width:33%">AGILITY</th>
     </tr>
     <tr>
-      <td align="center">3</td>
-      <td align="center">4+</td>
-      <td align="center">6+</td>
+      <td id="heroMove0" align="center">3</td>
+      <td id="heroSave0" align="center">4+</td>
+      <td id="heroAgility0" align="center">6+</td>
     </tr>
   </table>
   <script>
+    // Load hero stats based on name in drop down list.
+    function loadHero(slot){
+      switch (slot) {
+        case 0:
+          document.getElementById("heroMove0").innerHTML = allHeroes['members'][0]['move'];;
+
+          break;
+        default:
+
+      }
+    }
+
     // Initial state of the markers for hero 1:
     var markerState = [0,0,0,0];
 
@@ -301,90 +313,32 @@ table {
   }
 </script>
 <br>
+<p id="demow"></p>
+
 <br><br><br><br><br><br>
 
-  <table width=100%>
-    <tr>
-      <th align="left" width=100%>SKILLS</th>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-  </table>
+<script>
 
-  <br>
-  <table width=100%>
-    <tr>
-      <th align="left" width=100%>ITEMS</th>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-    <tr>
-      <td align="left" style="font-size:small">Runic Power: If you slay an adversary with a Vigour of
-      3 or more, put the rune marker on the space above. Leave it here until
-      there is a respite, or until you finish a turn in which you did not slay
-      any enemies. While the marker is there, add one to the Damange of each of
-      your weapon actions.</td>
-    </tr>
-  </table>
+const allHeroes =
+  {
+  "origin" : "Silver Tower",
+  "members" : [{
+      "name" : "Mistweaver Saih",
+      "move" : 4,
+      "save" : 6,
+      "agility" : 3
+    },
+    {
+      "name" : "Tenebrael Shard",
+      "move" : 4,
+      "save" : 6,
+      "agility" : 3
+    }]
+  }
+
+  document.getElementById("demow").innerHTML = allHeroes['members'][0]['name'];
+
+</script>
 
 
 
@@ -400,14 +354,19 @@ table {
 
 </div>
     <script>
-      function populateDropDownLists(optionSource){
-        for (var i=0; i < optionSource.length;++i){
-          addOption('heroSelect0', optionSource[i]);
-          addOption('heroSelect1', optionSource[i]);
-          addOption('heroSelect2', optionSource[i]);
-          addOption('heroSelect3', optionSource[i]);
-        }
-      }
+
+
+function populateDropDownLists(optionSource){
+  for (var i=0; i < heroesTotal;++i){
+    addOption('heroSelect0', allHeroes['members'][i]['name']);
+  }
+}
+
+      // function populateDropDownLists(optionSource){
+      //   for (var i=0; i < optionSource.length;++i){
+      //     addOption('heroSelect0', optionSource[i]);
+      //   }
+      // }
       function addOption(element,text){
         var x = document.getElementById(element);
         var option = document.createElement("option");
