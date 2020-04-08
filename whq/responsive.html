@@ -147,6 +147,12 @@ table {
           // Reknown boost
           document.getElementById("reknownBoost0").innerHTML = allHeroes['members'][x]['boost'];
           document.getElementById("heroSlot0").innerHTML = allHeroes['members'][x]['name'];
+          var a = document.getElementsByClassName("skillName");
+          var b = document.getElementsByClassName("skillType");
+          a[0].innerHTML = allHeroes['members'][x]['skills'][0]['name'];
+          b[0].innerHTML = allHeroes['members'][x]['skills'][0]['type'];
+          a[1].innerHTML = allHeroes['members'][x]['skills'][1]['name'];
+          b[1].innerHTML = allHeroes['members'][x]['skills'][1]['type'];
 
           break;
         default:
@@ -233,33 +239,33 @@ table {
       <th align="center" width=10%></th>
     </tr>
     <tr>
-      <td class="skillName" align="left">Runic Power</td>
-      <td class="skillType" align="left">Action</td>
+      <td class="skillName" align="left"></td>
+      <td class="skillType" align="left"></td>
       <td align="center"></td>
     </tr>
     <tr>
-      <td class="skillName" align="left">Colossus</td>
-      <td class="skillType" align="left">Action</td>
+      <td class="skillName" align="left"></td>
+      <td class="skillType" align="left"></td>
       <td align="center"></td>
     </tr>
     <tr>
-      <td class="skillName" align="left">Stardazzle</td>
-      <td class="skillType" align="left">Action</td>
+      <td class="skillName" align="left"></td>
+      <td class="skillType" align="left"></td>
       <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(2)"></a></td>
     </tr>
     <tr>
-      <td class="skillName" align="left">Jazz</td>
-      <td class="skillType" align="left">Action</td>
+      <td class="skillName" align="left"></td>
+      <td class="skillType" align="left"></td>
       <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(3)"></a></td>
     </tr>
     <tr>
-      <td class="skillName" align="left">Runic Power</td>
-      <td class="skillType" align="left">Action</td>
+      <td class="skillName" align="left"></td>
+      <td class="skillType" align="left"></td>
       <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(4)"></a></td>
     </tr>
     <tr>
-      <td class="skillName" align="left">Atomic</td>
-      <td class="skillType" align="left">Action</td>
+      <td class="skillName" align="left"></td>
+      <td class="skillType" align="left"></td>
       <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteSkill(5)"></a></td>
     </tr>
   </table>
@@ -298,26 +304,32 @@ table {
   </script>
 
   <br>
-  <table width=100%>
+
+  <table class="skills" width=100%>
     <tr>
-      <th align="left" width=80%>ITEM</th>
+      <th align="left" width=70%><a href="#getItem" onclick="setFocusHero(0);">ITEM</a></th>
       <th align="left" width=20%>TYPE</th>
+      <th align="center" width=10%></th>
     </tr>
     <tr>
-      <td align="left">Runic Power</td>
-      <td align="left">Action</td>
+      <td class="itemName" align="left"></td>
+      <td class="itemType" align="left"></td>
+      <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(0)"></a></td>
     </tr>
     <tr>
-      <td align="left">Throwing Axe</td>
-      <td align="left">Action</td>
+      <td class="itemName" align="left"></td>
+      <td class="itemType" align="left"></td>
+      <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(1)"></a></td>
     </tr>
     <tr>
-      <td align="left">Runic Power</td>
-      <td align="left">Activation</td>
+      <td class="itemName" align="left"></td>
+      <td class="itemType" align="left"></td>
+      <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(2)"></a></td>
     </tr>
     <tr>
-      <td align="left">Throwing Axe</td>
-      <td align="left">Destiny</td>
+      <td class="itemName" align="left"></td>
+      <td class="itemType" align="left"></td>
+      <td align="center"><img src="delete.png" height=20 width=20 onclick="deleteItem(3)"></a></td>
     </tr>
   </table>
 
@@ -386,7 +398,17 @@ const allHeroes =
       "hit" : "--",
       "damage" : "--"
       }
-    ]},
+    ],
+    "skills" : [
+      {
+      "name" : "Runic Power",
+      "type" : "Action"
+      },
+      {
+      "name" : "Throwing Axe",
+      "type" : "Action"
+      }]
+    },
     {
     "name" : "Knight-Questor",
     "move" : 3,
