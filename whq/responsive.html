@@ -95,7 +95,7 @@ table {
   <h2 id="heroSlot0" onclick="showTraits();">Slot 0: Hero</h2>
   <script>
     function showTraits(){
-      alert(allHeroes['members'][(document.getElementById("heroSelect0").selectedIndex)]['traits']);      
+      alert(allHeroes['members'][(document.getElementById("heroSelect0").selectedIndex)]['traits']);
     }
   </script>
   <table style="border-style:none;margin-left:auto;margin-right:auto;" width=80%>
@@ -364,6 +364,16 @@ table {
 
     window.history.back();
   }
+  function deleteSkill(index){
+    var x = document.getElementsByClassName("skillName");
+    var y = document.getElementsByClassName("skillType");
+    if (confirm("Remove " + (x[index].innerHTML) + "?")) {
+      x[index].innerHTML = "";
+      y[index].innerHTML = "";
+    }
+
+  }
+
 </script>
 
 
