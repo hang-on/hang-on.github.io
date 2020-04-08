@@ -364,9 +364,9 @@ table {
 
     window.history.back();
   }
-  function deleteSkill(index){
-    var x = document.getElementsByClassName("skillName");
-    var y = document.getElementsByClassName("skillType");
+  function deleteItem(index){
+    var x = document.getElementsByClassName("itemName");
+    var y = document.getElementsByClassName("itemType");
     if (confirm("Remove " + (x[index].innerHTML) + "?")) {
       x[index].innerHTML = "";
       y[index].innerHTML = "";
