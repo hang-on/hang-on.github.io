@@ -111,7 +111,15 @@ table {
     function loadHero(slot){
       switch (slot) {
         case 0:
-          document.getElementById("heroMove0").innerHTML = allHeroes['members'][0]['move'];;
+          var x = document.getElementById("heroSelect0").selectedIndex;
+          document.getElementById("heroMove0").innerHTML = (allHeroes['members'][x]['move']);
+          document.getElementById("heroSave0").innerHTML = (allHeroes['members'][x]['save']);
+          document.getElementById("heroAgility0").innerHTML = (allHeroes['members'][x]['agility']);
+          // Weapons
+          document.getElementById("heroFirstWeaponName0").innerHTML = (allHeroes['members'][x]['weapons'][0]['name']);
+          document.getElementById("heroFirstWeaponRange0").innerHTML = (allHeroes['members'][x]['weapons'][0]['range']);
+          document.getElementById("heroFirstWeaponHit0").innerHTML = (allHeroes['members'][x]['weapons'][0]['hit']);
+          document.getElementById("heroFirstWeaponDamage0").innerHTML = (allHeroes['members'][x]['weapons'][0]['damage']);
 
           break;
         default:
@@ -155,10 +163,10 @@ table {
       <th align="center">Damage</th>
     </tr>
     <tr>
-      <td align="center">Runic War-Iron (1+)</td>
-      <td align="center">Combat</td>
-      <td align="center">2+</td>
-      <td align="center">1</td>
+      <td id="heroFirstWeaponName0" align="center">Runic War-Iron (1+)</td>
+      <td id="heroFirstWeaponRange0"align="center">Combat</td>
+      <td id="heroFirstWeaponHit0" align="center">2+</td>
+      <td id="heroFirstWeaponDamage0" align="center">1</td>
     </tr>
     <tr>
       <td align="center">Doomseeker Axe (5+)</td>
@@ -326,87 +334,87 @@ const allHeroes =
     {
     "name" : "Fyreslayer Doomseeker",
     "move" : 3,
-    "save" : 4,
-    "agility" : 6,
+    "save" : "4+",
+    "agility" : "6+",
     "weapons": [
       {
       "name" : "Runic War-iron (1+)",
       "range" : "Combat",
-      "hit" : 2,
+      "hit" : "2+",
       "damage" : 1
       },
       {
       "name" : "Doomseeker Axe (5+)",
       "range" : "Combat",
-      "hit" : 3,
+      "hit" : "3+",
       "damage" : "D3"
       }
     ]},
     {
     "name" : "Knight-Questor",
     "move" : 3,
-    "save" : 4,
-    "agility" : 5,
+    "save" : "4+",
+    "agility" : "5+",
     "weapons": [
       {
       "name" : "Warblade (1+)",
       "range" : "Combat",
-      "hit" : 3,
+      "hit" : "3+",
       "damage" : 2
       },
       {
       "name" : "Thundercharged Strike (6+)",
       "range" : "Combat",
-      "hit" : 3,
-      "damage" : "3"
+      "hit" : "3+",
+      "damage" : 3
       }
     ]},
     {
     "name" : "Mistweaver Saih",
     "move" : 4,
-    "save" : 6,
-    "agility" : 3,
+    "save" : "6+",
+    "agility" : "3+",
     "weapons": [
       {
       "name" : "Aelven Blade (1+)",
       "range" : "Combat",
-      "hit" : 4,
+      "hit" : "4+",
       "damage" : 1
       },
       {
       "name" : "Bedazzle (6+)",
       "range" : "Area",
-      "hit" : 3,
+      "hit" : "3+",
       "damage" : "Stun"
       },
       {
       "name" : "Illusory Assault (3+)",
       "range" : "Missile",
-      "hit" : 3,
+      "hit" : "3+",
       "damage" : "D3"
       }
       ]},
     {
       "name" : "Tenebrael Shard",
       "move" : 4,
-      "save" : 5,
-      "agility" : 1,
+      "save" : "5+",
+      "agility" : "1+",
       "weapons": [
         {
         "name" : "Bladed Barbs (1+)",
         "range" : "Combat",
-        "hit" : 2,
+        "hit" : "2+",
         "damage" : 1
         },
         {
         "name" : "Reaper Gauntlets (4+)",
         "range" : "Combat",
-        "hit" : 3,
+        "hit" : "3+",
         "damage" : "D3"
         }
       ]}
     ] // Afsluttes members
-  } // Afsluttes allreheroes
+  } // Afsluttes allheroes
 
   document.getElementById("demow").innerHTML = allHeroes['members'][1]['weapons'][0]['name'];
 </script>
