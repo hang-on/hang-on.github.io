@@ -36,7 +36,7 @@
 select {
   margin: 2%;
   width: 70%;
-  padding: 5px 35px 5px 5px;
+  padding: 5px 25px 5px 5px;
   font-size: 16px;
   border: 1px solid #CCC;
   height: 34px;
@@ -115,11 +115,23 @@ table {
           document.getElementById("heroMove0").innerHTML = (allHeroes['members'][x]['move']);
           document.getElementById("heroSave0").innerHTML = (allHeroes['members'][x]['save']);
           document.getElementById("heroAgility0").innerHTML = (allHeroes['members'][x]['agility']);
-          // Weapons
+          // Weapon 1
           document.getElementById("heroFirstWeaponName0").innerHTML = (allHeroes['members'][x]['weapons'][0]['name']);
           document.getElementById("heroFirstWeaponRange0").innerHTML = (allHeroes['members'][x]['weapons'][0]['range']);
           document.getElementById("heroFirstWeaponHit0").innerHTML = (allHeroes['members'][x]['weapons'][0]['hit']);
           document.getElementById("heroFirstWeaponDamage0").innerHTML = (allHeroes['members'][x]['weapons'][0]['damage']);
+          // Weapon 2
+          document.getElementById("heroSecondWeaponName0").innerHTML = (allHeroes['members'][x]['weapons'][1]['name']);
+          document.getElementById("heroSecondWeaponRange0").innerHTML = (allHeroes['members'][x]['weapons'][1]['range']);
+          document.getElementById("heroSecondWeaponHit0").innerHTML = (allHeroes['members'][x]['weapons'][1]['hit']);
+          document.getElementById("heroSecondWeaponDamage0").innerHTML = (allHeroes['members'][x]['weapons'][1]['damage']);
+          // Weapon 3
+          document.getElementById("heroThirdWeaponName0").innerHTML = (allHeroes['members'][x]['weapons'][2]['name']);
+          document.getElementById("heroThirdWeaponRange0").innerHTML = (allHeroes['members'][x]['weapons'][2]['range']);
+          document.getElementById("heroThirdWeaponHit0").innerHTML = (allHeroes['members'][x]['weapons'][2]['hit']);
+          document.getElementById("heroThirdWeaponDamage0").innerHTML = (allHeroes['members'][x]['weapons'][2]['damage']);
+          // Reknown boost
+          document.getElementById("reknownBoost0").innerHTML = allHeroes['members'][x]['boost'];
 
           break;
         default:
@@ -163,25 +175,24 @@ table {
       <th align="center">Damage</th>
     </tr>
     <tr>
-      <td id="heroFirstWeaponName0" align="center">Runic War-Iron (1+)</td>
-      <td id="heroFirstWeaponRange0"align="center">Combat</td>
-      <td id="heroFirstWeaponHit0" align="center">2+</td>
-      <td id="heroFirstWeaponDamage0" align="center">1</td>
+      <td id="heroFirstWeaponName0" align="center"></td>
+      <td id="heroFirstWeaponRange0"align="center"></td>
+      <td id="heroFirstWeaponHit0" align="center"></td>
+      <td id="heroFirstWeaponDamage0" align="center"></td>
     </tr>
     <tr>
-      <td align="center">Doomseeker Axe (5+)</td>
-      <td align="center">Combat</td>
-      <td align="center">3+</td>
-      <td align="center">D3</td>
+      <td id="heroSecondWeaponName0" align="center"></td>
+      <td id="heroSecondWeaponRange0"align="center"></td>
+      <td id="heroSecondWeaponHit0" align="center"></td>
+      <td id="heroSecondWeaponDamage0" align="center"></td>
     </tr>
     <tr>
-      <td align="center"></td>
-      <td align="center"></td>
-      <td align="center"></td>
-      <td align="center"></td>
+      <td id="heroThirdWeaponName0" align="center"></td>
+      <td id="heroThirdWeaponRange0"align="center"></td>
+      <td id="heroThirdWeaponHit0" align="center"></td>
+      <td id="heroThirdWeaponDamage0" align="center"></td>
     </tr>
   </table>
-  <p>
     Reknown:
     <select id="reknown0">
       <option value="0">0</option>
@@ -195,9 +206,8 @@ table {
       <option value="8">8</option>
       <option value="9">9</option>
 
-    </select><br>
-    If you suffer two or more wounds in a phase, gain 2 reknown.
-  </p>
+    </select>
+    <p id="reknownBoost0">!!</p>
 
   <br>
 
@@ -336,6 +346,7 @@ const allHeroes =
     "move" : 3,
     "save" : "4+",
     "agility" : "6+",
+    "boost" : "If you suffer two or more wounds in a phase, gain 2 reknown.",
     "weapons": [
       {
       "name" : "Runic War-iron (1+)",
@@ -348,6 +359,12 @@ const allHeroes =
       "range" : "Combat",
       "hit" : "3+",
       "damage" : "D3"
+      },
+      {
+      "name" : "--",
+      "range" : "--",
+      "hit" : "--",
+      "damage" : "--"
       }
     ]},
     {
@@ -355,6 +372,7 @@ const allHeroes =
     "move" : 3,
     "save" : "4+",
     "agility" : "5+",
+    "boost" : "If any of your save rolls scores a 6, gain 1 reknown.",
     "weapons": [
       {
       "name" : "Warblade (1+)",
@@ -367,6 +385,12 @@ const allHeroes =
       "range" : "Combat",
       "hit" : "3+",
       "damage" : 3
+      },
+      {
+      "name" : "--",
+      "range" : "--",
+      "hit" : "--",
+      "damage" : "--"
       }
     ]},
     {
@@ -374,6 +398,7 @@ const allHeroes =
     "move" : 4,
     "save" : "6+",
     "agility" : "3+",
+    "boost" : "If the attack roll for an Illusory Assault is 6, gain 1 reknown.",
     "weapons": [
       {
       "name" : "Aelven Blade (1+)",
@@ -399,6 +424,7 @@ const allHeroes =
       "move" : 4,
       "save" : "5+",
       "agility" : "1+",
+      "boost" : "If you wound 3 adversaries in your turn, gain 2 reknown.",
       "weapons": [
         {
         "name" : "Bladed Barbs (1+)",
@@ -411,6 +437,12 @@ const allHeroes =
         "range" : "Combat",
         "hit" : "3+",
         "damage" : "D3"
+        },
+        {
+        "name" : "--",
+        "range" : "--",
+        "hit" : "--",
+        "damage" : "--"
         }
       ]}
     ] // Afsluttes members
