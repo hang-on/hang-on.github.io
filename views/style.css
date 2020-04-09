@@ -1,8 +1,8 @@
 #ipadXL {
-  height: 720px;
+  height: 680px;
   width: 1250px;
   padding: 10px;
-  margin: 15px;
+  margin: 10px;
   border: 5px solid red;
   background-color: lightblue;
 }
