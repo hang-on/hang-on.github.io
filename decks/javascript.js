@@ -16,9 +16,17 @@ dashboard = {
     }
 }
 // Called by <body> onload.
-function initialize(){
+function initialize(deck){
   initializeDeckMenu();
-  createDeck(eventDeck); // OK? We are at the eventDeck page...
+  var bodyId = document.body.id;
+  switch (bodyId){
+    case "eventDeck":
+      createDeck(eventDeck);
+      break;
+    default:
+      alert("Deck creation error");
+      break;
+  }
 }
 function initializeDeckMenu(){
   list = document.getElementById("deckMenu");
