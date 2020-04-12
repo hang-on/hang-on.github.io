@@ -1,4 +1,15 @@
-
+heroPage = {
+    config:{
+        prop:1
+    },
+    settings:{
+        currentHero:0
+    },
+    widgets:{
+        List: function(props){},
+        Item: function(props){}
+    }
+}
 
 function alertWindowDimension(){
   var w = getWindowWidth();
