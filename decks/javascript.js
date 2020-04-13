@@ -23,7 +23,10 @@ function initialize(command){
       var eventDeck = localStorage.getItem("eventDeck");
       if (eventDeck === null){
         eventDeck = createDeck(eventDeckRecipe);
-        console.log (eventDeck);
+        var x = document.getElementById('eventDeck');
+        x.src = eventDeck[eventDeck.length-1];
+        console.log(eventDeck.length)
+        console.log (eventDeck[eventDeck.length-1]);
       }
       break;
     default:
@@ -59,7 +62,7 @@ function createDeck(deckRecipe){
 // deck[0] = itemsize, deck[1] = image of card back,
 // deck[2] = card type image, deck [3] number of cards of this type, etc...
 eventDeckRecipe = [
-    2, "event-cardback.jpg",
-    "event-nothing.jpg", 10,
-    "event-ambush.jpg", 3
+    2, "images/event-cardback.JPG",
+    "images/event-nothing.JPG", 10,
+    "images/event-ambush.JPG", 3
 ]
