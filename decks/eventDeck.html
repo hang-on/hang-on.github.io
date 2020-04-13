@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-<body id="eventDeck" onload="initialize()">
+<body onload="initialize('eventDeck')">
 <div class="header">
   <h1>Decks</h1>
 </div>
 <div class="row">
   <div class="col-3 menu">
-    <ul id="deckMenu">
-    </ul>
+    <ul id="deckMenu"></ul>
   </div>
-
-  <div class="col-9">
+  <div class="col-6">
     <h1>Events</h1>
     <p>This is the event deck.</p>
-    <button>Button</button>
+    <table style="width:100%; text-align:center" >
+      <tr>
+        <th>Event deck</th>
+        <th>Discard pile</th>
+      </tr>
+      <tr>
+        <td>
+          <img id="eventDeck" src="images/event-cardback.jpg">
+        </td>
+        <td>...</td>
+      </tr>
+    </table>
   </div>
 </div>
 

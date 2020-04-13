@@ -16,10 +16,9 @@ dashboard = {
     }
 }
 // Called by <body> onload.
-function initialize(deck){
+function initialize(command){
   initializeDeckMenu();
-  var bodyId = document.body.id;
-  switch (bodyId){
+  switch (command){
     case "eventDeck":
       var eventDeck = localStorage.getItem("eventDeck");
       if (eventDeck === null){
@@ -42,23 +41,25 @@ function initializeDeckMenu(){
   }
 }
 function createDeck(deckRecipe){
+  // Uses the deck recipe data format.
   var deck = new Array();
   var i;
   var j;
   var k = 0;
   var itemSize = deckRecipe[0]; // Get it from the header, as per data format.
-  for (i = 1; i < deckRecipe.length; i+=itemSize){
+  for (i = 2; i < deckRecipe.length; i+=itemSize){
     for (j = 0; j < deckRecipe[i+1]; j++){
       deck.push(deckRecipe[i]);
     }
   }
+  deck.push(deckRecipe[1]) // Add the card back as the last card.
   return deck;
 }
 // The recipe for the event deck.
-// deck[0] = itemsize, deck[1] = image of first card, deck[2] number of
-// cards of this type...
+// deck[0] = itemsize, deck[1] = image of card back,
+// deck[2] = card type image, deck [3] number of cards of this type, etc...
 eventDeckRecipe = [
-    2,
+    2, "event-cardback.jpg",
     "event-nothing.jpg", 10,
     "event-ambush.jpg", 3
 ]
