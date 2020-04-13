@@ -21,7 +21,11 @@ function initialize(deck){
   var bodyId = document.body.id;
   switch (bodyId){
     case "eventDeck":
-      createDeck(eventDeck);
+      var eventDeck = localStorage.getItem("eventDeck");
+      if (eventDeck === null){
+        eventDeck = createDeck(eventDeckRecipe);
+        console.log (eventDeck);
+      }
       break;
     default:
       alert("Deck creation error");
@@ -37,27 +41,24 @@ function initializeDeckMenu(){
     list.appendChild(entry);
   }
 }
-function createDeck(deckData){
+function createDeck(deckRecipe){
   var deck = new Array();
-  // Calculate total number of cards.
   var i;
-  var itemSize = deckData[0]; // Get it from the header, as per data format.
-  var cardsTotal = 0;
-  for (i = 2; i < deckData.length; i+=itemSize){
-    cardsTotal += deckData[i];
+  var j;
+  var k = 0;
+  var itemSize = deckRecipe[0]; // Get it from the header, as per data format.
+  for (i = 1; i < deckRecipe.length; i+=itemSize){
+    for (j = 0; j < deckRecipe[i+1]; j++){
+      deck.push(deckRecipe[i]);
+    }
   }
+  return deck;
 }
-// The event deck.
-// Deck format: Header + title + cards + etc..., so
-// deck[0] = itemsize, deck[1] = title (first card type), deck[2] number of
-// cards of this type, [deck 3+] various other entries, i.e. description.
-eventDeck = [
-    // Header: The first value is the card item size.
-    3,
-    "Nothing Happens.", 10,
-    "No unexpected events this round.",
-    "Ambush!", 3,
-    "The maddening sound of shrieking birds fills the room, as strange, avian\
-    beasts rush towards you from an open portal in the back."
-
+// The recipe for the event deck.
+// deck[0] = itemsize, deck[1] = image of first card, deck[2] number of
+// cards of this type...
+eventDeckRecipe = [
+    2,
+    "event-nothing.jpg", 10,
+    "event-ambush.jpg", 3
 ]
