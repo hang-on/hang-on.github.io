@@ -8,39 +8,22 @@ dashboard = {
     settings:{
         currentHero:0
     },
-    menuItems:["Events", "Grots",
-      "Acolytes", "Horrors"],
+    menuItems:["...", "...",
+      "...", "..."],
     widgets:{
         List: function(props){},
         Item: function(props){}
     }
 }
 // Called by <body> onload.
-function initialize(command){
-  initializeDeckMenu();
-  switch (command){
-    case "eventDeck":
-      var eventDeck = localStorage.getItem("eventDeck");
-      if (eventDeck === null){
-        eventDeck = createDeck(eventDeckRecipe);
-        var x = document.getElementById('eventDeck');
-        x.src = eventDeck[eventDeck.length-1];
-        console.log(eventDeck.length)
-        console.log (eventDeck[eventDeck.length-1]);
-      }
-      break;
-    default:
-      alert("Deck creation error");
-      break;
-  }
-}
-function initializeDeckMenu(){
-  list = document.getElementById("deckMenu");
-  var i;
-  for (i = 0; i < dashboard.menuItems.length; i++){
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(dashboard.menuItems[i]));
-    list.appendChild(entry);
+function initialize(){
+  var eventDeck = localStorage.getItem("eventDeck");
+  if (eventDeck === null){
+    eventDeck = createDeck(eventDeckRecipe);
+    // TODO: Add shuffle.
+    // Show card back:
+    var x = document.getElementById('eventDeck');
+    x.src = eventDeck[eventDeck.length-1];
   }
 }
 function createDeck(deckRecipe){
