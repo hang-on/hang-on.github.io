@@ -25,10 +25,11 @@ function initialize(){
   } else {
     eventDeck = eventDeck.split(",");
   }
-  // Show card back:
   var x = document.getElementById('eventDeck');
   x.src = eventDeck[eventDeck.length-1];
-  console.log(eventDeck);
+  var x = document.getElementById('discardPile');
+  x.src = "images/discard-pile.JPG";
+  displayDeckStatus(eventDeck);
 }
 function createDeck(deckRecipe){
   // Uses the deck recipe data format.
@@ -71,13 +72,16 @@ function drawEvent(){
     // Show the card on top of the discard pile:
     var x = document.getElementById('discardPile');
     x.src = card;
+    displayDeckStatus(deck);
   }
+}
+function displayDeckStatus(deck){
+  var x = document.getElementById('deckStatus');
+  x.innerHTML = "Cards left in event deck: " + (deck.length - 1);
 }
 function handleInitializeButton(){
   localStorage.removeItem("eventDeck"); // Trigger a deck refresh.
   initialize();
-  var x = document.getElementById('discardPile');
-  x.src = "";  
 }
 // The recipe for the event deck.
 // deck[0] = itemsize, deck[1] = image of card back,
