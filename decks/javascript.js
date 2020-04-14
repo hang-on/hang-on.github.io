@@ -28,7 +28,7 @@ function initialize(){
   var x = document.getElementById('eventDeck');
   x.src = eventDeck[eventDeck.length-1];
   var x = document.getElementById('discardPile');
-  x.src = "images/discard-pile.jpg";
+  x.src = "images/discard-pile.JPG";
   displayDeckStatus(eventDeck);
 }
 function createDeck(deckRecipe){
