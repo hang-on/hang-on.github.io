@@ -15,16 +15,20 @@ dashboard = {
         Item: function(props){}
     }
 }
-// Called by <body> onload.
+// Called by <body> onload and by 'initialize deck' button.
 function initialize(){
   var eventDeck = localStorage.getItem("eventDeck");
   if (eventDeck === null){
     eventDeck = createDeck(eventDeckRecipe);
-    // TODO: Add shuffle.
-    // Show card back:
-    var x = document.getElementById('eventDeck');
-    x.src = eventDeck[eventDeck.length-1];
+    shuffle(eventDeck);
+    localStorage.setItem("eventDeck", eventDeck);
+  } else {
+    eventDeck = eventDeck.split(",");
   }
+  // Show card back:
+  var x = document.getElementById('eventDeck');
+  x.src = eventDeck[eventDeck.length-1];
+  console.log(eventDeck);
 }
 function createDeck(deckRecipe){
   // Uses the deck recipe data format.
@@ -38,8 +42,42 @@ function createDeck(deckRecipe){
       deck.push(deckRecipe[i]);
     }
   }
-  deck.push(deckRecipe[1]) // Add the card back as the last card.
+  deck.push(deckRecipe[1]) // Add the cardback as the last card.
   return deck;
+}
+function shuffle(deck){
+  // for 1000 turns, switch the values of two random cards.
+  var cardback = deck.pop(); // Get rid of cardback
+  for (var i = 0; i < 1000; i++){
+    var location1 = Math.floor((Math.random() * deck.length));
+    var location2 = Math.floor((Math.random() * deck.length));
+    var tmp = deck[location1];
+    deck[location1] = deck[location2];
+    deck[location2] = tmp;
+  }
+  deck.push(cardback); // Restore cardback
+}
+function drawEvent(){
+  // Return the topmost card from the event deck.
+  var deck = localStorage.getItem("eventDeck");
+  deck = deck.split(",");
+  // Check if nothing but the cardback remains:
+  if (deck.length <= 1) {
+    alert("Deck is empty!");
+    return;
+  } else {
+    var card = deck.shift();
+    localStorage.setItem("eventDeck", deck);
+    // Show the card on top of the discard pile:
+    var x = document.getElementById('discardPile');
+    x.src = card;
+  }
+}
+function handleInitializeButton(){
+  localStorage.removeItem("eventDeck"); // Trigger a deck refresh.
+  initialize();
+  var x = document.getElementById('discardPile');
+  x.src = "";  
 }
 // The recipe for the event deck.
 // deck[0] = itemsize, deck[1] = image of card back,

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Event deck</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body onload="initialize()">
@@ -20,13 +20,14 @@
       </tr>
       <tr>
         <td width="250px">
-          <img id="eventDeck">
+          <img id="eventDeck" onclick="drawEvent()">
         </td>
         <td width="250px">
           <img id="discardPile">
         </td>
       </tr>
     </table>
+    <button onclick="handleInitializeButton();">Initialize deck</button>
   </div>
 </div>
 
