@@ -10,10 +10,10 @@
   <h1>Oracle</h1>
 </div>
 <div class="row">
-  <div class="col-8">
+  <div class="col-12">
     <h1>Oracle</h1>
     <p id="answer">...</p>
-    <p id="event">No unexpected event.</p>
+    <p id="event">...</p>
   </div>
 </div>
 <div class="row">
@@ -21,11 +21,11 @@
   </div>
   <div class="col-7 menu">
     <ul>
-      <li onclick="getAnswer(-2,20)">Very Unlikely</li>
-      <li onclick="getAnswer(-1,25)">Unlikely</li>
-      <li onclick="getAnswer(0,25)">Unknown / 50-50</li>
-      <li onclick="getAnswer(1,25)">Likely</li>
-      <li onclick="getAnswer(2,20)">Very Likely</li>
+      <li onclick="activateOracle(-2,20,9)">Very Unlikely</li>
+      <li onclick="activateOracle(-1,25,9)">Unlikely</li>
+      <li onclick="activateOracle(0,25,100)">Unknown / 50-50</li>
+      <li onclick="activateOracle(1,25,9)">Likely</li>
+      <li onclick="activateOracle(2,20,9)">Very Likely</li>
     </ul>
   </div>
 </div>
