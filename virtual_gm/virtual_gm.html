@@ -1,0 +1,98 @@
+
+VIRTUAL GAME MASTER
+<br>
+<br>
+
+<button onclick='selectRandom_explore_room_9xj()'>Explore room</button>
+<div id='outputText_explore_room_9xj'></div>
+<br>
+<button onclick='selectRandom_identify_foe()'>Identify foe</button>
+<div id='outputText_identify_foe'></div>
+<br>
+<button onclick='selectRandom_identify_event()'>Identify unexpected event</button>
+<div id='outputText_identify_event'></div>
+<br>
+<button onclick='selectRandom_generate_npc()'>Identify NPC</button>
+<div id='outputText_generate_npc'></div>
+<br>
+<button onclick='selectRandom_generate_random_encounter()'>Identify Random Encounter</button>
+<div id='outputText_generate_random_encounter'></div>
+
+<script>
+
+function expandString(str, map) {
+	var recur_limit = 20
+	while (str.match(/{.*?}/) && recur_limit > 0){
+		str = str.replace(/{.*?}/g, (match) => {
+			var input = match.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_-]/g,'').split('_-')
+			var key = input[0]
+
+			if (!map.hasOwnProperty(key))
+				return key
+
+			if (input.includes(`u`)) {
+				key_u = key+`_unique`
+				if (!map.hasOwnProperty(key_u) || map[key_u].length == 0)
+					map[key_u] = map[key].slice()
+				return map[key_u].splice(Math.floor(Math.random() * map[key_u].length), 1);
+			}
+
+			return map[key][Math.floor(Math.random() * map[key].length)]
+		})
+		recur_limit -= 1
+	}
+	return str
+}
+
+var lists_explore_room_9xj = {
+	table_1: [`huge and mawing`, `cramped and pokey`, `jumbled and horde filled`, `wrecked and ruined`, `holy and sacred`, `filthy and muck coated`],
+	table_2: [`hall or hallway`, `private dwelling room`, `chamber for rites and ceremony`, `techonological or mechanical laboratory`, `feasting or ablution chamber`, `trophy or decorative chamber`],
+	table_3: [`working foes`, `resting foes`, `traps`, `treasure`, `an interloper (dead or otherwise)`, `some psyche shattering horror`],
+	table_4: [`the function or purpose of the room`, `the behavior or function of beings, foes, traps or items`, `the heroes' general hunch`, `features discernable from the tile itself`, `symbols, scriptures and decorations on the walls`, `sounds, smells or visions permeating the room`],
+	table_5: [`be completely unrelated`, `be unrelated`, `possibly - but ambiguously - be related`, `be vaguely related`, `be directly related`, `be centrally related`],
+}
+
+function selectRandom_explore_room_9xj() {
+	document.getElementById('outputText_explore_room_9xj').innerHTML = expandString(`Here was a {Table 1} {Table 2} containing {Table 3}. Judging by {Table 4}, this room might {Table 5} to the ongoing quest.<br />`, lists_explore_room_9xj)
+}
+
+var lists_identify_foe = {
+	foe_1: [`small group of acolytes`, `large contingent of acolytes`, `medium group of Reavers`, `whole Reaver clan`, `small group of Blightkings`, `large group of Blightkings incl. a Lord`],
+	foe_2: [`on guard duty`, `manufacturing items or ressources`, `developing or maintaining nearby structures`, `researching, studying or probing`, `searching for food or resources`, `seemingly in an idle state`],
+	foe_3: [`in bad shape`, `clearly disagreeing or hostile towards each other`, `passive and uninspired`, `hungry or fully motivated to engage with interlopers`, `conducting themselves as an elite unit`, `cheering for or otherwise supporting each other`],
+}
+
+function selectRandom_identify_foe() {
+	document.getElementById('outputText_identify_foe').innerHTML = expandString(`The foe is a {Foe 1} {Foe 2}, {Foe 3}.`, lists_identify_foe)
+}
+
+var lists_identify_event = {
+	event_1: [`noisy and loud`, `ethereal or planeshifting`, `complicated or `, `ancient`, `utterly surprising`, `dark and sinister`],
+	event_2: [`alarm system`, `disease or contagion`, `natural or structural change`, `mechanical trap`, `magical trap`, `random encounter`],
+}
+
+function selectRandom_identify_event() {
+	document.getElementById('outputText_identify_event').innerHTML = expandString(`The unexpected event revolves around a {Event 1} {Event 2}.`, lists_identify_event)
+}
+
+var lists_generate_npc = {
+	npc_1: [`an aristocrat`, `an adventurer`, `a soldier`, `a merchant`, `an explorer`, `a craftsman`],
+	npc_2: [`wanting love`, `needing treasure or a specific item`, `seeking wealth`, `plotting revenge`, `wishful for freedom`, `dreaming of adventure`],
+	npc_3: [`pompously overdressed`, `draped in religous artifacts`, `with an exotic pet scurrying over their body`, `clad in heavy armour and brandishing weapons`, `wrapped in layers of sumptous thich silk`, `near naked in threadbare rags`],
+}
+
+function selectRandom_generate_npc() {
+	document.getElementById('outputText_generate_npc').innerHTML = expandString(`Here the heroes encountered {NPC 1} whos is {NPC 2} while being {NPC 3}`, lists_generate_npc)
+}
+
+var lists_generate_random_encounter = {
+	enc_1: [`lost`, `dazed and confused`, `physically or mentally hurt`, `vexed and resentful`, `minuscule`, `large`],
+	enc_2: [`monster from deep below`, `inhabitant from nearby`, `lost thing or person`, `wafting and ghostly form`, `strange and alien thing`, `non-physical thing`],
+	enc_3: [`in need of hunting and sustenance`, `escaping`, `simply bored, desiring entertainment`, `overly protective of a nearby treasure`, `conducting some foul rite or ritual`, `overcome with emotion`],
+}
+
+function selectRandom_generate_random_encounter() {
+	document.getElementById('outputText_generate_random_encounter').innerHTML = expandString(`The heroes came across a {ENC 1} {ENC 2} {ENC 3}.`, lists_generate_random_encounter)
+}
+
+</script>
