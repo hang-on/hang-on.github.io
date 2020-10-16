@@ -100,10 +100,20 @@ var lists_identify_hazard = {
   hazard_2: ['weapons galore', 'multiple light sources, including candlelights', 'a thick, smoke-like mist', 'images and devices in service of the dark gods','something directly related to the quest','a powerful but invisible force','everyday household objects', 'little cracks or flaws in the original design',"the dungeon dwellers' numerous attempts at enhancing or altering it", 'wires, chains and restraining devices', 'cogs and steam-based machinery'],
   hazard_3: ['the hero(es) rolling lowest on D6', 'a random hero in the current chamber', 'all heroes in the current chamber'],
   hazard_4: ['roll D6: 1: Severe or deadly penalty, 2-3: Moderate penalty, 4-5: Mild penalty, 6: No penalty', 'roll D6: 1: Severe or deadly penalty, 2-3: Moderate penalty, 4-5: Moderate reward, 6: Great reward','roll D6: 1-3: Moderate penalty, 4-6: Moderate reward','take a test of agility or save to avoid a moderate penalty','take a test of agility or save to avoid a severe penalty','make an interact (4+) action to gain a (limited) moderate reward on 3+','make an interact (4+) action to avoid a moderate penalty on 3+','make an interact (4+) action to avoid a moderate penalty on 3+ (the hazard is constantly active)'],
+  hazard_5: [
+    "eating, drinking or consumption",
+    "mechanical manipulation or disassembly",
+    "using weapons, items or equipment",
+    "logic, thinking or problem solving",
+    "overcoming a psychological barrier",
+    "coordinating, strategic thinking or planning",
+    "trusting the senses, letting go, navigating by ear or touch",
+    "impersonating, disguising or sneaking"
+  ],
 }
 
 function selectRandom_identify_hazard() {
-	document.getElementById('outputText_identify_hazard').innerHTML = expandString(`The hazard in the room is basically a kind of {Hazard 1}, but to some extent twisted by the presence of {Hazard 2}. As long as the hazard is active, a hero entering the room must attempt to complete it, before he/she can move further. In order to do so, the hero must {Hazard 4}`, lists_identify_hazard)
+	document.getElementById('outputText_identify_hazard').innerHTML = expandString(`The hazard in the room is basically a kind of {Hazard 1}, but to some extent twisted by the presence of {Hazard 2}. As long as the hazard is active, a hero entering the room must attempt to complete it, before he/she can move further. The heroes’ interaction with the hazard involves some degree of {Hazard 5}. In order to do so, the hero must {Hazard 4}`, lists_identify_hazard)
 }
 
 
@@ -123,7 +133,7 @@ var lists_generate_random_encounter = {
 	enc_2: [`monster from deep below`, `inhabitant from nearby`, `lost thing or person`, `wafting and ghostly form`, `strange and alien thing`, `non-physical thing`],
 	enc_3: [`in need of hunting and sustenance`, `escaping`, `simply bored, desiring entertainment`, `overly protective of a nearby treasure`, `conducting some foul rite or ritual`, `overcome with emotion`],
   enc_4: [`hateful`, `ambigous or undecided`, `friendly or supportive`, `somewhat suspicious`, `playful`, `submissive`],
-  enc_5: [`is completely unrelated to`, `might be related to`, `is strongly connected with`,'seems to know about','part of the plan to stop the heroes from comleting,'],
+  enc_5: [`is completely unrelated to`, `might be related to`, `is strongly connected with`,'seems to know about','is part of the plan to stop the heroes from completing,'],
 }
 
 function selectRandom_generate_random_encounter() {
