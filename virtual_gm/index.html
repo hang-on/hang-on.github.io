@@ -106,10 +106,11 @@ var lists_generate_random_encounter = {
 	enc_1: [`lost`, `dazed and confused`, `physically or mentally hurt`, `vexed and resentful`, `minuscule`, `large`],
 	enc_2: [`monster from deep below`, `inhabitant from nearby`, `lost thing or person`, `wafting and ghostly form`, `strange and alien thing`, `non-physical thing`],
 	enc_3: [`in need of hunting and sustenance`, `escaping`, `simply bored, desiring entertainment`, `overly protective of a nearby treasure`, `conducting some foul rite or ritual`, `overcome with emotion`],
+  enc_4: [`hateful`, `ambigous or undecided`, `friendly or supportive`, `suspicious`, `playful`, `submissive`],
 }
 
 function selectRandom_generate_random_encounter() {
-	document.getElementById('outputText_generate_random_encounter').innerHTML = expandString(`The heroes came across a {ENC 1} {ENC 2} {ENC 3}.`, lists_generate_random_encounter)
+	document.getElementById('outputText_generate_random_encounter').innerHTML = expandString(`The heroes came across a {ENC 1} {ENC 2} {ENC 3} who is {ENC 4} towards the heroes.`, lists_generate_random_encounter)
 }
 
 </script>
