@@ -11,11 +11,17 @@
 </div>
 <div class="row">
   <div class="col-7">
+    <b>Room</b>
     <p id="outputText_explore_room_9xj">...</p>
+    <b>Foe</b>
     <p id="outputText_identify_foe">...</p>
+    <b>Trap</b>
     <p id="outputText_identify_trap">...</p>
+    <b>Hazard</b>
     <p id="outputText_identify_hazard">...</p>
+    <b>NPC</b>
     <p id="outputText_generate_npc">...</p>
+    <b>Random Encounter</b>
     <p id="outputText_generate_random_encounter">...</p>
   </div>
   <div class="col-5 menu">
@@ -87,12 +93,38 @@ function selectRandom_identify_foe() {
 
 var lists_identify_trap = {
 	trap_1: [`noisy and loud`, `ethereal or planeshifting`, `complicated`, `ancient`, `well kept`, `partly malfunctioning`,'magically enhanced','mechanically supported'],
-	trap_2: [`alarm system`, `disease or contagion`, `natural or structural change`, `shooting mechanism`, `slicing or stabbing contraption`, 'biological entity', 'chemical entity', 'psychic hazard'],
+	trap_2: [`alarm system`, `disease or contagion`, `natural or structural change`, `man made contraption`, 'biological entity', 'chemical entity', 'psychic hazard'],
   trap_3: ['the hero(es) rolling lowest on D6', 'all heroes on the board', 'a random hero in the current chamber', 'all heroes in the current chamber', 'all heroes and foes on the board'],
+  trap_4: [
+    'severely effecting',
+    'mildly effecting',
+    'stunning and otherwise effecting',
+    'moderately effecting',
+    'long-term effecting',
+  ],
+  trap_5: [
+    'a stat test',
+    'a roll on a D6: 1: Grievous wound or severe effect, 2-3: D3 wounds or moderate effect, 4-5: Wound, stun or mild effect, 6: Trap is avoided and causes no effect',
+    'a roll on a D6: 1: Grievous wound or severe effect, 2-3: D3 wounds or moderate effect, 4-6: Trap is avoided and causes no effect',
+    'a hard stat test (roll two dice and pick the worst result)',
+    'an easy stat test (roll two dice and pick the best result)',
+    'a skill test of 4+, but modified with relevant bonuses and penalties derived from hero traits'
+  ],
+  trap_6: [
+    'a pit trap or objects falling through the floor',
+    'a portcullis, blocks or barrier dropping from the ceiling',
+    'a poison dart or projectile',
+    'a fireball or sphere of energy',
+    'a crossfire or multidirectional effect',
+    'a gas or air effect',
+    'a mantrap restraining limps or the body',
+    'shock or touchplate',
+  ],
+
 }
 
 function selectRandom_identify_trap() {
-	document.getElementById('outputText_identify_trap').innerHTML = expandString(`The trap is a {Trap 1} {Trap 2} affecting {Trap 3}.`, lists_identify_trap)
+	document.getElementById('outputText_identify_trap').innerHTML = expandString(`The trap is a {Trap 1} {Trap 2}. It is based on a mechanism similar to {Trap 6}, and is {Trap 4} {Trap 3}. The trap must be avoided or interacted with using {Trap 5}.`, lists_identify_trap)
 }
 
 var lists_identify_hazard = {
