@@ -82,13 +82,13 @@ function selectRandom_explore_room_9xj() {
 }
 
 var lists_identify_foe = {
-	foe_1: [`small group of Kairic Acolytes`, `large contingent of Kairic Acolytes`, `medium group of Blood Reavers`, `whole Blood Reaver clan`, `small group of Putrid Blightkings`, `large group of Putrid Blightkings incl. a BlightLord`],
+	foe_1: [`small group of foes`, `large contingent of foes`, `medium group of foes`, `group of strong foes`, `few but particularly powerful foes`, `boss and his retinue`, 'boss on his own'],
 	foe_2: [`on guard duty`, `manufacturing items or ressources`, `developing or maintaining nearby structures`, `researching, studying or probing`, `searching for food or resources`, `seemingly in an idle state`],
 	foe_3: [`in bad shape`, `clearly disagreeing or hostile towards each other`, `passive and uninspired`, `hungry or fully motivated to engage with interlopers`, `conducting themselves as an elite unit`, `cheering for or otherwise supporting each other`],
 }
 
 function selectRandom_identify_foe() {
-	document.getElementById('outputText_identify_foe').innerHTML = expandString(`The foe is a {Foe 1} {Foe 2}, {Foe 3}.`, lists_identify_foe)
+	document.getElementById('outputText_identify_foe').innerHTML = expandString(`Here the heroes encountered a {Foe 1} {Foe 2}, {Foe 3}.`, lists_identify_foe)
 }
 
 var lists_identify_trap = {
