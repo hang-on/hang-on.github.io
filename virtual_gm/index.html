@@ -122,22 +122,23 @@ var lists_generate_npc = {
 	npc_1: [`an aristocrat`, `an adventurer`, `a soldier`, `a merchant`, `an explorer`, `a craftsman`],
 	npc_2: [`wanting love`, `needing treasure or a specific item`, `seeking wealth`, `plotting revenge`, `wishful for freedom`, `dreaming of adventure`],
 	npc_3: [`pompously overdressed`, `draped in religous artifacts`, `with an exotic pet scurrying over their body`, `clad in heavy armour and brandishing weapons`, `wrapped in layers of sumptous thich silk`, `near naked in threadbare rags`],
+  npc_4: [`hateful`, `ambigous or undecided`, `friendly or supportive`, `somewhat suspicious`, `playful`, `submissive`],
+  npc_5: [`is completely unrelated to`, `might be related to`, `is strongly connected with`,'seems to know about','is part of the plan to stop the heroes from completing,'],
+
 }
 
 function selectRandom_generate_npc() {
-	document.getElementById('outputText_generate_npc').innerHTML = expandString(`Here the heroes encountered {NPC 1} whos is {NPC 2} while being {NPC 3}`, lists_generate_npc)
+	document.getElementById('outputText_generate_npc').innerHTML = expandString(`Here the heroes encountered {NPC 1} whos is {NPC 2} while being {NPC 3}. He or she is {NPC 4} towards the players, and {NPC 5} to the quest.`, lists_generate_npc)
 }
 
 var lists_generate_random_encounter = {
 	enc_1: [`lost`, `dazed and confused`, `physically or mentally hurt`, `vexed and resentful`, `minuscule`, `large`],
-	enc_2: [`monster from deep below`, `inhabitant from nearby`, `lost thing or person`, `wafting and ghostly form`, `strange and alien thing`, `non-physical thing`],
+	enc_2: [`skaven assassin`, `dark sorcerer`, `ogorid thaumaturge`, `giant spider`, `ghostly or ethereal boss`, `flaming deamon`,'snakelike or mythic being'],
 	enc_3: [`in need of hunting and sustenance`, `escaping`, `simply bored, desiring entertainment`, `overly protective of a nearby treasure`, `conducting some foul rite or ritual`, `overcome with emotion`],
-  enc_4: [`hateful`, `ambigous or undecided`, `friendly or supportive`, `somewhat suspicious`, `playful`, `submissive`],
-  enc_5: [`is completely unrelated to`, `might be related to`, `is strongly connected with`,'seems to know about','is part of the plan to stop the heroes from completing,'],
 }
 
 function selectRandom_generate_random_encounter() {
-	document.getElementById('outputText_generate_random_encounter').innerHTML = expandString(`The heroes came across a {ENC 1} {ENC 2} {ENC 3} who {ENC 5} the quest, and is {ENC 4} towards the heroes.`, lists_generate_random_encounter)
+	document.getElementById('outputText_generate_random_encounter').innerHTML = expandString(`The heroes came across a {ENC 1} {ENC 2} {ENC 3}.`, lists_generate_random_encounter)
 }
 
 </script>
