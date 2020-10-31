@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header">
+  <h1>Solo Cry</h1>
+</div>
+<div class="row">
+  <div class="col-7">
+    <b>Room</b>
+    <p id="outputText_explore_room_9xj">...</p>
+    <b>Foe</b>
+    <p id="outputText_identify_foe">...</p>
+    <b>Trap</b>
+    <p id="outputText_identify_trap">...</p>
+    <b>Hazard</b>
+    <p id="outputText_identify_hazard">...</p>
+    <b>NPC</b>
+    <p id="outputText_generate_npc">...</p>
+    <b>Random Encounter</b>
+    <p id="outputText_generate_random_encounter">...</p>
+  </div>
+  <div class="col-5 menu">
+    <ul>
+      <li onclick="selectRandom_explore_room_9xj()">Explore room</li>
+      <li onclick="selectRandom_identify_foe()">Identify foe</li>
+      <li onclick="selectRandom_identify_trap()">Identify trap</li>
+      <li onclick="selectRandom_identify_hazard()">Identify hazard</li>
+      <li onclick="selectRandom_generate_npc()">Generate NPC</li>
+      <li onclick="selectRandom_generate_random_encounter()">Generate Random Encounter</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+  </div>
+</div>
+  <script src="javascript.js"></script>
+</body>
+</html>
+
+<script>
+
+function expandString(str, map) {
+	var recur_limit = 20
+	while (str.match(/{.*?}/) && recur_limit > 0){
+		str = str.replace(/{.*?}/g, (match) => {
+			var input = match.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_-]/g,'').split('_-')
+			var key = input[0]
+
+			if (!map.hasOwnProperty(key))
+				return key
+
+			if (input.includes(`u`)) {
+				key_u = key+`_unique`
+				if (!map.hasOwnProperty(key_u) || map[key_u].length == 0)
+					map[key_u] = map[key].slice()
+				return map[key_u].splice(Math.floor(Math.random() * map[key_u].length), 1);
+			}
+
+			return map[key][Math.floor(Math.random() * map[key].length)]
+		})
+		recur_limit -= 1
+	}
+	return str
+}
+
+var lists_explore_room_9xj = {
+	table_1: [`huge and mawing`, `cramped and pokey`, `jumbled and horde filled`, `wrecked and ruined`, `holy and sacred`, `filthy and muck coated`],
+	table_2: [`hall or hallway`, `private dwelling room`, `chamber for rites and ceremony`, `techonological or mechanical laboratory`, `feasting or ablution chamber`, `trophy or decorative chamber`],
+	table_3: [`working foes`, `resting foes`, `traps or hazards`, `treasure`, `an interloper (NPC or random encounter)`, `some psyche shattering horror`],
+	table_4: [`the function or purpose of the room`, `the behavior or function of beings, foes, traps or items`, `the heroes' general hunch`, `features discernable from the tile itself`, `symbols, scriptures and decorations on the walls`, `sounds, smells or visions permeating the room`],
+	table_5: [`be completely unrelated`, `be unrelated`, `possibly - but ambiguously - be related`, `be vaguely related`, `be directly related`, `be centrally related`],
+}
+
+function selectRandom_explore_room_9xj() {
+	document.getElementById('outputText_explore_room_9xj').innerHTML = expandString(`Here was a {Table 1} {Table 2} containing {Table 3}. Judging by {Table 4}, this room might {Table 5} to the ongoing quest.<br />`, lists_explore_room_9xj)
+}
+
+var lists_identify_foe = {
+	foe_1: [`small group of foes`, `large contingent of foes`, `medium group of foes`, `group of strong foes`, `few but particularly powerful foes`, `boss and his retinue`, 'boss on his own'],
+	foe_2: [`on guard duty`, `manufacturing items or ressources`, `developing or maintaining nearby structures`, `researching, studying or probing`, `searching for food or resources`, `seemingly in an idle state`],
+	foe_3: [`in bad shape`, `clearly disagreeing or hostile towards each other`, `passive and uninspired`, `hungry or fully motivated to engage with interlopers`, `conducting themselves as an elite unit`, `cheering for or otherwise supporting each other`],
+}
+
+function selectRandom_identify_foe() {
+	document.getElementById('outputText_identify_foe').innerHTML = expandString(`Here the heroes encountered a {Foe 1} {Foe 2}, {Foe 3}.`, lists_identify_foe)
+}
+
+var lists_identify_trap = {
+	trap_1: [`noisy and loud`, `ethereal or planeshifting`, `complicated`, `ancient`, `well kept`, `partly malfunctioning`,'magically enhanced','mechanically supported'],
+	trap_2: [`alarm system`, `disease or contagion`, `natural or structural change`, `man made contraption`, 'biological entity', 'chemical entity', 'psychic hazard'],
+  trap_3: ['the hero(es) rolling lowest on D6', 'all heroes on the board', 'a random hero in the current chamber', 'all heroes in the current chamber', 'all heroes and foes on the board'],
+  trap_4: [
+    'severely effecting',
+    'mildly effecting',
+    'stunning and otherwise effecting',
+    'moderately effecting',
+    'long-term effecting',
+  ],
+  trap_5: [
+    'a stat test',
+    'a roll on a D6: 1: Grievous wound or severe effect, 2-3: D3 wounds or moderate effect, 4-5: Wound, stun or mild effect, 6: Trap is avoided and causes no effect',
+    'a roll on a D6: 1: Grievous wound or severe effect, 2-3: D3 wounds or moderate effect, 4-6: Trap is avoided and causes no effect',
+    'a hard stat test (roll two dice and pick the worst result)',
+    'an easy stat test (roll two dice and pick the best result)',
+    'a skill test of 4+, but modified with relevant bonuses and penalties derived from hero traits'
+  ],
+  trap_6: [
+    'a pit trap or objects falling through the floor',
+    'a portcullis, blocks or barrier dropping from the ceiling',
+    'a poison dart or projectile',
+    'a fireball or sphere of energy',
+    'a crossfire or multidirectional effect',
+    'a gas or air effect',
+    'a mantrap restraining limps or the body',
+    'shock or touchplate',
+  ],
+
+}
+
+function selectRandom_identify_trap() {
+	document.getElementById('outputText_identify_trap').innerHTML = expandString(`The trap is a {Trap 1} {Trap 2}. It is based on a mechanism similar to {Trap 6}, and is {Trap 4} {Trap 3}. The trap must be avoided or interacted with using {Trap 5}.`, lists_identify_trap)
+}
+
+var lists_identify_hazard = {
+  hazard_1: ['a pool', 'a statue', 'a chasm', 'a flood of critters, flying or otherwise', 'an NPC', 'an outgrowth of mould','a grate or trapdoor', 'a magic circle or symbol'],
+  hazard_2: ['weapons galore', 'multiple light sources, including candlelights', 'a thick, smoke-like mist', 'images and devices in service of the dark gods','something directly related to the quest','a powerful but invisible force','everyday household objects', 'little cracks or flaws in the original design',"the dungeon dwellers' numerous attempts at enhancing or altering it", 'wires, chains and restraining devices', 'cogs and steam-based machinery'],
+  hazard_3: ['the hero(es) rolling lowest on D6', 'a random hero in the current chamber', 'all heroes in the current chamber'],
+  hazard_4: ['roll D6: 1: Severe or deadly penalty, 2-3: Moderate penalty, 4-5: Mild penalty, 6: No penalty', 'roll D6: 1: Severe or deadly penalty, 2-3: Moderate penalty, 4-5: Moderate reward, 6: Great reward','roll D6: 1-3: Moderate penalty, 4-6: Moderate reward','take a test of agility or save to avoid a moderate penalty','take a test of agility or save to avoid a severe penalty','make an interact (4+) action to gain a (limited) moderate reward on 3+','make an interact (4+) action to avoid a moderate penalty on 3+','make an interact (4+) action to avoid a moderate penalty on 3+ (the hazard is constantly active)'],
+  hazard_5: [
+    "eating, drinking or consumption",
+    "mechanical manipulation or disassembly",
+    "using weapons, items or equipment",
+    "logic, thinking or problem solving",
+    "overcoming a psychological barrier",
+    "coordinating, strategic thinking or planning",
+    "trusting the senses, letting go, navigating by ear or touch",
+    "impersonating, disguising or sneaking"
+  ],
+}
+
+function selectRandom_identify_hazard() {
+	document.getElementById('outputText_identify_hazard').innerHTML = expandString(`The hazard in the room is basically a kind of {Hazard 1}, but to some extent twisted by the presence of {Hazard 2}. As long as the hazard is active, a hero entering the room must attempt to complete it, before he/she can move further. The heroes’ interaction with the hazard involves some degree of {Hazard 5}. In order to do so, the hero must {Hazard 4}`, lists_identify_hazard)
+}
+
+
+
+var lists_generate_npc = {
+	npc_1: [`an aristocrat`, `an adventurer`, `a soldier`, `a merchant`, `an explorer`, `a craftsman`],
+	npc_2: [`wanting love`, `needing treasure or a specific item`, `seeking wealth`, `plotting revenge`, `wishful for freedom`, `dreaming of adventure`],
+	npc_3: [`pompously overdressed`, `draped in religous artifacts`, `with an exotic pet scurrying over their body`, `clad in heavy armour and brandishing weapons`, `wrapped in layers of sumptous thich silk`, `near naked in threadbare rags`],
+  npc_4: [`hateful`, `ambigous or undecided`, `friendly or supportive`, `somewhat suspicious`, `playful`, `submissive`],
+  npc_5: [`is completely unrelated to`, `might be related to`, `is strongly connected with`,'seems to know about','is part of the plan to stop the heroes from completing,'],
+
+}
+
+function selectRandom_generate_npc() {
+	document.getElementById('outputText_generate_npc').innerHTML = expandString(`Here the heroes encountered {NPC 1} whos is {NPC 2} while being {NPC 3}. He or she is {NPC 4} towards the players, and {NPC 5} to the quest.`, lists_generate_npc)
+}
+
+var lists_generate_random_encounter = {
+	enc_1: [`lost`, `dazed and confused`, `physically or mentally hurt`, `vexed and resentful`, `minuscule`, `large`],
+	enc_2: [`skaven assassin`, `dark sorcerer`, `ogorid thaumaturge`, `giant spider`, `ghostly or ethereal boss`, `flaming deamon`,'snakelike or mythic being'],
+	enc_3: [`in need of hunting and sustenance`, `escaping`, `simply bored, desiring entertainment`, `overly protective of a nearby treasure`, `conducting some foul rite or ritual`, `overcome with emotion`],
+}
+
+function selectRandom_generate_random_encounter() {
+	document.getElementById('outputText_generate_random_encounter').innerHTML = expandString(`The heroes came across a {ENC 1} {ENC 2} {ENC 3}.`, lists_generate_random_encounter)
+}
+
+</script>
