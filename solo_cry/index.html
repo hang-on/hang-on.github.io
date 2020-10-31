@@ -12,7 +12,18 @@
 </div>
 <div class="row">
   <div class="col-7">
-    <select class="fighters">Fighter: </select><input type="checkbox">
+    <p id="myPara">...</p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+    <p>Fighter: <select class="fighterSelector" id="mySelect"></select></p>
+
   </div>
   <div class="col-5 menu">
     <ul>
@@ -30,23 +41,70 @@
 
 <script>
 
-var untamedBeasts = ["Heart-eater", "Beastspeaker", "Rocktusk Prowler", "Preytaker w. Fanged Sword", "Plains-runner"];
+var untamedBeasts = ["Heart-eater", "Beastspeaker", "Rocktusk Prowler", "First Fang", "Preytaker w. Sword", "Preytaker w. Axe", "Plains-runner 1", "Plains-runner 2", "Plains-runner 3"];
 var activationOrder = [];
 var currentFighter;
-var boost = ["No boost this turn", "Move +2", "Attacks +2", "Strength +1", "Heal 3 wounds", "Activation +1" ];
+var boost = ["No boost this turn", "Move +2", "Attacks +2", "Strength +1", "Heal 5 wounds", "Activation +1" ];
 
 
 function initialize(){
-  untamedBeasts = ["Heart-eater", "Beastspeaker", "Rocktusk Prowler", "Preytaker w. Fanged Sword", "Plains-runner"];
   activationOrder = [];
   currentFighter = "";
-  boost = ["no boost this turn", "move +2", "attacks +2", "strength +1", "heal 3 wounds", "activation +1" ];
+  createFighterSelectors(untamedBeasts);
+}
+
+
+
+function createFighterSelectors(warband){
+  warband.unshift("Deactivated");
+  var selectors = document.getElementsByClassName("fighterSelector");
+  for (var j = 0; j < selectors.length; j++){
+    for (var i = 0; i < warband.length; i++){
+      var opt = document.createElement("option");
+      var att = document.createAttribute("value");
+      att.value = warband[i];
+      opt.setAttributeNode(att);
+
+      var node = document.createTextNode(warband[i]);
+      opt.appendChild(node);
+      var element = document.getElementsByClassName("fighterSelector")[j];
+      element.appendChild(opt);
+    }
+  }
+}
+
+function convertSelectorsToArray(selectors){
+  var arr = [];
+  for (var i = 0; i < selectors.length; i++){
+    arr.push(selectors[i].options[selectors[i].selectedIndex].text);
+  }
+  return arr;
+}
+
+function removeItems(arr,value){
+  var cleanedArr = [];
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i] != value){
+      cleanedArr.push(arr[i]);
+    }
+  }
+
+  return cleanedArr;
 }
 
 function initializeActivationOrder(){
-  initialize();
-  activationOrder = shuffleArray(untamedBeasts);
-  alert ("Activation order initialized");
+
+  var myArray = convertSelectorsToArray(document.getElementsByClassName("fighterSelector"));
+  console.log(myArray);
+  var myCleanedArray = removeItems(myArray,"Deactivated");
+  console.log(myCleanedArray);
+  console.log(myCleanedArray.length);
+  if (myCleanedArray.length == 0){
+    alert ("No active fighters to initialize!");
+  } else {
+    activationOrder = shuffleArray(myCleanedArray);
+    alert ("Activation order initialized");
+  }
 }
 
 function shuffleArray(x){
