@@ -51,11 +51,55 @@
 
 var untamedBeasts = [
   "Heart-eater", "Beastspeaker", "Rocktusk Prowler", "First Fang", "Preytaker w. Sword", "Preytaker w. Axe",
-  "Plains-runner 1", "Plains-runner 2", "Plains-runner 3", "Raptoryx 1", "Raptoryx 2", "Raptoryx 3", "Furie 1", "Furie 2", "Furie 3",
+  "Plains-runner 1", "Plains-runner 2", "Plains-runner 3", "Raptoryx 1", "Raptoryx 2", "Raptoryx 3", "Fury 1", "Fury 2", "Fury 3",
+  "Darkoath Chieftain",
 ];
 var activationOrder = [];
 var currentFighter;
 var boost = ["No boost this turn", "Move +2", "Attacks +2", "Strength +1", "Heal 5 wounds", "Activation +1" ];
+
+var untamedBeastAbilities = [
+  "Savage Fury: Add 1 to the Move characteristic of this fighter for the move action they make this activation, and add 1 to the attacks characteristic of the next attack they make this activation.",
+  "Unleash the Beast: Until the end of the battle round, add 2 to the Attacks and Strength characteristics of attack actions made by this fighter that have a Range characteristic of 3 or less.",
+];
+
+var universalAbilities = [
+  "Rush: Add 1 to the Move characteristic of this fighter until the end of their activation.",
+  "Onslaught: Add 1 to the Attacks characteristic of attack actions made by this fighter until the end of their activation.",
+  "Respite: A fighter cannot use this ability if they are within 1 inch of any enemy fighters. Remove 4 damage points allocated to this fighter.",
+  "Rampage: This fighter makes a bonus move action. Then, they can make a bonus attack action.",
+];
+
+var heartEaterAbilities = [
+  "Inspring Presence: Pick a friendly fighter that has not been activated yet this battle round and that is within 6 inches of this fighter. You can activate tat fighter immediately after the action of this fighter ends.",
+  "All out Attack: If this fighter has taken down an enemy fighter this activation, this fighter makes a bonus move action or a bonus attack action.",
+];
+
+var firstFangAbilities = [
+  "Harpoon Snag: This fighter makes a bonus attack action. After that attack action, the targeted fighter makes a bonus move action of 4 inches directly towards this fighter, as if they were jumping.",
+];
+
+var beastSpeakerAbilities = [
+  "Beastmaster: Pick a visible friendly fighter with the Beast runemark within 4 inches of this fighter. That fighter makes a bonus attack action.",
+];
+
+var rocktuskProwlerAbilities = [
+  "Pounce: Until the end of this fighter's activation, the next time this fighter finishes a move action within 1 inch of an enemy fighter, pick a visible enemy fighter within 1 inch of this fighter, and allocate 4 damahe points to that fighter.",
+];
+
+var furyAbilities = [
+  "Cower: Until the end of the battle round, count each critical hit from attack actions that target this fighter as a hit instead.",
+];
+
+var raptoryxAbilities = [
+  "Crazed Flock: Until the end of this fighter's activation, for each other friendly fighter within 3 inches of this fighter that has the same runemarks as this fighter, add 1 to the Attacks and Strength characteristics of attack actions made by this fighter that have a Range characteristic of 3 or less.",
+];
+
+var darkoathChieftainAbilities = [
+  "Death Blow: All this fighter's hits and critical hits does +4 damage this battle round.",
+];
+
+
 
 
 function initialize(){
@@ -106,10 +150,10 @@ function removeItems(arr,value){
 function initializeActivationOrder(){
 
   var myArray = convertSelectorsToArray(document.getElementsByClassName("fighterSelector"));
-  console.log(myArray);
+  //console.log(myArray);
   var myCleanedArray = removeItems(myArray,"Deactivated");
-  console.log(myCleanedArray);
-  console.log(myCleanedArray.length);
+  //console.log(myCleanedArray);
+  //console.log(myCleanedArray.length);
   if (myCleanedArray.length == 0){
     alert ("No active fighters to initialize!");
   } else {
@@ -137,11 +181,63 @@ function activateFighter(){
     return;
   } else {
     currentFighter = activationOrder.shift();
-    alert("Activate " + currentFighter + " with " + boost[Math.floor(Math.random() * 6)]);
+    var trimmedFighter = currentFighter;
+    if (trimmedFighter.charCodeAt(trimmedFighter.length-1) >= 49 && trimmedFighter.charCodeAt(trimmedFighter.length-1) <= 59){
+      trimmedFighter = trimmedFighter.substring(0,trimmedFighter.length-2);
+    }
+    switch (trimmedFighter) {
+      case "Heart-eater":
+        var ability = getAbility(universalAbilities, untamedBeastAbilities, heartEaterAbilities);
+        break;
+      case "First Fang":
+        var ability = getAbility(universalAbilities, untamedBeastAbilities, firstFangAbilities);
+        break;
+      case "Beastspeaker":
+        var ability = getAbility(universalAbilities, untamedBeastAbilities, beastSpeakerAbilities);
+        break;
+      case "Rocktusk Prowler":
+        var ability = getAbility(universalAbilities, untamedBeastAbilities, rocktuskProwlerAbilities);
+        break;
+      case "Fury":
+        var ability = getAbility(universalAbilities, "", furyAbilities);
+        break;
+      case "Raptoryx":
+        var ability = getAbility(universalAbilities, "", raptoryxAbilities);
+        break;
+      case "Darkoath Chieftain":
+        var ability = getAbility(universalAbilities, "", darkoathChieftainAbilities);
+        break;
 
+      default:
+        var ability = getAbility(universalAbilities, untamedBeastAbilities);
+    }
+    alert("Activate " + currentFighter + " with " + ability);
+    //console.log (ability);
   }
 }
 
+function getAbility(universalAbilities, warbandAbilities, specialAbilities){
+  //var arr1 = universalAbilities;
+  //var arr2 = untamedBeastAbilities;
+  arr3 = universalAbilities;
+  if (warbandAbilities){var arr3 = universalAbilities.concat(warbandAbilities);}
+  
+  if (specialAbilities) {
+    var arr1 = specialAbilities;
+    var arr2 = arr1.concat(specialAbilities);
+    var arr3 = arr3.concat(arr2); // double up the special abilities!
+  } else {
+    //console.log("No special abilities");
+  }
 
+  console.log(arr3);
+  console.log(arr3.length);
+  if (Math.floor(Math.random() * 10) <= 6){
+    var ability = arr3[Math.floor(Math.random() * arr3.length)];
+  } else {
+    var ability = "No ability";
+  }
+  return ability;
+}
 
 </script>
