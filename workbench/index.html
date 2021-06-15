@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workbench</title>
+  <title>Battle Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <p>Hello World</p>
+<body onkeypress="handleKey(event)" onload="resetGame()">
+  <div class="header">
+      <h1>Header</h1>
+  </div>
+  <div clas="row">
+    <div class="col-3 menu">
+      <ul id="myMenu">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+      </ul>
+    </div>
+    <div class="col-7">
+      <h1>Output</h1>
+      <p id="output">Text</p>
+    </div>
+    <div class="col-2">
+      <h1>Notes</h1>
+      <p>Text</p>
+    </div>
+  </div>
+  <script src="javascript.js"></script>
 </body>
 </html>
