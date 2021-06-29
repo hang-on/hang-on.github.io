@@ -27,6 +27,9 @@ var adversaryPhases = [
 ];
 const PHASES_COUNT = PLAYER_PHASES_COUNT + ADVERSARY_PHASES_COUNT;
 
+var endOfTurnReminders = [];
+
+
 function handleKey(event){
   var myKey = event.keyCode;
   //console.log(myKey);
@@ -43,6 +46,10 @@ function handleKey(event){
 }
 
 function resetGame(){
+  endOfTurnReminders = [];
+  if (REINFORCEMENTS_ENABLED == true){
+    endOfTurnReminders.push("Roll for reinforcements")
+  }
   currentRound = 1;
   newRound();
   outputStatus();

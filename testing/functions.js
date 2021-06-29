@@ -4,4 +4,4 @@ const functions = {
   }
 }
 
-module.exports = functions;
+export default functions;
