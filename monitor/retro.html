@@ -7,11 +7,77 @@
   <title>Retro</title>
 </head>
 <body style="background-color: darkblue;">
-  <p id="monitor"; style="color: white;">
-    Hello World
-  </p>
+  <p id="monitor"; style="color: white;"></p>
 
   <script>
+    class Card {
+      constructor(movement) {
+        this.movement = movement;
+      }
+    }
+
+    class Deck {
+      constructor() {
+        this.cards = [];
+      }
+
+      createDeck() {
+        let movements = [
+          'Tactical Advance',
+          'Offensive Advance',
+          'Charge',
+          'Hold'
+        ];
+        for (let i = 0; i < movements.length; i++) {
+          this.cards.push(new Card(movements[i]));
+        }
+      }
+
+      shuffleDeck() {
+       let location1, location2, tmp;
+       for (let i = 0; i < 1000; i++) {
+           location1 = Math.floor((Math.random() * this.cards.length));
+           location2 = Math.floor((Math.random() * this.cards.length));
+           tmp = this.cards[location1];
+           this.cards[location1] = this.cards[location2];
+           this.cards[location2] = tmp;
+        }
+      }
+
+      drawCard() {
+        return this.cards.pop();
+      }
+    }
+
+    class Monitor {
+      constructor(monitorElement) {
+        this.element = monitorElement;
+        this.reset();
+      }
+
+      refresh() {
+        this.element.innerHTML = this.output;
+      }
+
+      reset() {
+        this.output = "Ready...<br>> ";
+        this.refresh();
+      }
+
+      write(text) {
+        this.output = this.output.concat(text);
+        this.output = this.output.concat("<br>> ")
+        this.refresh();
+      }
+    }
+
+    let m = new Monitor(document.getElementById("monitor"));
+    m.reset();
+    m.write("Hello World!");
+
+    let d = new Deck();
+    d.createDeck();
+    d.shuffleDeck();
 
   </script>
 </body>
