@@ -4,6 +4,8 @@ const KEY_R = 114;      // Reset game
 const PLAYER = 1;
 const ADVERSARY = 0;
 
+const REINFORCEMENTS_ENABLED = true;
+
 var currentRound;
 var activeSide;
 var sideSwitchTick;     // How many phases until side switch?    
