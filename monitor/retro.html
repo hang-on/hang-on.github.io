@@ -21,28 +21,13 @@
         this.cards = [];
       }
 
-      createDeck() {
-        let texts = [
-          'Tactical Advance <br>\
-          If not contesting an objective, move towards\
-          the closest contestable objective.',
-          'Offensive Advance',
-          'Charge',
-          'Hold'
-        ];
-        for (let i = 0; i < texts.length; i++) {
-          this.cards.push(new Card(texts[i]));
-        }
-      }
-
-      createDeck_x(deckData) {
+      createDeck(deckData) {
         for (let i = 0; i < deckData.length; i = i+2) {
           for (let j = 0; j < deckData[i]; j++) {
             this.cards.push(new Card(deckData[i+1]));            
           }
         }
       }
-
 
       shuffleDeck() {
        let location1, location2, tmp;
@@ -56,6 +41,7 @@
       }
 
       drawCard() {
+        // TODO: Check for no cards left in deck.
         return this.cards.pop();
       }
     }
@@ -85,10 +71,6 @@
     let m = new Monitor(document.getElementById("monitor"));
     m.reset();
 
-    let d = new Deck();
-    d.createDeck();
-    d.shuffleDeck();
-
     let movementDeckData = [
           3, 'Tactical Advance <br>\
           If not contesting an objective, move towards\
@@ -98,14 +80,12 @@
           2, 'Hold'
         ];
 
-    let dx = new Deck();
-    dx.createDeck_x(movementDeckData);
-    console.log(dx);
+    let d = new Deck();
+    d.createDeck(movementDeckData);
+    d.shuffleDeck();
 
     let activeCard = d.drawCard();
     m.write(activeCard.text);
-
-
 
   </script>
 </body>
