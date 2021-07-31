@@ -72,12 +72,15 @@
     m.reset();
 
     let movementDeckData = [
-          3, 'Tactical Advance <br>\
-          If not contesting an objective, move towards\
-          the closest contestable objective.',
-          2, 'Offensive Advance',
-          4, 'Charge',
-          2, 'Hold'
+          4, 'CONQUER<br>\
+              Group A and C Advance, and Group B Charge.',
+          3, 'ATTACK<br>\
+              Group A and C Charge, and Group B Advance.',
+          1, 'ALL OUT ATTACK<br>\
+              All groups Charge!',
+          2, 'CAUTIOUS ADVANCE<br>\
+              The group with a model furthest from a contestable objective \
+              Advances. The two other groups Hold.'
         ];
 
     let d = new Deck();

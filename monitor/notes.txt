@@ -1,0 +1,6 @@
+
+Terms:
+
+Advance: If unit is not contesting an objective, move towards the closest
+contestable objective. If there are no contestable objectives, then move
+towards the closest enemy unit.
