@@ -11,8 +11,8 @@
 
   <script>
     class Card {
-      constructor(movement) {
-        this.movement = movement;
+      constructor(text) {
+        this.text = text;
       }
     }
 
@@ -22,14 +22,16 @@
       }
 
       createDeck() {
-        let movements = [
-          'Tactical Advance',
+        let texts = [
+          'Tactical Advance <br>\
+          If not contesting an objective, move towards\
+          the closest contestable objective.',
           'Offensive Advance',
           'Charge',
           'Hold'
         ];
-        for (let i = 0; i < movements.length; i++) {
-          this.cards.push(new Card(movements[i]));
+        for (let i = 0; i < texts.length; i++) {
+          this.cards.push(new Card(texts[i]));
         }
       }
 
@@ -60,24 +62,27 @@
       }
 
       reset() {
-        this.output = "Ready...<br>> ";
+        this.output = "* Ready *<br>---<br> ";
         this.refresh();
       }
 
       write(text) {
         this.output = this.output.concat(text);
-        this.output = this.output.concat("<br>> ")
+        this.output = this.output.concat("<br>---<br>")
         this.refresh();
       }
     }
 
     let m = new Monitor(document.getElementById("monitor"));
     m.reset();
-    m.write("Hello World!");
 
     let d = new Deck();
     d.createDeck();
     d.shuffleDeck();
+
+    let activeCard = d.drawCard();
+    m.write(activeCard.text);
+
 
   </script>
 </body>
