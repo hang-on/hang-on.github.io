@@ -20,6 +20,8 @@
       constructor(deckData) {
         this.cards = [];
         this.deckData = deckData;
+        this.createDeck();
+        this.shuffleDeck();
       }
 
       createDeck() {
@@ -78,7 +80,7 @@
     let movementDeckData = [
           4, 'CONQUER<br>\
               Group A and C Advance, Group B Charge and Group D hold.',
-          3, 'ATTACK<br>\
+          3, 'FORWARD<br>\
               Group A and C Charge, Group B and D Advance.',
           1, 'ALL OUT ATTACK<br>\
               All groups Charge!',
@@ -89,9 +91,24 @@
               Group A charge, Group C advance and Group B and D hold.'
         ];
 
+        let abilityDeckData = [
+          6, 'NOTHING<br>\
+              The unit does not use an ability.',
+          3, 'ONSLAUGHT<br>\
+              Add 1 to hit rolls for this unit.',
+          3, "FURY<br>\
+              Increase this unit's Rend characteristic by 1.",
+          3, "BESERK<br>\
+              Add 1 to the Attacks characteristic of this unit's melee weapons.",
+          3, 'FORTITUDE<br>\
+              Heal D3 wounds from this unit before attacking.'
+        ];
+
+
     let m = new Monitor(document.getElementById("monitor"));
     let d = new Deck(movementDeckData);
-    let totalDecks = [d];
+    let abilityDeck = new Deck(abilityDeckData);
+    let totalDecks = [d,abilityDeck];
 
     function handleKeypress(monitor, decks){
       let x = event.keyCode;
@@ -102,19 +119,15 @@
           newCard = decks[0].drawCard();
           monitor.write(newCard.text);
         break;
+        case 50: // 2
+          newCard = decks[1].drawCard();
+          monitor.write(newCard.text);
+        break;
+
         default:
           monitor.write("Invalid key.");
       }
     }
-
-    m.reset();
-
-    d.createDeck(movementDeckData);
-    d.shuffleDeck();
-
-    // TODO: Link this to a key trigger.
-    // activeCard = d.drawCard();
-    // m.write(activeCard.text);
 
   </script>
 </body>
