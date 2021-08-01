@@ -17,14 +17,15 @@
     }
 
     class Deck {
-      constructor() {
+      constructor(deckData) {
         this.cards = [];
+        this.deckData = deckData;
       }
 
-      createDeck(deckData) {
-        for (let i = 0; i < deckData.length; i = i+2) {
-          for (let j = 0; j < deckData[i]; j++) {
-            this.cards.push(new Card(deckData[i+1]));            
+      createDeck() {
+        for (let i = 0; i < this.deckData.length; i = i+2) {
+          for (let j = 0; j < this.deckData[i]; j++) {
+            this.cards.push(new Card(this.deckData[i+1]));            
           }
         }
       }
@@ -42,6 +43,9 @@
 
       drawCard() {
         // TODO: Check for no cards left in deck.
+        if (this.cards.length == 0) {
+
+        }
         return this.cards.pop();
       }
     }
@@ -83,7 +87,7 @@
         ];
 
     let m = new Monitor(document.getElementById("monitor"));
-    let d = new Deck();
+    let d = new Deck(movementDeckData);
     let totalDecks = [d];
 
     function handleKeypress(monitor, decks){
