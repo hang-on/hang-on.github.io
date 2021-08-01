@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Retro</title>
 </head>
-<body style="background-color: darkblue;" onkeypress="handleKeypress(m)">
+<body style="background-color: darkblue;" onkeypress="handleKeypress(m, totalDecks)">
   <p id="monitor"; style="color: white;"></p>
 
   <script>
@@ -84,14 +84,15 @@
 
     let m = new Monitor(document.getElementById("monitor"));
     let d = new Deck();
+    let totalDecks = [d];
 
-    function handleKeypress(monitor){
+    function handleKeypress(monitor, decks){
       let x = event.keyCode;
       let newCard = {};
       // console.log("Key pressed!" + x);
       switch(x) {
         case 49: // 1
-          newCard = d.drawCard();
+          newCard = decks[0].drawCard();
           monitor.write(newCard.text);
         break;
         default:
