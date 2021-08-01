@@ -84,15 +84,15 @@
 
     let m = new Monitor(document.getElementById("monitor"));
     let d = new Deck();
-    let activeCard = {};
 
     function handleKeypress(monitor){
       let x = event.keyCode;
+      let newCard = {};
       // console.log("Key pressed!" + x);
       switch(x) {
         case 49: // 1
-          activeCard = d.drawCard();
-          monitor.write(activeCard.text);
+          newCard = d.drawCard();
+          monitor.write(newCard.text);
         break;
         default:
           monitor.write("Invalid key.");
