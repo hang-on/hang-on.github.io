@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Retro</title>
 </head>
-<body style="background-color: darkblue;">
+<body style="background-color: darkblue;" onkeypress="handleKeypress()">
   <p id="monitor"; style="color: white;"></p>
 
   <script>
@@ -68,26 +68,35 @@
       }
     }
 
-    let m = new Monitor(document.getElementById("monitor"));
-    m.reset();
+    function handleKeypress(){
+      console.log("Key pressed!");
+    }
 
     let movementDeckData = [
           4, 'CONQUER<br>\
-              Group A and C Advance, and Group B Charge.',
+              Group A and C Advance, Group B Charge and Group D hold.',
           3, 'ATTACK<br>\
-              Group A and C Charge, and Group B Advance.',
+              Group A and C Charge, Group B and D Advance.',
           1, 'ALL OUT ATTACK<br>\
               All groups Charge!',
           2, 'CAUTIOUS ADVANCE<br>\
               The group with a model furthest from a contestable objective \
-              Advances. The two other groups Hold.'
+              Advance. The other groups Hold.',
+          2, 'FORTIFY<br>\
+              Group A charge, Group C advance and Group B and D hold.'
         ];
 
+    let m = new Monitor(document.getElementById("monitor"));
     let d = new Deck();
+    let activeCard = {};
+
+    m.reset();
+
     d.createDeck(movementDeckData);
     d.shuffleDeck();
 
-    let activeCard = d.drawCard();
+    // TODO: Link this to a key trigger.
+    activeCard = d.drawCard();
     m.write(activeCard.text);
 
   </script>

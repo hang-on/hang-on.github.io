@@ -3,4 +3,20 @@ Terms:
 
 Advance: If unit is not contesting an objective, move towards the closest
 contestable objective. If there are no contestable objectives, then move
-towards the closest enemy unit.
+towards the closest enemy unit. Then the unit attacks with missiles or magic.
+
+Contestable objective: Obj in a state where the unit can make a difference
+regarding control. 
+1. A neutral (unclaimed) obj
+2. An enemy obj
+3. A friendly obj that is contested by enemy units
+
+Activate group:
+When a group is activated, activate each unit in turn. Starting with the unit
+that has a model closest to an enemy unit.
+
+Move unit:
+When you move a unit, move each model in turn, starting with the model closest
+to an enemey unit. Each model moves as directly as possible to the closest
+point that fulfills the movement criteria. Then stops.
+AI units do not observe unit coherency.
