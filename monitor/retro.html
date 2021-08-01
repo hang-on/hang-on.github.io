@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Retro</title>
 </head>
-<body style="background-color: darkblue;" onkeypress="handleKeypress()">
+<body style="background-color: darkblue;" onkeypress="handleKeypress(m)">
   <p id="monitor"; style="color: white;"></p>
 
   <script>
@@ -68,11 +68,6 @@
       }
     }
 
-    function handleKeypress(){
-      let x = event.keyCode;
-      console.log("Key pressed!" + x);
-    }
-
     let movementDeckData = [
           4, 'CONQUER<br>\
               Group A and C Advance, Group B Charge and Group D hold.',
@@ -91,14 +86,27 @@
     let d = new Deck();
     let activeCard = {};
 
+    function handleKeypress(monitor){
+      let x = event.keyCode;
+      // console.log("Key pressed!" + x);
+      switch(x) {
+        case 49: // 1
+          activeCard = d.drawCard();
+          monitor.write(activeCard.text);
+        break;
+        default:
+          monitor.write("Invalid key.");
+      }
+    }
+
     m.reset();
 
     d.createDeck(movementDeckData);
     d.shuffleDeck();
 
     // TODO: Link this to a key trigger.
-    activeCard = d.drawCard();
-    m.write(activeCard.text);
+    // activeCard = d.drawCard();
+    // m.write(activeCard.text);
 
   </script>
 </body>
