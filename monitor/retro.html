@@ -44,7 +44,9 @@
       drawCard() {
         // TODO: Check for no cards left in deck.
         if (this.cards.length == 0) {
-
+          this.createDeck(this.deckData);
+          this.shuffleDeck();
+          alert ("Deck shuffled.");
         }
         return this.cards.pop();
       }
@@ -69,6 +71,7 @@
         this.output = this.output.concat(text);
         this.output = this.output.concat("<br>---<br>")
         this.refresh();
+        window.scrollBy(0,100);
       }
     }
 
