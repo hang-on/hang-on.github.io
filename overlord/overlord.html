@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Overlord</title>
+</head>
+<body style="background-color: darkblue;" onkeypress="">
+  <p id="monitor"; style="color: white; font-size: larger"></p>
+
+  <script>
+
+    class Warscroll {
+      constructor(warscrollData) {
+        this.name = warscrollData[0];
+        this.meleeAttacks = warscrollData[1];
+        this.meleeSkill = warscrollData[2];
+      }
+    }
+
+    let chainRasp = [
+      "Chainrasp Horde",
+      2, 25
+    ]
+
+    class Monitor {
+      constructor(monitorElement) {
+        this.element = monitorElement;
+        this.output = ""; 
+        this.reset();
+      }
+
+      refresh() {
+        this.element.innerHTML = this.output;
+      }
+
+      reset() {
+        this.output = "* Ready *<br>---<br> ";
+        this.refresh();
+      }
+
+      write(text) {
+        this.output = this.output.concat(text);
+        this.output = this.output.concat("<br>---<br>")
+        this.refresh();
+        window.scrollBy(0,100);
+      }
+    }
+
+
+
+    let m = new Monitor(document.getElementById("monitor"));
+
+    const units = [];
+    units[0] = new Warscroll(chainRasp);
+    window.alert (units[0].name);
+
+    function handleKeypress(){
+      let x = event.keyCode;
+      switch(x) {
+        case 49: // 1
+        break;
+        case 50: // 2
+        break;
+
+        default:
+          monitor.write("Invalid key.");
+      }
+    }
+
+  </script>
+</body>
+</html>
