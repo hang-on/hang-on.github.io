@@ -87,25 +87,53 @@
         this.playerHasPriority = false;
         this.phase = 0;
         this.maxPhase = 8;
+        this.phaseArray = [];
 
+        this.rollPriority();
+        this.displayInfo();
+
+      }
+      displayInfo() {
+        let message = "Current round: " + this.round + "<br>" + this.phaseArray[this.phase];
+        this.monitor.write(message);
+      }
+      processNextPhase() {
+        this.phase++;
+        if (this.phase > this.maxPhase){
+          this.processNextRound();
+        }
+        this.displayInfo();
+      }
+      processNextRound() {
+        this.phase = 0;
+        this.round++;
+        this.rollPriority();
+        this.monitor.write("*** NEW ROUND ***")
+      }
+      rollPriority() {
+        let x = Math.random();
+        if (x < .5) {
+          this.playerHasPriority = false;
+          this.phaseArray = aiPriorityRound;
+        } else {
+          this.playerHasPriority = true;
+          this.phaseArray = playerPriorityRound;
+
+        }
       }
     }
 
-    let movementDeckData = [
-          4, 'CONQUER<br>\
-              Group A and C Advance, Group B Engage and Group D Fortify.',
-          3, 'FORWARD<br>\
-              All AI heroes heal D3 wounds. Then Group A and C Engage, Group B and D Advance.',
-          1, 'ALL OUT ATTACK<br>\
-              All groups Engage!',
-          2, 'BALANCED APPROACH<br>\
-              Group A Engage, Group B and C Advance, and Group D Fortify.',
-          1, 'HOLD YOUR GROUND!<br>\
-              Group B Advance, and groups A, B and D Fortify!',
-          2, 'RELOCATE!<br>\
-              Select the friendly unit with the most wounds, who is more than 3" from enemy units, and not inside a Target Zone. \
-              Remove that unit from the battlefield. Set it up again at the end of the current round, \
-              within 9" of a randomly selected Target Zone. All remaining units Engage.'
+    let actionDeckData = [
+          4, 'RUSH<br>\
+              The unit makes a Rush action.',
+          3, 'ADVANCE<br>\
+              This unit makes an Advance action.',
+          2, 'ENGAGE<br>\
+              This unit makes an Engage action.',
+          2, 'FORTIFY<br>\
+              This unit makes a Fortify action.',
+          1, 'RECOVER<br>\
+              This unit makes a Recover action. Then draw another card.',
             ];
 
         let abilityDeckData = [
@@ -145,15 +173,38 @@
           'BATTLESHOCK<br>\
            Test the resolve of depleted units.'
           ]
+          let aiPriorityRound = [
+          'ACTION<br>\
+           Take turns activating the AI units, starting with the one with the fewest models in it.',
+          'COMBAT (AI priority)<br>\
+           Starting with the AI, take turns to fight with units using melee weapons. Remove effects and\
+           counters at the end of the combat phase.',
+          'BATTLESHOCK<br>\
+           Test the resolve of depleted units.',
+          'HERO<br>\
+           Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.',
+          'MOVEMENT<br>\
+           Move, run or retreat units.',
+          "SHOOT<br>\
+           Units shoot with missile weapons.",
+          "CHARGE<br>\
+           Units can attempt to charge enemy units.",
+          'COMBAT (Player priority)<br>\
+           Starting with the player, take turns to fight with units using melee weapons. Remove effects and\
+           counters at the end of the combat phase.',
+          'BATTLESHOCK<br>\
+           Test the resolve of depleted units.'
+          ]
+
 
 
     let m = new Monitor(document.getElementById("monitor"));
-    let d = new Deck(movementDeckData);
+    let actionDeck = new Deck(actionDeckData);
     let abilityDeck = new Deck(abilityDeckData);
-    let totalDecks = [d,abilityDeck];
+    let totalDecks = [actionDeck,abilityDeck];
     let battleDashboard = new Dashboard(m);
 
-    d.shuffleDeck();
+    actionDeck.shuffleDeck();
     abilityDeck.shuffleDeck();
 
     function handleKeypress(monitor, decks){
@@ -172,9 +223,11 @@
 
         case 110: // n
           battleDashboard.startNewGame();
-
         break;
 
+        case 46: // .
+          battleDashboard.processNextPhase();
+        break;
 
         default:
           monitor.write("Invalid key: " + x);
