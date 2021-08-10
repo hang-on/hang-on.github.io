@@ -124,78 +124,77 @@
     }
 
     let actionDeckData = [
-          4, 'RUSH<br>\
-              The unit makes a Rush action.',
-          3, 'ADVANCE<br>\
+          2, 'RUSH<br>\
+              This unit makes an Advance action. Then draw another card.',
+          5, 'ADVANCE<br>\
               This unit makes an Advance action.',
           2, 'ENGAGE<br>\
               This unit makes an Engage action.',
           2, 'FORTIFY<br>\
               This unit makes a Fortify action.',
           1, 'RECOVER<br>\
-              This unit makes a Recover action. Then draw another card.',
-            ];
+              This unit Recovers D3 wounds. Then draw another card.',
+    ];
 
-        let abilityDeckData = [
-          6, 'NOTHING<br>\
-              The unit does not use an ability.',
-          3, 'ONSLAUGHT<br>\
-              Reroll failed hit rolls for this unit.',
-          3, "FURY<br>\
-              Increase this unit's Rend characteristic by 1.",
-          3, "BESERK<br>\
-              All hit rolls of 6+ inflict D3 hits on the target unit",
-          3, 'FORTITUDE<br>\
-              Recover D3 wounds on this unit before attacking.',
-          3, 'DEATHSTRIKE<br>\
-          Inflict D3 mortal wounds to the target unit before attacking.'
-        ];
+    let abilityDeckData = [
+      6, 'NOTHING<br>\
+          The unit does not use an ability.',
+      3, 'ONSLAUGHT<br>\
+          Reroll failed hit rolls for this unit.',
+      3, "FURY<br>\
+          Increase this unit's Rend characteristic by 1.",
+      3, "BESERK<br>\
+          All hit rolls of 6+ inflict D3 hits on the target unit",
+      3, 'FORTITUDE<br>\
+          Recover D3 wounds on this unit before attacking.',
+      3, 'DEATHSTRIKE<br>\
+      Inflict D3 mortal wounds to the target unit before attacking.'
+    ];
 
-        let playerPriorityRound = [
-          'HERO<br>\
-           Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.',
-          'MOVEMENT<br>\
-           Move, run or retreat units.',
-          "SHOOT<br>\
-           Units shoot with missile weapons.",
-          "CHARGE<br>\
-           Units can attempt to charge enemy units.",
-          'COMBAT (Player priority)<br>\
-           Starting with the player, take turns to fight with units using melee weapons. Remove effects and\
-           counters at the end of the combat phase.',
-          'BATTLESHOCK<br>\
-           Test the resolve of depleted units.',
-          'ACTION<br>\
-           Take turns activating the AI units, starting with the one with the fewest models in it.',
-          'COMBAT (AI priority)<br>\
-           Starting with the AI, take turns to fight with units using melee weapons. Remove effects and\
-           counters at the end of the combat phase.',
-          'BATTLESHOCK<br>\
-           Test the resolve of depleted units.'
-          ]
-          let aiPriorityRound = [
-          'ACTION<br>\
-           Take turns activating the AI units, starting with the one with the fewest models in it.',
-          'COMBAT (AI priority)<br>\
-           Starting with the AI, take turns to fight with units using melee weapons. Remove effects and\
-           counters at the end of the combat phase.',
-          'BATTLESHOCK<br>\
-           Test the resolve of depleted units.',
-          'HERO<br>\
-           Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.',
-          'MOVEMENT<br>\
-           Move, run or retreat units.',
-          "SHOOT<br>\
-           Units shoot with missile weapons.",
-          "CHARGE<br>\
-           Units can attempt to charge enemy units.",
-          'COMBAT (Player priority)<br>\
-           Starting with the player, take turns to fight with units using melee weapons. Remove effects and\
-           counters at the end of the combat phase.',
-          'BATTLESHOCK<br>\
-           Test the resolve of depleted units.'
-          ]
-
+    let playerPriorityRound = [
+      'HERO<br>\
+        Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.',
+      'MOVEMENT<br>\
+        Move, run or retreat units.',
+      "SHOOT<br>\
+        Units shoot with missile weapons.",
+      "CHARGE<br>\
+        Units can attempt to charge enemy units.",
+      'COMBAT (Player priority)<br>\
+        Starting with the player, take turns to fight with units using melee weapons. Remove effects and\
+        counters at the end of the combat phase.',
+      'BATTLESHOCK<br>\
+        Test the resolve of depleted units.',
+      'ACTION<br>\
+        Take turns activating the AI units, starting with the one with the fewest models in it.',
+      'COMBAT (AI priority)<br>\
+        Starting with the AI, take turns to fight with units using melee weapons. Remove effects and\
+        counters at the end of the combat phase.',
+      'BATTLESHOCK<br>\
+        Test the resolve of depleted units.'
+    ]
+    let aiPriorityRound = [
+      'ACTION<br>\
+        Take turns activating the AI units, starting with the one with the fewest models in it.',
+      'COMBAT (AI priority)<br>\
+        Starting with the AI, take turns to fight with units using melee weapons. Remove effects and\
+        counters at the end of the combat phase.',
+      'BATTLESHOCK<br>\
+        Test the resolve of depleted units.',
+      'HERO<br>\
+        Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.',
+      'MOVEMENT<br>\
+        Move, run or retreat units.',
+      "SHOOT<br>\
+        Units shoot with missile weapons.",
+      "CHARGE<br>\
+        Units can attempt to charge enemy units.",
+      'COMBAT (Player priority)<br>\
+        Starting with the player, take turns to fight with units using melee weapons. Remove effects and\
+        counters at the end of the combat phase.',
+      'BATTLESHOCK<br>\
+        Test the resolve of depleted units.'
+    ]
 
 
     let m = new Monitor(document.getElementById("monitor"));
