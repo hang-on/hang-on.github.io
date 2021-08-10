@@ -80,7 +80,6 @@
       constructor(monitor,totalDecks) {
         this.monitor = monitor;
         this.totalDecks = totalDecks;
-        this.startNewGame();
       }
       startNewGame() {
         this.monitor.write("New game started.");
@@ -214,6 +213,7 @@
     let abilityDeck = new Deck(abilityDeckData);
     let totalDecks = [actionDeck,abilityDeck];
     let battleDashboard = new Dashboard(m, totalDecks);
+    battleDashboard.startNewGame();
 
     function handleKeypress(monitor, decks){
       let x = event.keyCode;
