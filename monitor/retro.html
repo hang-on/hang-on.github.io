@@ -77,8 +77,9 @@
     }
 
     class Dashboard {
-      constructor(monitor) {
+      constructor(monitor,totalDecks) {
         this.monitor = monitor;
+        this.totalDecks = totalDecks;
         this.startNewGame();
       }
       startNewGame() {
@@ -89,8 +90,17 @@
         this.maxPhase = 8;
         this.phaseArray = [];
 
+        this.shuffleDecks();
         this.rollPriority();
         this.displayInfo();
+
+      }
+      shuffleDecks(){
+        // Rebuild and shuffle all the decks
+        for (let i = 0; i < this.totalDecks.length; i++){
+          this.totalDecks[i].createDeck();
+          this.totalDecks[i].shuffleDeck();
+        }
 
       }
       displayInfo() {
@@ -108,6 +118,7 @@
         this.phase = 0;
         this.round++;
         this.rollPriority();
+        this.shuffleDecks();
         this.monitor.write("*** NEW ROUND ***")
       }
       rollPriority() {
@@ -202,10 +213,7 @@
     let actionDeck = new Deck(actionDeckData);
     let abilityDeck = new Deck(abilityDeckData);
     let totalDecks = [actionDeck,abilityDeck];
-    let battleDashboard = new Dashboard(m);
-
-    actionDeck.shuffleDeck();
-    abilityDeck.shuffleDeck();
+    let battleDashboard = new Dashboard(m, totalDecks);
 
     function handleKeypress(monitor, decks){
       let x = event.keyCode;
