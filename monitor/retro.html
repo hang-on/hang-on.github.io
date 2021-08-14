@@ -150,7 +150,10 @@
         this.maxPhase = 11;
         this.phaseArray = [];
 
-        this.shuffleDecks();
+        for (let i = 0; i < this.totalDecks.length; i++){
+          this.totalDecks[i].createDeck();
+          this.totalDecks[i].shuffleDeck();
+        }
         this.rollPriority();
         this.displayInfo();
 
@@ -286,13 +289,19 @@
     ];
 
     let eventDeckData = [
-      6, 'NOTHING<br>\
+      5, 'NOTHING<br>\
           Nothing happens.',
-      3, 'INSPIRATION<br>\
+      2, 'INSPIRATION<br>\
           Pick an AI unit at random. That unit makes an action.',
+      1, 'MAGICAL SURGE<br>\
+          Pick an AI hero within 12" of an enemy unit at random. That hero attempts to cast an Arcane Bolt at closest enemy unit. \
+          The hero does not need to be a wizard.',
       1, 'RAMPAGE<br>\
-          Pick an AI unit within 3" of an enemy unit at random. That unit attacks.'
-      ];
+          Pick an AI unit within 3" of an enemy unit at random. That unit attacks.',
+      1, 'HEROIC RAMPAGE<br>\
+          Pick an AI hero within 3" of an enemy unit at random. That hero attacks.'
+
+        ];
 
     let m = new Monitor(document.getElementById("monitor"));
     let actionDeck = new Deck(actionDeckData, m, true);
