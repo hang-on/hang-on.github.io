@@ -36,12 +36,11 @@
 \af0\afs22\alang1025 \ltrch\fcs0 \fs22\lang1030\langfe1030\loch\f31506\hich\af31506\dbch\af31505\cgrid\langnp1030\langfenp1030 \snext0 \sqformat \spriority0 Normal;}{\*\cs10 \additive \ssemihidden \sunhideused \spriority1 Default Paragraph Font;}{\*
 \ts11\tsrowd\trftsWidthB3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3\tblind0\tblindtype3\tsvertalt\tsbrdrt\tsbrdrl\tsbrdrb\tsbrdrr\tsbrdrdgl\tsbrdrdgr\tsbrdrh\tsbrdrv \ql \li0\ri0\sa160\sl259\slmult1
 \widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af0\afs22\alang1025 \ltrch\fcs0 \fs22\lang1030\langfe1030\loch\f31506\hich\af31506\dbch\af31505\cgrid\langnp1030\langfenp1030 \snext11 \ssemihidden \sunhideused 
-Normal Table;}}{\*\rsidtbl \rsid284581\rsid681481\rsid722154\rsid740946\rsid1132789\rsid1649263\rsid1904632\rsid2569525\rsid2776978\rsid2954823\rsid2965232\rsid2969143\rsid3221769\rsid3613131\rsid3618609\rsid4206081\rsid4219212\rsid4331315\rsid4553131
-\rsid4672191\rsid4937887\rsid5123899\rsid5252358\rsid5721280\rsid6389615\rsid6829035\rsid7036765\rsid7172291\rsid7216927\rsid7371796\rsid7371823\rsid7499813\rsid7551344\rsid7628840\rsid8200593\rsid8287654\rsid8399707\rsid9075823\rsid9119326\rsid9529502
-\rsid9656608\rsid9705812\rsid9777596\rsid9778957\rsid9897584\rsid10241568\rsid10494098\rsid10773257\rsid10962700\rsid12345649\rsid12466669\rsid12671255\rsid12782430\rsid13374138\rsid13379029\rsid13456068\rsid13776741\rsid14234817\rsid14970324\rsid15683821
-\rsid15818153\rsid16467427}{\mmathPr\mmathFont34\mbrkBin0\mbrkBinSub0\msmallFrac0\mdispDef1\mlMargin0\mrMargin0\mdefJc1\mwrapIndent1440\mintLim0\mnaryLim1}{\info{\operator Anders Skriver Jensen}{\creatim\yr2021\mo8\dy2\hr15\min35}
-{\revtim\yr2021\mo8\dy14\hr8\min37}{\version42}{\edmins3467}{\nofpages3}{\nofwords527}{\nofchars3216}{\nofcharsws3736}{\vern29}}{\*\xmlnstbl {\xmlns1 http://schemas.microsoft.com/office/word/2003/wordml}}
-\paperw12240\paperh15840\margl1134\margr1134\margt1701\margb1701\gutter0\ltrsect 
+Normal Table;}}{\*\rsidtbl \rsid284581\rsid681481\rsid722154\rsid740946\rsid1132789\rsid1649263\rsid1904632\rsid2569525\rsid2776978\rsid2954823\rsid2965232\rsid2969143\rsid3221769\rsid3613131\rsid3618609\rsid4219212\rsid4331315\rsid4553131\rsid4672191
+\rsid4937887\rsid5123899\rsid5252358\rsid5721280\rsid6389615\rsid6829035\rsid7036765\rsid7172291\rsid7216927\rsid7371796\rsid7371823\rsid7551344\rsid7628840\rsid8200593\rsid8287654\rsid9075823\rsid9119326\rsid9529502\rsid9656608\rsid9705812\rsid9777596
+\rsid9778957\rsid9897584\rsid10241568\rsid10494098\rsid10773257\rsid10962700\rsid12466669\rsid12671255\rsid13374138\rsid13379029\rsid13456068\rsid13776741\rsid14234817\rsid14970324\rsid15683821\rsid15818153\rsid16467427}{\mmathPr\mmathFont34\mbrkBin0
+\mbrkBinSub0\msmallFrac0\mdispDef1\mlMargin0\mrMargin0\mdefJc1\mwrapIndent1440\mintLim0\mnaryLim1}{\info{\operator Anders Skriver Jensen}{\creatim\yr2021\mo8\dy2\hr15\min35}{\revtim\yr2021\mo8\dy14\hr8\min10}{\version39}{\edmins3440}{\nofpages3}
+{\nofwords517}{\nofchars3157}{\nofcharsws3667}{\vern29}}{\*\xmlnstbl {\xmlns1 http://schemas.microsoft.com/office/word/2003/wordml}}\paperw12240\paperh15840\margl1134\margr1134\margt1701\margb1701\gutter0\ltrsect 
 \widowctrl\ftnbj\aenddoc\hyphhotz425\trackmoves0\trackformatting1\donotembedsysfont0\relyonvml0\donotembedlingdata1\grfdocevents0\validatexml0\showplaceholdtext0\ignoremixedcontent0\saveinvalidxml0\showxmlerrors0\horzdoc\dghspace120\dgvspace120
 \dghorigin1701\dgvorigin1984\dghshow0\dgvshow3\jcompress\viewkind1\viewscale120\rsidroot10241568 \nouicompat \fet0{\*\wgrffmtfilter 2450}\nofeaturethrottle1\ilfomacatclnup0\ltrpar \sectd \ltrsect\linex0\headery708\footery708\colsx708\sectdefaultcl\sftnbj 
 {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang {\pntxta )}}
@@ -74,16 +73,14 @@ enemy unit finishes a move within }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\la
 \hich\af2\dbch\af31505\loch\f2  }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid9529502 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 1}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 ) }{
 \rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 The}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 
- unit attacks }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 the }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7499813 \hich\af2\dbch\af31505\loch\f2 priority}{
-\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2  enemy unit }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 
-with missiles }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 and/}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700\charrsid10241568 
-\hich\af2\dbch\af31505\loch\f2 or magic.}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid2954823 \hich\af2\dbch\af31505\loch\f2  }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 
-\hich\af2\dbch\af31505\loch\f2 2)}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid9529502 \hich\af2\dbch\af31505\loch\f2  Then the unit makes a normal move towards the }{\rtlch\fcs1 \af2 \ltrch\fcs0 
-\f2\lang1033\langfe1030\langnp1033\insrsid3613131 \hich\af2\dbch\af31505\loch\f2 Target}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid9529502 .}{\rtlch\fcs1 \af2 \ltrch\fcs0 
+ unit attacks }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 the closest enemy unit }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700\charrsid10241568 
+\hich\af2\dbch\af31505\loch\f2 with missiles }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 and/}{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid10962700\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 or magic.}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid2954823 \hich\af2\dbch\af31505\loch\f2  }{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 2)}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid9529502 \hich\af2\dbch\af31505\loch\f2  Then the unit makes a normal move towards the }{
+\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid3613131 \hich\af2\dbch\af31505\loch\f2 Target}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid9529502 .}{\rtlch\fcs1 \af2 \ltrch\fcs0 
 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2  }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4219212 \hich\af2\dbch\af31505\loch\f2 \hich\f2 It can move within 3\'94\loch\f2 
  of an enemy}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4937887 \hich\af2\dbch\af31505\loch\f2  }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4219212 \hich\af2\dbch\af31505\loch\f2 \hich\f2 
-but must finish more than 3\'94\loch\f2  from an enemy}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7499813 \hich\af2\dbch\af31505\loch\f2  unless that enemy is the Target}{\rtlch\fcs1 \af2 \ltrch\fcs0 
-\f2\lang1033\langfe1030\langnp1033\insrsid4219212 \hich\af2\dbch\af31505\loch\f2 . If this is impossible}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4937887 \hich\af2\dbch\af31505\loch\f2 , }{\rtlch\fcs1 \af2 \ltrch\fcs0 
+but must finish more than 3\'94\loch\f2  from an enemy. If this is impossible}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4937887 \hich\af2\dbch\af31505\loch\f2 , }{\rtlch\fcs1 \af2 \ltrch\fcs0 
 \f2\lang1033\langfe1030\langnp1033\insrsid4219212 \hich\af2\dbch\af31505\loch\f2 the unit does not move, but }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid2569525 \hich\af2\dbch\af31505\loch\f2 recover}{\rtlch\fcs1 \af2 
 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4219212 \hich\af2\dbch\af31505\loch\f2 s}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid2569525 \hich\af2\dbch\af31505\loch\f2  D3 wounds}{\rtlch\fcs1 \af2 \ltrch\fcs0 
 \f2\lang1033\langfe1030\langnp1033\insrsid4219212 \hich\af2\dbch\af31505\loch\f2  instead}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid2569525 .}{\rtlch\fcs1 \af2 \ltrch\fcs0 
@@ -108,39 +105,23 @@ but must finish more than 3\'94\loch\f2  from an enemy}{\rtlch\fcs1 \af2 \ltrch\
 \rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid6389615 \hich\af2\dbch\af31505\loch\f2 s}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 
  to charge that unit.}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid9897584 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid2965232 
-\par }\pard \ltrpar\ql \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0 {\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 Fortify}{\rtlch\fcs1 \af2 \ltrch\fcs0 
-\f2\ul\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 :}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2  1) The unit attacks}{
-\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid13776741 \hich\af2\dbch\af31505\loch\f2  the priority enemy unit}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 
-\hich\af2\dbch\af31505\loch\f2  with missiles }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 and/}{\rtlch\fcs1 \af2 \ltrch\fcs0 
-\f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 or magic. 2) Then }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946 \hich\af2\dbch\af31505\loch\f2 recover}{\rtlch\fcs1 \af2 
-\ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2  D3 wounds on the unit.}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315 
+\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid2965232\charrsid1649263 \hich\af2\dbch\af31505\loch\f2 Prio\hich\af2\dbch\af31505\loch\f2 rity enemy unit}{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid2965232 \hich\af2\dbch\af31505\loch\f2 :
+\par \hich\af2\dbch\af31505\loch\f2 \hich\f2 General within 12\'94\loch\f2  > }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid13374138 \hich\af2\dbch\af31505\loch\f2 Enemy u}{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid2965232 \hich\af2\dbch\af31505\loch\f2 nit }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid13374138 \hich\af2\dbch\af31505\loch\f2 within 1}{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid2776978 \hich\af2\dbch\af31505\loch\f2 2}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid13374138 \loch\af2\dbch\af31505\hich\f2 \'94\loch\f2  }{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid2965232 \hich\af2\dbch\af31505\loch\f2 closest to friendly table edge > closest enemy unit.
+\par }\pard \ltrpar\ql \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0 {\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 
+\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 Fortify}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 
+:}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2  1) The unit attacks}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid13776741 
+\hich\af2\dbch\af31505\loch\f2  the priority enemy unit}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2  with missiles }{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid10962700 \hich\af2\dbch\af31505\loch\f2 and/}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 or magic. 2) Then }{\rtlch\fcs1 \af2 
+\ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946 \hich\af2\dbch\af31505\loch\f2 recover}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2  D3 wounds on the unit.}{
+\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid15683821 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid15683821\charrsid15683821 \hich\af2\dbch\af31505\loch\f2 Recover:}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid15683821 \hich\af2\dbch\af31505\loch\f2 
  When a unit recovers, heal that many wounds on the unit, including slain models.}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid15683821\charrsid10241568 
-\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315 
-\par }\pard \ltrpar\ql \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid8399707 {\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid8399707\charrsid1649263 \hich\af2\dbch\af31505\loch\f2 Prio\hich\af2\dbch\af31505\loch\f2 
-rity enemy unit}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2 :
-\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2 [Tar\hich\af2\dbch\af31505\loch\f2 get unit] > }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 
-\hich\af2\dbch\af31505\loch\f2 \hich\f2 General within 12\'94\loch\f2  > \hich\af2\dbch\af31505\loch\f2 Enemy u\hich\af2\dbch\af31505\loch\f2 nit \hich\af2\dbch\af31505\loch\f2 within 1\hich\af2\dbch\af31505\loch\f2 2\loch\af2\dbch\af31505\hich\f2 \'94
-\loch\f2  \hich\af2\dbch\af31505\loch\f2 closest to friendly table edge > closest enemy unit.
-\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707\charrsid10241568 
-\par }\pard \ltrpar\ql \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0 {\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid8399707\charrsid8399707 \hich\af2\dbch\af31505\loch\f2 T\hich\af2\dbch\af31505\loch\f2 ar
-\hich\af2\dbch\af31505\loch\f2 get:}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2  \hich\af2\dbch\af31505\loch\f2 A point \hich\af2\dbch\af31505\loch\f2 on\hich\af2\dbch\af31505\loch\f2 
- the battlefield}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7499813 \hich\af2\dbch\af31505\loch\f2  that guides the movement of the AI\hich\af2\dbch\af31505\loch\f2  \hich\af2\dbch\af31505\loch\f2 unit
-\hich\af2\dbch\af31505\loch\f2 s\loch\af2\dbch\af31505\hich\f2 \rquote \hich\af2\dbch\af31505\loch\f2  advance ac\hich\af2\dbch\af31505\loch\f2 t\hich\af2\dbch\af31505\loch\f2 ions}{\rtlch\fcs1 \af2 \ltrch\fcs0 
-\f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2 . \hich\af2\dbch\af31505\loch\f2 Defined per battl\hich\af2\dbch\af31505\loch\f2 eplan. Examples include:
-\par \hich\af2\dbch\af31505\loch\f2 - A given table edge.
-\par \hich\af2\dbch\af31505\loch\f2 - Closest contestable objective.}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7499813 
-\par \hich\af2\dbch\af31505\loch\f2 - }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2 A}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid12345649 
-\hich\af2\dbch\af31505\loch\f2 n enemy}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2  unit \hich\af2\dbch\af31505\loch\f2 (\hich\af2\dbch\af31505\loch\f2 i.e.,\hich\af2\dbch\af31505\loch\f2 
- }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid12345649 \hich\af2\dbch\af31505\loch\f2 the }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2 general
-\hich\af2\dbch\af31505\loch\f2 )}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid12345649 .}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7499813 
-\par \hich\af2\dbch\af31505\loch\f2 - A}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2  \hich\af2\dbch\af31505\loch\f2 selection criterion\hich\af2\dbch\af31505\loch\f2  
-\hich\af2\dbch\af31505\loch\f2 (\hich\af2\dbch\af31505\loch\f2 i.e., }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7499813 \hich\af2\dbch\af31505\loch\f2 garrisoning }{\rtlch\fcs1 \af2 \ltrch\fcs0 
-\f2\lang1033\langfe1030\langnp1033\insrsid8399707 \hich\af2\dbch\af31505\loch\f2 enemy \hich\af2\dbch\af31505\loch\f2 units}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7499813 \hich\af2\dbch\af31505\loch\f2 ).}{\rtlch\fcs1 
-\af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707 
-\par 
-\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid8399707\charrsid10241568 
+\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 Activate:}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 
 \hich\af2\dbch\af31505\loch\f2  When a group is activated, activate each unit in turn. Starting with the unit that has }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid9705812 \hich\af2\dbch\af31505\loch\f2 the fewest models}{
 \rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 .
@@ -155,18 +136,18 @@ while moving as few models as possible, }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1
 \f2\lang1033\langfe1030\langnp1033\insrsid4331315 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 Piling in}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 
-\hich\af2\dbch\af31505\loch\f2 : }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4206081 \hich\af2\dbch\af31505\loch\f2 The AI unit will pile in to \hich\af2\dbch\af31505\loch\f2 get as many models as possible w
-\hich\af2\dbch\af31505\loch\f2 ithin range of the enemy unit}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 .}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315 
+\hich\af2\dbch\af31505\loch\f2 : When an AI u\hich\af2\dbch\af31505\loch\f2 
+nit piles in, each model piles in in turn. Start with the model that is not within range, but closest to getting within range. Move that model the most direct route towards an enemy }{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid9777596\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 model and}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315\charrsid10241568 \hich\af2\dbch\af31505\loch\f2 
+ stop as soon as the model is within range, or the model cannot p\hich\af2\dbch\af31505\loch\f2 ile in any closer to an enemy model. Proceed like this, until all relevant models have piled in.}{\rtlch\fcs1 \af2 \ltrch\fcs0 
+\f2\lang1033\langfe1030\langnp1033\insrsid4331315 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946 
-\par }\pard \ltrpar\ql \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid12782430 {\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid740946\charrsid740946 \hich\af2\dbch\af31505\loch\f2 AI Unit coherency}{\rtlch\fcs1 \af2 
-\ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946 \hich\af2\dbch\af31505\loch\f2 : When an AI unit moves or piles in, it must observe normal coherency rules.}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid12782430 
-\hich\af2\dbch\af31505\loch\f2  AI units do not observe coherency }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid12782430 \hich\af2\dbch\af31505\loch\f2 in the \hich\af2\dbch\af31505\loch\f2 Battle shock
-\hich\af2\dbch\af31505\loch\f2  phase}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid12782430 .}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid12782430\charrsid10241568 
-\par }\pard \ltrpar\ql \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0 {\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946 
+\par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid740946\charrsid740946 \hich\af2\dbch\af31505\loch\f2 AI Unit coherency}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946 
+\hich\af2\dbch\af31505\loch\f2 : When an AI unit moves or piles in, it must observe normal coherency rules.
 \par 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\ul\lang1033\langfe1030\langnp1033\insrsid740946\charrsid740946 \hich\af2\dbch\af31505\loch\f2 Allocating wounds}{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946 
-\hich\af2\dbch\af31505\loch\f2 : Allocate wounds to command models when that \hich\af2\dbch\af31505\loch\f2 is the only option. Allocate wounds to models furthest from the attacking unit first.}{\rtlch\fcs1 \af2 \ltrch\fcs0 
-\f2\lang1033\langfe1030\langnp1033\insrsid12782430 
+\hich\af2\dbch\af31505\loch\f2 : Allocate wounds to command models when that \hich\af2\dbch\af31505\loch\f2 is the only option. Allocate wounds to models furthest from the attacking unit first. AI units do not observe coherency while taking damage.}{
+\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid740946\charrsid10241568 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid4331315 
 \par }{\rtlch\fcs1 \af2 \ltrch\fcs0 \f2\lang1033\langfe1030\langnp1033\insrsid7036765 
 \par 
@@ -350,8 +331,8 @@ fffffffffffffffffdfffffffeffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-ffffffffffffffffffffffffffffffff52006f006f007400200045006e00740072007900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000016000500ffffffffffffffffffffffff0c6ad98892f1d411a65f0040963251e50000000000000000000000004046
-e9ccd690d701feffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000
+ffffffffffffffffffffffffffffffff52006f006f007400200045006e00740072007900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000016000500ffffffffffffffffffffffff0c6ad98892f1d411a65f0040963251e5000000000000000000000000b0c3
+d523d390d701feffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff0000000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff000000000000000000000000000000000000000000000000
 0000000000000000000000000000000000000000000000000105000000000000}}
