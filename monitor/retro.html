@@ -206,8 +206,8 @@
           'END OF PLAYER TURN<br>\
             Clean up.',
           'ACTION PHASE<br>\
-            All AI Heroes gain 1 react token, to a maximum of 1.\
-            Take turns activating the AI units, starting with the unit with the fewest models in it. \
+            Heal D3 wounds on the AI general and 1 wound on every AI hero that is not the general. \
+            Take action with the AI units, starting with the unit with the fewest models in it. \
             Draw an ability for each AI unit that shoots.',
           'COMBAT PHASE (AI priority)<br>\
             Starting with the AI, take turns to fight with units using melee weapons. \
@@ -217,12 +217,12 @@
           'END OF AI TURN<br>\
             Clean up.',
           'END OF ROUND<br>\
-            Consult battleplan and/or resolve special events.'
+            Consult battleplan and/or resolve special events (draw event card).'
         ]
         let aiPriorityRound = [
           'ACTION PHASE<br>\
-            All AI Heroes gain 1 react token, to a maximum of 1.\
-            Take turns activating the AI units, starting with the unit with the fewest models in it. \
+            Heal D3 wounds on the AI general and 1 wound on every AI hero that is not the general. \
+            Take action with the AI units, starting with the unit with the fewest models in it. \
             Draw an ability for each AI unit that shoots.',
             'COMBAT PHASE (AI priority)<br>\
             Starting with the AI, take turns to fight with units using melee weapons. \
@@ -247,7 +247,7 @@
           'END OF PLAYER TURN<br>\
             Clean up.',
           'END OF ROUND<br>\
-            Consult battleplan and/or resolve special events.'
+            Consult battleplan and/or resolve special events (draw event card).'
         ]
         
         let x = Math.random();
@@ -264,13 +264,14 @@
 
     let actionDeckData = [
           2, 'RUSH<br>\
-              This unit makes an Advance action. Then draw another card.',
-          4, 'ADVANCE<br>\
-              This unit makes an Advance action.',
-          2, 'ENGAGE<br>\
-              This unit makes an Engage action.',
+              This unit makes an Advance action. Then draw another card (discard it if that card is also a RUSH).<br><br>\
+              1) The unit attacks the priority enemy unit with missiles and/or magic. 2) Then the unit makes a move that brings at least 1 model at least 1” closer to the Target (it can move within 3” of an enemy). If this is impossible, the unit does not move, but recovers D3 wounds instead.',
+          5, 'ADVANCE<br>\
+              1) The unit attacks the priority enemy unit with missiles and/or magic. 2) Then the unit makes a move that brings at least 1 model at least 1” closer to the Target (it can move within 3” of an enemy). If this is impossible, the unit does not move, but recovers D3 wounds instead.',
+          3, 'ENGAGE<br>\
+              If the unit is already within 3” of an enemy unit when it makes an Engage action, it makes a Fortify action instead.<br><br> 1) The unit attacks the priority enemy unit with missiles and/or magic. 2) Then the unit moves towards the priority enemy unit, and 3) attempts to charge that unit.',
           2, 'FORTIFY<br>\
-              This unit makes a Fortify action.',
+              1) The unit attacks the priority enemy unit with missiles and/or magic. 2) Then recover D3 wounds on the unit.',
           1, 'RECOVER<br>\
               This unit Recovers D3 wounds. Then draw another card.',
     ];
@@ -287,20 +288,20 @@
       3, 'FORTITUDE<br>\
           Recover D3 wounds on this unit before attacking.',
       3, 'DEATHSTRIKE<br>\
-      Inflict D3 mortal wounds to the target unit before attacking.'
+          Inflict D3 mortal wounds to the target unit before attacking.'
     ];
 
     let eventDeckData = [
-      5, 'NOTHING<br>\
+      8, 'NOTHING<br>\
           Nothing happens.',
       2, 'INSPIRATION<br>\
           Pick an AI unit at random. That unit makes an action.',
-      1, 'MAGICAL SURGE<br>\
+      2, 'MAGICAL SURGE<br>\
           Pick an AI hero within 12" of an enemy unit at random. That hero attempts to cast an Arcane Bolt at closest enemy unit. \
           The hero does not need to be a wizard.',
-      1, 'RAMPAGE<br>\
+      2, 'RAMPAGE<br>\
           Pick an AI unit within 3" of an enemy unit at random. That unit attacks.',
-      1, 'HEROIC RAMPAGE<br>\
+      2, 'HEROIC RAMPAGE<br>\
           Pick an AI hero within 3" of an enemy unit at random. That hero attacks.'
 
         ];
