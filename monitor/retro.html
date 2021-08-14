@@ -7,6 +7,11 @@
   <style>
     * {
       box-sizing: border-box;
+      --ash-gray: #c9cebdff;
+      --ash-gray-2: #b2bcaaff;
+      --xanadu: #838e83ff;
+      --dim-gray: #6c6061ff;
+      --rose-ebony: #64403eff;
     }
     .column {
       float: left;
@@ -16,7 +21,7 @@
       width: 75%;
       height: 800px;
       overflow: auto;
-      background-color: darkblue;
+      background-color: var(--rose-ebony);
     }
     .right {
       width: 25%;
@@ -37,15 +42,17 @@
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
+      width: 100%;
     }
-    .button1 {background-color: #4CAF50;} /* Green */
+    .button1 {background-color: var(--xanadu);} /* Green */
+    
     </style>
   <title>Retro</title>
 </head>
-<body onkeypress="handleKeypress(m, totalDecks)">
+<body style="background-color: var(--ash-gray)" handleKeypress(m, totalDecks)">
   <div class="row">
     <div class="column left" id="monitorColumn">
-      <p id="monitor"; style="color: white; font-size: larger"></p>
+      <p id="monitor"; style="color:white; font-size: larger"></p>
     </div>
 
     <div class="column right">
