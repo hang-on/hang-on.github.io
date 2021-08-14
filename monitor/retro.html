@@ -58,9 +58,9 @@
 
     <div class="column right">
       <button onclick="battleDashboard.processNextPhase()" class="button button1">NEXT PHASE</button>
-      <button class="button button1">ACTION CARD</button>
-      <button class="button button1">ABILITY CARD</button>
-      <button class="button button1">EVENT CARD</button>
+      <button onclick="actionDeck.drawCard()" class="button button1">ACTION CARD</button>
+      <button onclick="abilityDeck.drawCard()" class="button button1">ABILITY CARD</button>
+      <button onclick="eventDeck.drawCard()" class="button button1">EVENT CARD</button>
     </div>
 
   </div>
@@ -73,9 +73,10 @@
     }
 
     class Deck {
-      constructor(deckData,shuffleEachRound) {
+      constructor(deckData,monitor,shuffleEachRound) {
         this.cards = [];
         this.deckData = deckData;
+        this.monitor = monitor;
         this.shuffleEachRound = shuffleEachRound;
         this.createDeck();
         this.shuffleDeck();
@@ -107,7 +108,8 @@
           this.shuffleDeck();
           alert ("Deck shuffled.");
         }
-        return this.cards.pop();
+        let x = this.cards.pop();
+        this.monitor.write(x.text);
       }
     }
 
@@ -293,9 +295,9 @@
       ];
 
     let m = new Monitor(document.getElementById("monitor"));
-    let actionDeck = new Deck(actionDeckData, true);
-    let abilityDeck = new Deck(abilityDeckData, true);
-    let eventDeck = new Deck(eventDeckData, false);
+    let actionDeck = new Deck(actionDeckData, m, true);
+    let abilityDeck = new Deck(abilityDeckData, m, true);
+    let eventDeck = new Deck(eventDeckData, m, false);
     let totalDecks = [actionDeck,abilityDeck,eventDeck];
     let battleDashboard = new Dashboard(m, totalDecks);
     battleDashboard.startNewGame();
@@ -305,18 +307,6 @@
       let newCard = {};
       //console.log("Key pressed!" + x);
       switch(x) {
-        case 49: // 1
-          newCard = decks[0].drawCard();
-          monitor.write(newCard.text);
-        break;
-        case 50: // 2
-          newCard = decks[1].drawCard();
-          monitor.write(newCard.text);
-        break;
-        case 51: // 3
-          newCard = decks[2].drawCard();
-          monitor.write(newCard.text);
-        break;
 
         case 110: // n
           battleDashboard.startNewGame();
