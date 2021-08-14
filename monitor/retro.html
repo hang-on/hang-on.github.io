@@ -14,6 +14,9 @@
     }
     .left {
       width: 75%;
+      height: 800px;
+      overflow: auto;
+      background-color: darkblue;
     }
     .right {
       width: 25%;
@@ -39,9 +42,9 @@
     </style>
   <title>Retro</title>
 </head>
-<body style="background-color: darkblue;" onkeypress="handleKeypress(m, totalDecks)">
+<body onkeypress="handleKeypress(m, totalDecks)">
   <div class="row">
-    <div class="column left">
+    <div class="column left" id="monitorColumn">
       <p id="monitor"; style="color: white; font-size: larger"></p>
     </div>
 
@@ -116,7 +119,8 @@
         this.output = this.output.concat(text);
         this.output = this.output.concat("<br>---<br>")
         this.refresh();
-        window.scrollBy(0,200);
+        let x = this.element.parentNode.id;
+        document.getElementById(x).scrollTop += 500;
       }
     }
 
