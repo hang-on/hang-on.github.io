@@ -50,7 +50,7 @@
     </style>
   <title>Retro</title>
 </head>
-<body style="background-color: var(--ash-gray)" onkeypress="handleKeypress(m, totalDecks)">
+<body style="background-color: var(--ash-gray)">
   <div class="row">
     <div class="column left" id="monitorColumn">
       <p id="monitor"; style="color:white; font-size: larger"></p>
@@ -189,65 +189,24 @@
         this.monitor.write("*** NEW ROUND ***")
       }
       rollPriority() {
+        const heroPhaseText = 'HERO PHASE<br>Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.';
+        const movementPhaseText = 'MOVEMENT PHASE<br>Move, run or retreat units.';
+        const shootingPhaseText = "SHOOTING PHASE<br>Units shoot with missile weapons."; 
+        const chargePhaseText = "CHARGE PHASE<br>Units can attempt to charge enemy units.";
+        const combatPhasePlayerPriorityText = 'COMBAT PHASE (Player priority)<br>Starting with the player, take turns to fight with units using melee weapons. Draw an ability for each AI unit that fights.';
+        const combatPhaseAIPriorityText = 'COMBAT PHASE (AI priority)<br>Starting with the AI, take turns to fight with units using melee weapons. Draw an ability for each AI unit that fights.';
+        const battleShockPhaseText = 'BATTLESHOCK PHASE<br>Test the resolve of depleted units.';
+        const endOfTurnText = "END OF TURN<br>Clean up.";
+        const actionPhaseText = 'ACTION PHASE<br>Heal D3 wounds on the AI general. Take action with the AI units, starting with the unit with the fewest models in it. Draw an ability for each AI unit that shoots.';
+        const endOfRoundText = 'END OF ROUND<br>Consult battleplan and/or resolve special events (draw event card).';
         let playerPriorityRound = [
-          'HERO PHASE<br>\
-            Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.',
-          'MOVEMENT PHASE<br>\
-            Move, run or retreat units.',
-          "SHOOTING PHASE<br>\
-            Units shoot with missile weapons.",
-          "CHARGE PHASE<br>\
-            Units can attempt to charge enemy units.",
-          'COMBAT PHASE (Player priority)<br>\
-            Starting with the player, take turns to fight with units using melee weapons. \
-            Draw an ability for each AI unit that fights.',
-          'BATTLESHOCK PHASE<br>\
-            Test the resolve of depleted units.',
-          'END OF PLAYER TURN<br>\
-            Clean up.',
-          'ACTION PHASE<br>\
-            Heal D3 wounds on the AI general and 1 wound on every AI hero that is not the general. \
-            Take action with the AI units, starting with the unit with the fewest models in it. \
-            Draw an ability for each AI unit that shoots.',
-          'COMBAT PHASE (AI priority)<br>\
-            Starting with the AI, take turns to fight with units using melee weapons. \
-            Draw an ability for each AI unit that fights.',
-          'BATTLESHOCK PHASE<br>\
-            Test the resolve of depleted units.',
-          'END OF AI TURN<br>\
-            Clean up.',
-          'END OF ROUND<br>\
-            Consult battleplan and/or resolve special events (draw event card).'
+          heroPhaseText, movementPhaseText, shootingPhaseText, chargePhaseText, combatPhasePlayerPriorityText, battleShockPhaseText,
+          endOfTurnText, actionPhaseText, combatPhaseAIPriorityText, battleShockPhaseText, endOfTurnText, endOfRoundText
         ]
+
         let aiPriorityRound = [
-          'ACTION PHASE<br>\
-            Heal D3 wounds on the AI general and 1 wound on every AI hero that is not the general. \
-            Take action with the AI units, starting with the unit with the fewest models in it. \
-            Draw an ability for each AI unit that shoots.',
-            'COMBAT PHASE (AI priority)<br>\
-            Starting with the AI, take turns to fight with units using melee weapons. \
-            Draw an ability for each AI unit that fights.',
-          'BATTLESHOCK PHASE<br>\
-            Test the resolve of depleted units.',
-          'END OF AI TURN<br>\
-            Clean up.',
-          'HERO PHASE<br>\
-            Gain a Command Point from your general. Use a Heroic Ability. Wizards can use magic.',
-          'MOVEMENT PHASE<br>\
-            Move, run or retreat units.',
-          "SHOOTING PHASE<br>\
-            Units shoot with missile weapons.",
-          "CHARGE PHASE<br>\
-            Units can attempt to charge enemy units.",
-          'COMBAT PHASE (Player priority)<br>\
-            Starting with the player, take turns to fight with units using melee weapons. \
-            Draw an ability for each AI unit that fights.',
-          'BATTLESHOCK PHASE<br>\
-            Test the resolve of depleted units.',
-          'END OF PLAYER TURN<br>\
-            Clean up.',
-          'END OF ROUND<br>\
-            Consult battleplan and/or resolve special events (draw event card).'
+          actionPhaseText, combatPhaseAIPriorityText, battleShockPhaseText, endOfTurnText,
+          heroPhaseText, movementPhaseText, shootingPhaseText, chargePhaseText, combatPhasePlayerPriorityText, battleShockPhaseText, endOfTurnText, endOfRoundText
         ]
         
         let x = Math.random();
@@ -257,7 +216,6 @@
         } else {
           this.playerHasPriority = true;
           this.phaseArray = playerPriorityRound;
-
         }
       }
     }
@@ -292,7 +250,7 @@
     ];
 
     let eventDeckData = [
-      8, 'NOTHING<br>\
+      4, 'NOTHING<br>\
           Nothing happens.',
       2, 'INSPIRATION<br>\
           Pick an AI unit at random. That unit makes an action.',
@@ -303,8 +261,7 @@
           Pick an AI unit within 3" of an enemy unit at random. That unit attacks.',
       2, 'HEROIC RAMPAGE<br>\
           Pick an AI hero within 3" of an enemy unit at random. That hero attacks.'
-
-        ];
+    ];
 
     let m = new Monitor(document.getElementById("monitor"));
     let actionDeck = new Deck(actionDeckData, m, true);
@@ -313,25 +270,6 @@
     let totalDecks = [actionDeck,abilityDeck,eventDeck];
     let battleDashboard = new Dashboard(m, totalDecks);
     battleDashboard.startNewGame();
-
-    function handleKeypress(monitor, decks){
-      let x = event.keyCode;
-      let newCard = {};
-      //console.log("Key pressed!" + x);
-      switch(x) {
-
-        case 110: // n
-          battleDashboard.startNewGame();
-        break;
-
-        case 46: // .
-          battleDashboard.processNextPhase();
-        break;
-
-        default:
-          monitor.write("Invalid key: " + x);
-      }
-    }
 
   </script>
 </body>
