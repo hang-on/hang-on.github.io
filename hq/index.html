@@ -23,6 +23,11 @@
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
   var mapHNN={"main":["Weapon rack","Cupboard","Sorcerer’s table","Alchemist’s bench","Bookcase","Torture rack","Sarchophagus","Fireplace","Throne","Nothing","Nothing","Nothing"]};</script>
 
+  <button style='font-family:inherit;' onclick='document.getElementById("outputqsb").innerHTML = dI(mapqsb)'>A chest?</button>
+  <p id='outputqsb'></p>
+  <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
+  var mapqsb={"main":["No chest.","No chest.","No chest.","No chest.","A chest is visible.","A chest is visible."]};</script>
+
   <button style='font-family:inherit;' onclick='document.getElementById("outputCCD").innerHTML = dI(mapCCD)'>Small room type</button>
   <p id='outputCCD'></p>
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
@@ -47,6 +52,11 @@
   <p id='output3ET'></p>
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
   var map3ET={"main":["There is no treasure to be found here, but while you search, you are attacked by [wandering_monster]!","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","[special_treasure]","[special_treasure]","[special_treasure]","[special_treasure]"],"special_treasure":["50 gold pieces","75 gold pieces","100 gold pieces","125 gold pieces","150 gold pieces","200 gold pieces","250 gold pieces","Search the treasure deck for the next potion. Then reshuffle.","Draw an equipment card.","Draw an equipment card.","Draw a random spell card (a hero spell, unused).","Draw an artifact."],"wandering_monster":["1 goblin","2 goblins","1 orc","4 goblins","2 zombies","3 orcs","2 orc champions","4 goblins and 1 orc champion","1 chaos warrior","3 skeletons","1 abomination","1 mummy"]};</script>
+
+<button style='font-family:inherit;' onclick='document.getElementById("outputuay").innerHTML = dI(mapuay)'>Search (Chest)</button>
+<p id='outputuay'></p>
+<script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
+var mapuay={"main":["The chest is empty but is about to set off a [trap]!","The chest is empty.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","[special_treasure]","[special_treasure]","[special_treasure]","[special_treasure]","[special_treasure]","[special_treasure]"],"special_treasure":["100 gold pieces","125 gold pieces","175 gold pieces","150 gold pieces","200 gold pieces","250 gold pieces","350 gold pieces","Search the treasure deck for the next potion. Then reshuffle.","Draw an equipment card.","Draw an equipment card.","Draw a random spell card (a hero spell, unused).","Draw an artifact."],"trap":["spear trap","spear trap","pit trap","falling rubble trap"]};</script>
 
 
 
