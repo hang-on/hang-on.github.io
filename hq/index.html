@@ -21,7 +21,7 @@
   <button style='font-family:inherit;' onclick='document.getElementById("outputHNN").innerHTML = dI(mapHNN)'>Furtniture</button>
   <p id='outputHNN'></p>
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
-  var mapHNN={"main":["Weapon rack","Cupboard","Sorcerer’s table","Alchemist’s bench","Bookcase","Torture rack","Sarchophagus","Fireplace","Throne","Chest","Nothing","Nothing"]};</script>
+  var mapHNN={"main":["Weapon rack","Cupboard","Sorcerer’s table","Alchemist’s bench","Bookcase","Torture rack","Sarchophagus","Fireplace","Throne","Nothing","Nothing","Nothing"]};</script>
 
   <button style='font-family:inherit;' onclick='document.getElementById("outputCCD").innerHTML = dI(mapCCD)'>Small room type</button>
   <p id='outputCCD'></p>
@@ -38,6 +38,15 @@
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
   var mapHtx={"main":["Wandering monsters: [wandering_monster].","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","nothing happens","You are about to set off a [trap]"],"trap":["spear trap.","spear trap.","spear trap.","spear trap.","spear trap.","spear trap.","pit trap.","pit trap.","pit trap.","pit trap.","falling rubble trap.","falling rubble trap."],"wandering_monster":["1 goblin","2 goblins","1 orc","4 goblins","2 zombies","3 orcs","2 orc champions","4 goblins and 1 orc champion","1 chaos warrior","3 skeletons","1 abomination","1 mummy"]};</script>
 
+  <button style='font-family:inherit;' onclick='document.getElementById("outputTCK").innerHTML = dI(mapTCK)'>Search (Secret Door)</button>
+  <p id='outputTCK'></p>
+  <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
+  var mapTCK={"main":["There is no secret door, but while you search, you are attacked by [wandering_monster]!","No secret door found.","No secret door found.","No secret door found.","No secret door found.","No secret door found.","You find a secret door!","You find a secret door!","You find a secret door!","You find a secret door!","You find a secret door!","You find a secret door!"],"wandering_monster":["1 goblin","2 goblins","1 orc","4 goblins","2 zombies","3 orcs","2 orc champions","4 goblins and 1 orc champion","1 chaos warrior","3 skeletons","1 abomination","1 mummy"]};</script>
+
+  <button style='font-family:inherit;' onclick='document.getElementById("output3ET").innerHTML = dI(map3ET)'>Search (Room Treasure)</button>
+  <p id='output3ET'></p>
+  <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
+  var map3ET={"main":["There is no treasure to be found here, but while you search, you are attacked by [wandering_monster]!","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","Draw a treasure card.","[special_treasure]","[special_treasure]","[special_treasure]","[special_treasure]"],"special_treasure":["50 gold pieces","75 gold pieces","100 gold pieces","125 gold pieces","150 gold pieces","200 gold pieces","250 gold pieces","Search the treasure deck for the next potion. Then reshuffle.","Draw an equipment card.","Draw an equipment card.","Draw a random spell card (a hero spell, unused).","Draw an artifact."],"wandering_monster":["1 goblin","2 goblins","1 orc","4 goblins","2 zombies","3 orcs","2 orc champions","4 goblins and 1 orc champion","1 chaos warrior","3 skeletons","1 abomination","1 mummy"]};</script>
 
 
 
