@@ -3,7 +3,7 @@
 <head>
   <style>
     p {
-      font-size: 18px;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -12,7 +12,8 @@
   <p id='outputHq8'></p>
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
   var mapHq8={"main":["The passage contains [feature] and is [connectivity]."],"feature":["[wandering_monster]","[wandering_monster]","nothing","nothing","nothing","nothing","one door","one door","one door","two doors","three doors"],"wandering_monster":["1 goblin","2 goblins","1 orc","4 goblins","2 zombies","3 orcs","2 orc champions","4 goblins and 1 orc champion","1 chaos warrior","3 skeletons","1 abomination","1 mummy"],"connectivity":["open","blocked by rubble"]};</script>
-  
+  <hr>
+
   <button style='font-family:inherit;' onclick='document.getElementById("output3Ey").innerHTML = dI(map3Ey)'>Room atmosphere and doors</button>
   <p id='output3Ey'></p>
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
