@@ -18,6 +18,17 @@
   <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
   var map3Ey={"main":["The room is [atmos]. There is [exits]. "],"atmos":["lit by torches","lit by torches","dark, damp and cold","illuminated by oil lamps hanging from the ceiling","covered in a strange gloom","a dish with a small bonfire in the corner"],"exits":["no doors","1 door"]};</script>
 
+  <button style='font-family:inherit;' onclick='document.getElementById("outputHNN").innerHTML = dI(mapHNN)'>Furtniture</button>
+  <p id='outputHNN'></p>
+  <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
+  var mapHNN={"main":["Weapon rack","Cupboard","Sorcerer’s table","Alchemist’s bench","Bookcase","Torture rack","Sarchophagus","Fireplace","Throne","Chest","Nothing","Nothing"]};</script>
+
+  <button style='font-family:inherit;' onclick='document.getElementById("outputCCD").innerHTML = dI(mapCCD)'>Small room type</button>
+  <p id='outputCCD'></p>
+  <script>function rD(i){return i[Math.floor(Math.random()*i.length)];}function dI(d){o=rD(d['main']);k=Object.keys(d);j=0;while(j< 20){for(i=0;i< k.length;i++){o=o.replace('['+k[i]+']',rD(d[k[i]]));}j++;}return o;}
+  var mapCCD={"main":["A normal room.","A normal room.","A normal room.","A normal room.","A normal room.","A normal room.","An inhabited room. There is [monster].","An inhabited room. There is [monster].","An inhabited room. There is [monster].","An inhabited room. There is [monster].","An inhabited room. There is [monster].","A quest progress room."],"monster":["1 goblin","2 goblins","1 orc","3 goblins","2 zombies","2 orcs","1 orc champion","2 goblins and 1 orc champion","1 chaos warrior","2 skeletons","1 abomination","1 mummy"]};</script>
+
+
 </body>
 
 </html>
