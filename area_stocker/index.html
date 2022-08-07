@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header">
+  <h1>Virtual Game Master</h1>
+</div>
+<div class="row">
+  <div class="col-7">
+    <b>Room</b>
+    <p id="outputText_explore_room_9xj">...</p>
+    <b>Foe</b>
+    <p id="outputText_identify_foe">...</p>
+    <b>Trap</b>
+    <p id="outputText_identify_trap">...</p>
+    <b>Hazard</b>
+    <p id="outputText_identify_hazard">...</p>
+    <b>NPC</b>
+    <p id="outputText_generate_npc">...</p>
+    <b>Random Encounter</b>
+    <p id="outputText_generate_random_encounter">...</p>
+
+    <button onclick='selectRandom_generate_area_3m3()'>Generate Area</button><br>
+    <br>
+    <div id='outputText_generate_area_3m3'></div>
+
+  </div>
+
+  
+
+
+  <div class="col-5 menu">
+    <ul>
+      <li onclick="selectRandom_explore_room_9xj()">Explore room</li>
+      <li onclick="selectRandom_identify_foe()">Identify foe</li>
+      <li onclick="selectRandom_identify_trap()">Identify trap</li>
+      <li onclick="selectRandom_identify_hazard()">Identify hazard</li>
+      <li onclick="selectRandom_generate_npc()">Generate NPC</li>
+      <li onclick="selectRandom_generate_random_encounter()">Generate Random Encounter</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+  </div>
+</div>
+  
+</body>
+</html>
+
+
+<script>
+
+function expandString(str, map) {
+	var recur_limit = 20
+	var tempmap = {}
+
+	while (str.match(/\{.*?\}/) && recur_limit > 0){
+		str = str.replace(/\{(.*?)\}/g, (match) => {
+			var input = match.replace(/[\{\}]/g, "").split(' -')
+			var key = input[0]
+
+			if (!map.hasOwnProperty(key))
+				return key
+
+			if (input.includes("u")) {
+				var key_u = key+"_unique"
+				if (!tempmap.hasOwnProperty(key_u) || tempmap[key_u].length == 0)
+					tempmap[key_u] = map[key].slice()
+				return tempmap[key_u].splice(Math.floor(Math.random() * tempmap[key_u].length), 1);
+			}
+
+			if (input.includes("r")) {
+				var key_r = key+"_repeat"
+				if (!tempmap.hasOwnProperty(key_r))
+					tempmap[key_r] = map[key][Math.floor(Math.random() * map[key].length)]
+				return tempmap[key_r]
+			}
+
+			if (input.includes("s")) {
+				var key_r = key+"_repeat"
+				tempmap[key_r] = map[key][Math.floor(Math.random() * map[key].length)]
+				return tempmap[key_r]
+			}
+
+			return map[key][Math.floor(Math.random() * map[key].length)]
+		})
+		recur_limit -= 1
+	}
+	return str
+}
+
+var lists_generate_area_3m3 = {
+	"Stocking": [`a group of {People Base} of {Aesthetic}`, `a significant {Structure Base} of {Aesthetic}`, `{Beast Base} of {Aesthetic}`, `significant vegetation ({Vegetation Base} of {Aesthetic})`, `something particularly unusual having to do with {Unusual Base} of {Aesthetic}`, `treasure: {Treasure Base} of {Aesthetic}`, `nothing of interest`],
+	"Atmosphere": [`peaceful – all is calm`, `at war – all is conflict`, `regrowing – things are getting better`, `repeating – things are caught in a loop `, `frozen – things are held in place`, `chaos – all is disorder`, `ominous – conflict is looming`, `tense – things are close to chaos or conflict`, `venerable – things have been here a very long time`, `diseased – things are sick and dying`],
+	"Aesthetic": [`Golden fog and enveloping cloth.`, `Wet grey damp and leather.`, `Green tendrils and fresh things.`, `Reflective, malleable metal.`, `Rusted, cumbersome metal.`, `Tuberous growths and weird patterns.`, `Spikes and spines.`, `Cracks, rags and tatters.`, `Venerable, grand and ornate.`, `Bones and rot.`],
+	"People Base": [`Religious Order`, `Explorers`, `Farmers`, `Philosophers`, `Soldiers`, `Chaos Cultists`, `Prophecy Seekers`, `Destroyers`, `Historians`, `Illness Carriers`],
+	"Structure Base": [`Stupa`, `Mill`, `Farm`, `Tower`, `Fortress`, `Laboratory`, `Church`, `Mine`, `Library`, `Graveyard `],
+	"Beast Base": [`Jellyfish`, `Crows`, `Snakes`, `Cats`, `Spiders`, `Amoebas`, `Bears`, `Porcupines`, `Beetles`, `Flies`],
+	"Vegetation Base": [`Lotus`, `Weeds`, `Flower`, `Mushroom`, `Vines`, `Cacti`, `Trees`, `Roots`, `Huge trunk trees`, `Mould`],
+	"Unusual Base": [`Floating or meditation`, `Storm or movement`, `Life or regrowth`, `Reflection or stillnes`, `Incarceration or locking`, `Chaos or mutations`, `Destiny or prophecy`, `Breaking or straining`, `Time or history`, `Death or decay`],
+	"Treasure Base": [`Cushion`, `Potion`, `Sapling`, `Mirror`, `Amulet`, `Blessing`, `Armour`, `Weapon`, `Book`, `Relic`],
+}
+
+function selectRandom_generate_area_3m3() {
+	document.getElementById('outputText_generate_area_3m3').innerHTML = expandString(`The area contains {Stocking}. The atmosphere is {Atmosphere}.`, lists_generate_area_3m3)
+}
+
+</script>
