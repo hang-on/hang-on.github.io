@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Event deck</title>
+  <title>Deck</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body onload="initialize()">
 <div class="header">
-  <h1>Event deck</h1>
+  <h1>Activation deck</h1>
 </div>
 <div class="row">
   <div class="col-12">
     <h1>Events</h1>
-    <p id="deckStatus">This is the event deck.</p>
+    <p id="deckStatus">This is the activation deck.</p>
     <table>
       <tr>
-        <th>Event deck</th>
+        <th>Activation deck</th>
         <th>Discard pile</th>
       </tr>
       <tr>
         <td width="250px">
-          <img id="eventDeck" onclick="drawEvent()">
+          <img id="eventDeck" onclick="drawCard()">
         </td>
         <td width="250px">
           <img id="discardPile">

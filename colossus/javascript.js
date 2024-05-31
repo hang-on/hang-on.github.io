@@ -58,7 +58,7 @@ function shuffle(deck){
   }
   deck.push(cardback); // Restore cardback
 }
-function drawEvent(){
+function drawCard(){
   // Return the topmost card from the event deck.
   var deck = localStorage.getItem("eventDeck");
   deck = deck.split(",");
