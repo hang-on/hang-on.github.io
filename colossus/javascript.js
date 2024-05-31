@@ -28,7 +28,7 @@ function initialize(){
   var x = document.getElementById('eventDeck');
   x.src = eventDeck[eventDeck.length-1];
   var x = document.getElementById('discardPile');
-  x.src = "images/discard-pile.JPG";
+  x.src = "images/discardPile.jpg";
   displayDeckStatus(eventDeck);
 }
 function createDeck(deckRecipe){
@@ -77,7 +77,7 @@ function drawEvent(){
 }
 function displayDeckStatus(deck){
   var x = document.getElementById('deckStatus');
-  x.innerHTML = "Cards left in event deck: " + (deck.length - 1);
+  x.innerHTML = "Cards left in deck: " + (deck.length - 1);
 }
 function handleInitializeButton(){
   localStorage.removeItem("eventDeck"); // Trigger a deck refresh.
@@ -87,7 +87,8 @@ function handleInitializeButton(){
 // deck[0] = itemsize, deck[1] = image of card back,
 // deck[2] = card type image, deck [3] number of cards of this type, etc...
 eventDeckRecipe = [
-    2, "images/event-cardback.JPG",
-    "images/event-nothing.JPG", 10,
-    "images/event-ambush.JPG", 3
+    2, "images/cardback.JPG",
+    "images/walker_1.jpg", 1,
+    "images/walker_2.jpg", 1,
+    "images/killteam.jpg", 1,
 ]
