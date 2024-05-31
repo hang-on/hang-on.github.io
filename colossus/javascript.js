@@ -90,5 +90,8 @@ eventDeckRecipe = [
     2, "images/cardback.JPG",
     "images/walker_1.jpg", 1,
     "images/walker_2.jpg", 1,
+    "images/walker_3.jpg", 1,
+    "images/walker_4.jpg", 1,
     "images/killteam.jpg", 1,
+
 ]
