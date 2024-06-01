@@ -42,7 +42,10 @@ function shuffle(deck){
   }
   deck.push(cardback); // Restore cardback
 }
-function drawCard(drawPileItem, discardPileItem){
+function drawCard(drawPileItem, displayItem){
+  // Draw a card from the specified drawpile, and display it in the
+  // specified item.
+
   // Return the topmost card from the specified pile.
   var pile = localStorage.getItem(drawPileItem);
   pile = pile.split(",");
@@ -53,8 +56,8 @@ function drawCard(drawPileItem, discardPileItem){
   } else {
     var card = pile.shift();
     localStorage.setItem(drawPileItem, pile);
-    // Show the card on top of the discard pile:
-    var x = document.getElementById(discardPileItem);
+    // Show the card in the display item
+    var x = document.getElementById(displayItem);
     x.src = card;
     displayDeckStatus(pile);
   }
@@ -64,7 +67,7 @@ function displayDeckStatus(deck){
   x.innerHTML = "Cards left in Draw Pile: " + (deck.length - 1);
 }
 function handleInitializeButton(){
-  localStorage.removeItem("drawPile"); // Trigger a deck refresh.
+  localStorage.removeItem("drawPile"); // Trigger refresh.
   initialize();
 }
 // The recipe for the event deck.
