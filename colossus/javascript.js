@@ -3,7 +3,7 @@
 function initialize(){
   var drawPile = localStorage.getItem("drawPile");
   if (drawPile === null){
-    drawPile = createDeck(drawPileRecipe);
+    drawPile = createPile(drawPileRecipe);
     shuffle(drawPile);
     localStorage.setItem("drawPile", drawPile);
   } else {
@@ -15,20 +15,20 @@ function initialize(){
   x.src = "images/discardPile.jpg";
   displayDeckStatus(drawPile);
 }
-function createDeck(deckRecipe){
-  // Uses the deck recipe data format.
-  var deck = new Array();
+function createPile(recipe){
+  // Uses the recipe data format.
+  var pile = new Array();
   var i;
   var j;
   var k = 0;
-  var itemSize = deckRecipe[0]; // Get it from the header, as per data format.
-  for (i = 2; i < deckRecipe.length; i+=itemSize){
-    for (j = 0; j < deckRecipe[i+1]; j++){
-      deck.push(deckRecipe[i]);
+  var itemSize = recipe[0]; // Get it from the header, as per data format.
+  for (i = 2; i < recipe.length; i+=itemSize){
+    for (j = 0; j < recipe[i+1]; j++){
+      pile.push(recipe[i]);
     }
   }
-  deck.push(deckRecipe[1]) // Add the cardback as the last card.
-  return deck;
+  pile.push(recipe[1]) // Add the cardback as the last card.
+  return pile;
 }
 function shuffle(deck){
   // for 1000 turns, switch the values of two random cards.
@@ -60,8 +60,8 @@ function drawCard(){
   }
 }
 function displayDeckStatus(deck){
-  var x = document.getElementById('deckStatus');
-  x.innerHTML = "Cards left in deck: " + (deck.length - 1);
+  var x = document.getElementById('drawPileStatus');
+  x.innerHTML = "Cards left in Draw Pile: " + (deck.length - 1);
 }
 function handleInitializeButton(){
   localStorage.removeItem("drawPile"); // Trigger a deck refresh.
