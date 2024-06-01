@@ -1,20 +1,19 @@
-// Project constants
 
 // Called by <body> onload and by 'initialize deck' button.
 function initialize(){
-  var eventDeck = localStorage.getItem("eventDeck");
-  if (eventDeck === null){
-    eventDeck = createDeck(eventDeckRecipe);
-    shuffle(eventDeck);
-    localStorage.setItem("eventDeck", eventDeck);
+  var drawPile = localStorage.getItem("drawPile");
+  if (drawPile === null){
+    drawPile = createDeck(drawPileRecipe);
+    shuffle(drawPile);
+    localStorage.setItem("drawPile", drawPile);
   } else {
-    eventDeck = eventDeck.split(",");
+    drawPile = drawPile.split(",");
   }
-  var x = document.getElementById('eventDeck');
-  x.src = eventDeck[eventDeck.length-1];
+  var x = document.getElementById('drawPile');
+  x.src = drawPile[drawPile.length-1];
   var x = document.getElementById('discardPile');
   x.src = "images/discardPile.jpg";
-  displayDeckStatus(eventDeck);
+  displayDeckStatus(drawPile);
 }
 function createDeck(deckRecipe){
   // Uses the deck recipe data format.
@@ -45,7 +44,7 @@ function shuffle(deck){
 }
 function drawCard(){
   // Return the topmost card from the event deck.
-  var deck = localStorage.getItem("eventDeck");
+  var deck = localStorage.getItem("drawPile");
   deck = deck.split(",");
   // Check if nothing but the cardback remains:
   if (deck.length <= 1) {
@@ -53,7 +52,7 @@ function drawCard(){
     return;
   } else {
     var card = deck.shift();
-    localStorage.setItem("eventDeck", deck);
+    localStorage.setItem("drawPile", deck);
     // Show the card on top of the discard pile:
     var x = document.getElementById('discardPile');
     x.src = card;
@@ -65,13 +64,13 @@ function displayDeckStatus(deck){
   x.innerHTML = "Cards left in deck: " + (deck.length - 1);
 }
 function handleInitializeButton(){
-  localStorage.removeItem("eventDeck"); // Trigger a deck refresh.
+  localStorage.removeItem("drawPile"); // Trigger a deck refresh.
   initialize();
 }
 // The recipe for the event deck.
 // deck[0] = itemsize, deck[1] = image of card back,
 // deck[2] = card type image, deck [3] number of cards of this type, etc...
-eventDeckRecipe = [
+drawPileRecipe = [
     2, "images/cardback.JPG",
     "images/walker_1.jpg", 1,
     "images/walker_2.jpg", 1,

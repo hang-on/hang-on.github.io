@@ -7,27 +7,26 @@
 </head>
 <body onload="initialize()">
 <div class="header">
-  <h1>Activation deck</h1>
+  <h1>Activation</h1>
 </div>
 <div class="row">
   <div class="col-12">
     <h1>Activation</h1>
-    <p id="deckStatus">This is the activation deck.</p>
     <table>
       <tr>
-        <th>Activation deck</th>
+        <th>Draw pile</th>
         <th>Discard pile</th>
       </tr>
       <tr>
         <td width="250px">
-          <img id="eventDeck" onclick="drawCard()">
+          <img id="drawPile" onclick="drawCard()">
         </td>
         <td width="250px">
           <img id="discardPile">
         </td>
       </tr>
     </table>
-    <button onclick="handleInitializeButton();">Initialize deck</button>
+    <button onclick="handleInitializeButton();">Initialize Draw Pile</button>
   </div>
 </div>
 
