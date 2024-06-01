@@ -52,7 +52,7 @@ function drawCard(drawPileItem, discardPileItem){
     return;
   } else {
     var card = pile.shift();
-    localStorage.setItem(pileItem, pile);
+    localStorage.setItem(drawPileItem, pile);
     // Show the card on top of the discard pile:
     var x = document.getElementById(discardPileItem);
     x.src = card;
