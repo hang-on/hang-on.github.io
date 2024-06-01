@@ -44,7 +44,7 @@ function shuffle(deck){
 }
 function drawCard(pile){
   // Return the topmost card from the event deck.
-  var deck = localStorage.getItem(pile);
+  var deck = JSON.parse(localStorage.getItem('pile'));
   deck = deck.split(",");
   // Check if nothing but the cardback remains:
   if (deck.length <= 1) {
