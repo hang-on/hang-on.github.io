@@ -11,7 +11,7 @@ function initialize(){
   }
   var x = document.getElementById('drawPile');
   x.src = drawPile[drawPile.length-1];
-  var x = document.getElementById('discardPile');
+  var x = document.getElementById('display');
   x.src = "images/discardPile.jpg";
   displayDeckStatus(drawPile);
 }
