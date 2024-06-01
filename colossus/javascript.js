@@ -42,9 +42,9 @@ function shuffle(deck){
   }
   deck.push(cardback); // Restore cardback
 }
-function drawCard(pileItem){
+function drawCard(drawPileItem, discardPileItem){
   // Return the topmost card from the specified pile.
-  var pile = localStorage.getItem(pileItem);
+  var pile = localStorage.getItem(drawPileItem);
   pile = pile.split(",");
   // Check if nothing but the cardback remains:
   if (pile.length <= 1) {
@@ -54,7 +54,7 @@ function drawCard(pileItem){
     var card = pile.shift();
     localStorage.setItem(pileItem, pile);
     // Show the card on top of the discard pile:
-    var x = document.getElementById('discardPile');
+    var x = document.getElementById(discardPileItem);
     x.src = card;
     displayDeckStatus(pile);
   }
