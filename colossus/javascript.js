@@ -42,21 +42,21 @@ function shuffle(deck){
   }
   deck.push(cardback); // Restore cardback
 }
-function drawCard(pile){
-  // Return the topmost card from the event deck.
-  var deck = localStorage.getItem(pile);
-  deck = deck.split(",");
+function drawCard(pileItem){
+  // Return the topmost card from the specified pile.
+  var pile = localStorage.getItem(pileItem);
+  pile = pile.split(",");
   // Check if nothing but the cardback remains:
-  if (deck.length <= 1) {
-    alert("Deck is empty!");
+  if (pile.length <= 1) {
+    alert("Pile is empty!");
     return;
   } else {
-    var card = deck.shift();
-    localStorage.setItem("drawPile", deck);
+    var card = pile.shift();
+    localStorage.setItem(pileItem, pile);
     // Show the card on top of the discard pile:
     var x = document.getElementById('discardPile');
     x.src = card;
-    displayDeckStatus(deck);
+    displayDeckStatus(pile);
   }
 }
 function displayDeckStatus(deck){
