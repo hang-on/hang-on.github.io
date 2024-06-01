@@ -1,20 +1,5 @@
 // Project constants
 
-// Here we have the global object with settings.
-dashboard = {
-    config:{
-        prop:1
-    },
-    settings:{
-        currentHero:0
-    },
-    menuItems:["...", "...",
-      "...", "..."],
-    widgets:{
-        List: function(props){},
-        Item: function(props){}
-    }
-}
 // Called by <body> onload and by 'initialize deck' button.
 function initialize(){
   var eventDeck = localStorage.getItem("eventDeck");
