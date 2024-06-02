@@ -59,16 +59,17 @@ function drawCard(drawPileItem, displayItem){
     // Show the card in the display item
     var x = document.getElementById(displayItem);
     x.src = card;
-    displayDeckStatus(pile);
+    displayPileStatus(pile);
   }
 }
-function displayDeckStatus(deck){
+function displayPileStatus(pile){
   var x = document.getElementById('drawPileStatus');
-  x.innerHTML = "Cards left in Draw Pile: " + (deck.length - 1);
+  x.innerHTML = "Cards left in Draw Pile: " + (pile.length - 1);
 }
-function handleInitializeButton(){
-  localStorage.removeItem("drawPile"); // Trigger refresh.
+function handleInitializeButton(pile){
+  localStorage.removeItem(pile); // Trigger refresh.
   initialize();
+  displayPileStatus(pile);
 }
 // The recipe for the event deck.
 // deck[0] = itemsize, deck[1] = image of card back,
