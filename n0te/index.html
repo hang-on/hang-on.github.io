@@ -209,6 +209,16 @@
             return /Mobi|Android/i.test(navigator.userAgent);
         }
 
+        // Function to update the welcome message based on device type
+        function updateWelcomeMessage() {
+            const welcomeMessageElement = document.getElementById('welcome-message');
+            if (isMobileDevice()) {
+                welcomeMessageElement.textContent = "Welcome to N0te. Tap the screen to begin the session.";
+            } else {
+                welcomeMessageElement.textContent = "Welcome to N0te. Press 'S' to begin the session.";
+            }
+        }
+
         // Function to log messages
         function logMessage(message) {
             const outputElement = document.getElementById('output');
@@ -246,6 +256,9 @@
 
         // Initial log message
         logMessage('Note images updated.');
+
+        // Update the welcome message based on device type
+        updateWelcomeMessage();
     </script>
 </body>
 </html>
