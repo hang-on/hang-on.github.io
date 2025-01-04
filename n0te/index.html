@@ -37,8 +37,14 @@
 
         // Preload sounds without playing them
         function preloadSounds() {
-            correctSound.play().then(() => correctSound.pause()).catch(() => {});
-            incorrectSound.play().then(() => incorrectSound.pause()).catch(() => {});
+            correctSound.addEventListener('canplaythrough', () => logMessage('Correct sound preloaded'), false);
+            incorrectSound.addEventListener('canplaythrough', () => logMessage('Incorrect sound preloaded'), false);
+
+            correctSound.addEventListener('error', (e) => logMessage(`Failed to load correct sound: ${e.message}`), false);
+            incorrectSound.addEventListener('error', (e) => logMessage(`Failed to load incorrect sound: ${e.message}`), false);
+
+            correctSound.load();
+            incorrectSound.load();
         }
 
         // Function to generate random notes
@@ -155,7 +161,7 @@
                 currentNoteIndex++;
                 if (currentNoteIndex >= randomNotes.length) {
                     logMessage('All notes played correctly!');
-                    correctSound.play();
+                    correctSound.play().catch(e => logMessage(`Failed to play correct sound: ${e.message}`));
                     updateStatusBar('All notes played correctly!');
                     currentNoteIndex = 0;
                     generateRandomNotes();
@@ -164,7 +170,7 @@
                 }
             } else {
                 logMessage(`Incorrect note: ${note}`);
-                incorrectSound.play();
+                incorrectSound.play().catch(e => logMessage(`Failed to play incorrect sound: ${e.message}`));
                 updateStatusBar(`Incorrect note: ${note}`);
                 // Revert all notes to their non-greyed version
                 randomNotes.forEach((note, index) => {
