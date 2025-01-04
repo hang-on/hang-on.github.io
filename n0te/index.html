@@ -8,22 +8,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="welcome-message">
+    <div id="welcome-message" class="welcome-message">
         Welcome to N0te. Press 'S' or tap the screen to begin the session.
     </div>
-    <h1>N0te *h</h1>
-    <h2>Play these notes:</h2>
-    <div id="note-images">
+    <h1 class="title">N0te *i</h1>
+    <h2 class="subtitle">Play these notes:</h2>
+    <div id="note-images" class="note-images">
         <img src="./images/g-clef.png" alt="G-clef">
     </div>
-    <div id="status-bar-container">
-        <div id="status-bar">Status: Waiting for input...</div>
-        <button id="toggle-output">Toggle Output to Console</button>
+    <div id="status-bar-container" class="status-bar-container">
+        <div id="status-bar" class="status-bar">Status: Waiting for input...</div>
+        <button id="toggle-output" class="toggle-output">Toggle Output to Console</button>
     </div>
-    <h2>Your input:</h2>
-    <pre id="output"></pre>
-    <h2>MIDI Initialization Messages:</h2>
-    <pre id="midi-messages"></pre>
+    <h2 class="subtitle">Your input:</h2>
+    <pre id="output" class="output"></pre>
+    <h2 class="subtitle">MIDI Initialization Messages:</h2>
+    <pre id="midi-messages" class="midi-messages"></pre>
 
     <script src="midiNoteMap.js"></script>
     <script>
@@ -92,7 +92,7 @@
         function initializeMIDI() {
             if (navigator.requestMIDIAccess) {
                 navigator.requestMIDIAccess({ sysex: false }).then(midiAccess => {
-                    console.log (midiAccess);
+                    console.log(midiAccess);
                     const inputs = midiAccess.inputs.values();
                     let inputCount = 0;
                     for (let input of inputs) {
