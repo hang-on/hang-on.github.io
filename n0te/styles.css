@@ -47,7 +47,7 @@ body {
 
 .status-bar {
     background-color: #2196F3;
-    color: white;
+    color: white; /* Ensure text is white for visibility */
     padding: 10px;
     border-radius: 5px;
     flex-grow: 1;
