@@ -11,7 +11,7 @@
     <div id="welcome-message">
         Welcome to N0te. Press 'S' or tap the screen to begin the session.
     </div>
-    <h1>N0te _b</h1>
+    <h1>N0te _c</h1>
     <h2>Play these notes:</h2>
     <div id="note-images">
         <img src="images/g-clef.png" alt="G-clef">
@@ -48,6 +48,20 @@
                 randomNotes.push(randomNote);
             }
             logMessage(`Random notes generated: ${randomNotes.join(', ')}`);
+            updateNoteImages();
+        }
+
+        // Function to update note images
+        function updateNoteImages() {
+            const noteImagesDiv = document.getElementById('note-images');
+            noteImagesDiv.innerHTML = ''; // Clear existing images
+            randomNotes.forEach(note => {
+                const img = document.createElement('img');
+                img.src = `images/${note}.png`;
+                img.alt = note;
+                noteImagesDiv.appendChild(img);
+            });
+            logMessage('Note images updated.');
         }
 
         // Function to initialize MIDI access
@@ -69,6 +83,7 @@
                     logMessage('MIDI access granted');
                 }).catch(err => {
                     logMessage(`Failed to get MIDI access: ${err}`);
+                    alert(`Failed to get MIDI access: ${err}`);
                 });
             } else {
                 logMessage('Web MIDI API not supported in this browser.');
@@ -108,6 +123,23 @@
                     activeNotes.delete(note);
                     logMessage(`Note off: ${playedNote}`);
                 }
+            }
+        }
+
+        // Function to check note input
+        function checkNoteInput(note) {
+            if (note === randomNotes[currentNoteIndex]) {
+                logMessage(`Correct note: ${note}`);
+                correctSound.play();
+                currentNoteIndex++;
+                if (currentNoteIndex >= randomNotes.length) {
+                    logMessage('All notes played correctly!');
+                    currentNoteIndex = 0;
+                    generateRandomNotes();
+                }
+            } else {
+                logMessage(`Incorrect note: ${note}`);
+                incorrectSound.play();
             }
         }
 
