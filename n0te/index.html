@@ -92,6 +92,7 @@
         function initializeMIDI() {
             if (navigator.requestMIDIAccess) {
                 navigator.requestMIDIAccess({ sysex: false }).then(midiAccess => {
+                    console.log (midiAccess);
                     const inputs = midiAccess.inputs.values();
                     let inputCount = 0;
                     for (let input of inputs) {
