@@ -11,7 +11,7 @@
     <div id="welcome-message">
         Welcome to N0te. Press 'S' or tap the screen to begin the session.
     </div>
-    <h1>N0te _a</h1>
+    <h1>N0te _b</h1>
     <h2>Play these notes:</h2>
     <div id="note-images">
         <img src="images/g-clef.png" alt="G-clef">
@@ -47,34 +47,33 @@
                 const randomNote = notes[Math.floor(Math.random() * notes.length)];
                 randomNotes.push(randomNote);
             }
-            logMessage(`Generated notes: ${randomNotes.join(', ')}`);
-            updateNoteImages();
+            logMessage(`Random notes generated: ${randomNotes.join(', ')}`);
         }
 
-        // Function to update the note images
-        function updateNoteImages() {
-            logMessage('Updating note images...');
-            const noteImagesDiv = document.getElementById('note-images');
-            noteImagesDiv.innerHTML = '<img src="images/g-clef.png" alt="G-clef">'; // Reset with G-clef
-
-            randomNotes.forEach((note, index) => {
-                const img = document.createElement('img');
-                img.src = `images/${note.toLowerCase()}.png`;
-                img.alt = note;
-                img.id = `note-${index}`;
-                noteImagesDiv.appendChild(img);
-            });
-            logMessage('Note images updated.');
-        }
-
-        // Function to reset note images to black
-        function resetNoteImages() {
-            logMessage('Resetting note images to black...');
-            randomNotes.forEach((note, index) => {
-                const noteImage = document.getElementById(`note-${index}`);
-                noteImage.src = `images/${note.toLowerCase()}.png`;
-            });
-            logMessage('Note images reset.');
+        // Function to initialize MIDI access
+        function initializeMIDI() {
+            if (navigator.requestMIDIAccess) {
+                navigator.requestMIDIAccess({ sysex: true }).then(midiAccess => {
+                    const inputs = midiAccess.inputs.values();
+                    let inputCount = 0;
+                    for (let input of inputs) {
+                        input.onmidimessage = onMIDIMessage;
+                        logMessage(`MIDI input added: ${input.name}`);
+                        inputCount++;
+                    }
+                    if (inputCount === 0) {
+                        logMessage('No MIDI inputs detected.');
+                    } else {
+                        logMessage(`Total MIDI inputs detected: ${inputCount}`);
+                    }
+                    logMessage('MIDI access granted');
+                }).catch(err => {
+                    logMessage(`Failed to get MIDI access: ${err}`);
+                });
+            } else {
+                logMessage('Web MIDI API not supported in this browser.');
+                alert('Web MIDI API not supported in this browser.');
+            }
         }
 
         // Function to handle incoming MIDI messages
@@ -112,72 +111,13 @@
             }
         }
 
-        // Function to log messages to the page or console
-        function logMessage(message) {
-            const output = document.getElementById('output');
-            if (outputToConsole) {
-                console.log(message);
-            } else {
-                output.textContent += message + '\n';
-            }
-        }
-
-        // Function to update the status bar
-        function updateStatusBar(message) {
-            const statusBar = document.getElementById('status-bar');
-            statusBar.textContent = `Status: ${message}`;
-            logMessage(message); // Ensure status updates are also logged
-        }
-
-        // Function to check if the played note matches the current note in the sequence
-        function checkNoteInput(playedNote) {
-            if (playedNote === randomNotes[currentNoteIndex]) {
-                // Grey out the correct note
-                const noteImage = document.getElementById(`note-${currentNoteIndex}`);
-                noteImage.src = `images/${playedNote.toLowerCase()}_greyed.png`;
-
-                currentNoteIndex++;
-                if (currentNoteIndex === randomNotes.length) {
-                    updateStatusBar('Well done! You played all the notes correctly.');
-                    correctSound.play().catch(error => logMessage(`Failed to play correct sound: ${error}`));
-                    currentNoteIndex = 0;
-                    generateRandomNotes();
-                } else {
-                    updateStatusBar(`Correct! Play the next note: ${randomNotes[currentNoteIndex]}`);
-                }
-            } else {
-                updateStatusBar('Incorrect note. Try again from the first note.');
-                incorrectSound.play().catch(error => logMessage(`Failed to play incorrect sound: ${error}`));
-                currentNoteIndex = 0;
-                resetNoteImages(); // Reset all notes to black
-            }
-        }
-
-        // Function to initialize MIDI access
-        function initializeMIDI() {
-            if (navigator.requestMIDIAccess) {
-                navigator.requestMIDIAccess({ sysex: true }).then(midiAccess => {
-                    const inputs = midiAccess.inputs.values();
-                    for (let input of inputs) {
-                        input.onmidimessage = onMIDIMessage;
-                        logMessage(`MIDI input added: ${input.name}`);
-                    }
-                    logMessage('MIDI access granted');
-                }).catch(err => {
-                    logMessage(`Failed to get MIDI access: ${err}`);
-                });
-            } else {
-                logMessage('Web MIDI API not supported in this browser.');
-                alert('Web MIDI API not supported in this browser.');
-            }
-        }
-
         // Function to start the session
         function startSession() {
             logMessage('Starting session...');
             document.getElementById('welcome-message').style.display = 'none';
             generateRandomNotes();
             preloadSounds(); // Preload sounds after user interaction
+            initializeMIDI(); // Initialize MIDI access
         }
 
         // Detect if the user is on a mobile device
@@ -185,41 +125,35 @@
             return /Mobi|Android/i.test(navigator.userAgent);
         }
 
-        // Listen for 'S' key press or screen tap to start the session
-        function addStartSessionListeners() {
-            document.addEventListener('keydown', (event) => {
-                if (event.key.toLowerCase() === 's') {
-                    startSession();
-                }
-            });
-
-            if (isMobileDevice()) {
-                document.addEventListener('click', startSession, { once: true });
-            }
-        }
-
-        // Initialize the application
-        function initializeApp() {
-            logMessage('Initializing app...');
-            const welcomeMessage = document.getElementById('welcome-message');
-            if (isMobileDevice()) {
-                welcomeMessage.textContent = "Welcome to N0te. Tap the screen to begin the session.";
+        // Function to log messages
+        function logMessage(message) {
+            const outputElement = document.getElementById('output');
+            if (outputToConsole) {
+                console.log(message);
             } else {
-                welcomeMessage.textContent = "Welcome to N0te. Press 'S' to begin the session.";
+                outputElement.textContent += message + '\n';
             }
-            welcomeMessage.style.display = 'flex';
-            addStartSessionListeners();
-            initializeMIDI(); // Initialize MIDI once when the app starts
         }
 
-        // Toggle output to console
-        document.getElementById('toggle-output').addEventListener('click', () => {
-            outputToConsole = !outputToConsole;
-            alert(`Output to console: ${outputToConsole}`);
+        // Event listener for starting the session
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'S' || event.key === 's') {
+                startSession();
+            }
         });
 
-        // Run the application on page load
-        initializeApp();
+        document.addEventListener('click', () => {
+            startSession();
+        });
+
+        // Event listener for toggling output to console
+        document.getElementById('toggle-output').addEventListener('click', () => {
+            outputToConsole = !outputToConsole;
+            logMessage(`Output to console: ${outputToConsole}`);
+        });
+
+        // Initial log message
+        logMessage('Note images updated.');
     </script>
 </body>
 </html>
