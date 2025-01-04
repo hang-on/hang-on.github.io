@@ -39,14 +39,14 @@
 
         // Preload sounds without playing them
         function preloadSounds() {
-            correctSound.addEventListener('canplaythrough', () => logMessage('Correct sound preloaded'), false);
-            incorrectSound.addEventListener('canplaythrough', () => logMessage('Incorrect sound preloaded'), false);
+            preloadSound(correctSound, 'Correct sound preloaded', 'Failed to load correct sound');
+            preloadSound(incorrectSound, 'Incorrect sound preloaded', 'Failed to load incorrect sound');
+        }
 
-            correctSound.addEventListener('error', (e) => logMessage(`Failed to load correct sound: ${e.message}`), false);
-            incorrectSound.addEventListener('error', (e) => logMessage(`Failed to load incorrect sound: ${e.message}`), false);
-
-            correctSound.load();
-            incorrectSound.load();
+        function preloadSound(sound, successMessage, errorMessage) {
+            sound.addEventListener('canplaythrough', () => logMessage(successMessage), false);
+            sound.addEventListener('error', (e) => logMessage(`${errorMessage}: ${e.message}`), false);
+            sound.load();
         }
 
         // Function to generate random notes
