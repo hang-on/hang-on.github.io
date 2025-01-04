@@ -91,7 +91,7 @@
         // Function to initialize MIDI access
         function initializeMIDI() {
             if (navigator.requestMIDIAccess) {
-                navigator.requestMIDIAccess({ sysex: true }).then(midiAccess => {
+                navigator.requestMIDIAccess({ sysex: false }).then(midiAccess => {
                     const inputs = midiAccess.inputs.values();
                     let inputCount = 0;
                     for (let input of inputs) {
