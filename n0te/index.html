@@ -156,10 +156,11 @@
         // Function to initialize MIDI access
         function initializeMIDI() {
             if (navigator.requestMIDIAccess) {
-                navigator.requestMIDIAccess().then(midiAccess => {
+                navigator.requestMIDIAccess({ sysex: true }).then(midiAccess => {
                     const inputs = midiAccess.inputs.values();
                     for (let input of inputs) {
                         input.onmidimessage = onMIDIMessage;
+                        logMessage(`MIDI input added: ${input.name}`);
                     }
                     logMessage('MIDI access granted');
                 }).catch(err => {
