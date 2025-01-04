@@ -243,7 +243,7 @@
         });
 
         document.addEventListener('click', (event) => {
-            if (event.target.id !== 'toggle-output') {
+            if (isMobileDevice() && event.target.id !== 'toggle-output') {
                 startSession();
             }
         });
