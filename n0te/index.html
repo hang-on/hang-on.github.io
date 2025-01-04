@@ -22,6 +22,8 @@
     </div>
     <h2>Your input:</h2>
     <pre id="output"></pre>
+    <h2>MIDI Initialization Messages:</h2>
+    <pre id="midi-messages"></pre>
 
     <script src="midiNoteMap.js"></script>
     <script>
@@ -94,21 +96,21 @@
                     let inputCount = 0;
                     for (let input of inputs) {
                         input.onmidimessage = onMIDIMessage;
-                        logMessage(`MIDI input added: ${input.name}`);
+                        logMIDIMessage(`MIDI input added: ${input.name}`);
                         inputCount++;
                     }
                     if (inputCount === 0) {
-                        logMessage('No MIDI inputs detected.');
+                        logMIDIMessage('No MIDI inputs detected.');
                     } else {
-                        logMessage(`Total MIDI inputs detected: ${inputCount}`);
+                        logMIDIMessage(`Total MIDI inputs detected: ${inputCount}`);
                     }
-                    logMessage('MIDI access granted');
+                    logMIDIMessage('MIDI access granted');
                 }).catch(err => {
-                    logMessage(`Failed to get MIDI access: ${err}`);
+                    logMIDIMessage(`Failed to get MIDI access: ${err}`);
                     alert(`Failed to get MIDI access: ${err}`);
                 });
             } else {
-                logMessage('Web MIDI API not supported in this browser.');
+                logMIDIMessage('Web MIDI API not supported in this browser.');
                 alert('Web MIDI API not supported in this browser.');
             }
         }
@@ -214,6 +216,12 @@
             } else {
                 outputElement.textContent += message + '\n';
             }
+        }
+
+        // Function to log MIDI messages
+        function logMIDIMessage(message) {
+            const midiMessagesElement = document.getElementById('midi-messages');
+            midiMessagesElement.textContent += message + '\n';
         }
 
         // Event listener for starting the session
