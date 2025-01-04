@@ -41,16 +41,19 @@
 
         // Function to generate random notes
         function generateRandomNotes() {
+            logMessage('Generating random notes...');
             randomNotes = [];
             for (let i = 0; i < 8; i++) { // Generate 8 random notes
                 const randomNote = notes[Math.floor(Math.random() * notes.length)];
                 randomNotes.push(randomNote);
             }
+            logMessage(`Generated notes: ${randomNotes.join(', ')}`);
             updateNoteImages();
         }
 
         // Function to update the note images
         function updateNoteImages() {
+            logMessage('Updating note images...');
             const noteImagesDiv = document.getElementById('note-images');
             noteImagesDiv.innerHTML = '<img src="images/g-clef.png" alt="G-clef">'; // Reset with G-clef
 
@@ -61,19 +64,28 @@
                 img.id = `note-${index}`;
                 noteImagesDiv.appendChild(img);
             });
+            logMessage('Note images updated.');
         }
 
         // Function to reset note images to black
         function resetNoteImages() {
+            logMessage('Resetting note images to black...');
             randomNotes.forEach((note, index) => {
                 const noteImage = document.getElementById(`note-${index}`);
                 noteImage.src = `images/${note.toLowerCase()}.png`;
             });
+            logMessage('Note images reset.');
         }
 
         // Function to handle incoming MIDI messages
         function onMIDIMessage(event) {
             const [command, note, velocity] = event.data;
+
+            // Ignore Active Sensing messages (command 254)
+            if (command === 254) {
+                return;
+            }
+
             const playedNote = Object.keys(midiNoteMap).find(key => midiNoteMap[key] === note);
 
             logMessage(`MIDI message received: ${event.data}`);
@@ -161,8 +173,10 @@
 
         // Function to start the session
         function startSession() {
+            logMessage('Starting session...');
             document.getElementById('welcome-message').style.display = 'none';
             generateRandomNotes();
+            preloadSounds(); // Preload sounds after user interaction
         }
 
         // Detect if the user is on a mobile device
@@ -185,6 +199,7 @@
 
         // Initialize the application
         function initializeApp() {
+            logMessage('Initializing app...');
             const welcomeMessage = document.getElementById('welcome-message');
             if (isMobileDevice()) {
                 welcomeMessage.textContent = "Welcome to N0te. Tap the screen to begin the session.";
@@ -194,7 +209,6 @@
             welcomeMessage.style.display = 'flex';
             addStartSessionListeners();
             initializeMIDI(); // Initialize MIDI once when the app starts
-            preloadSounds(); // Preload sounds
         }
 
         // Toggle output to console
