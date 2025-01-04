@@ -11,15 +11,17 @@
     <div id="welcome-message">
         Welcome to N0te. Press 'S' or tap the screen to begin the session.
     </div>
-    <h1>N0te _c</h1>
+    <h1>N0te _e</h1>
     <h2>Play these notes:</h2>
     <div id="note-images">
         <img src="./images/g-clef.png" alt="G-clef">
     </div>
+    <div id="status-bar-container">
+        <div id="status-bar">Status: Waiting for input...</div>
+        <button id="toggle-output">Toggle Output to Console</button>
+    </div>
     <h2>Your input:</h2>
     <pre id="output"></pre>
-    <div id="status-bar">Status: Waiting for input...</div>
-    <button id="toggle-output">Toggle Output to Console</button>
 
     <script src="midiNoteMap.js"></script>
     <script>
@@ -27,7 +29,7 @@
         let randomNotes = [];
         let currentNoteIndex = 0;
         let activeNotes = new Set();
-        let outputToConsole = false; // Flag to control where to output messages
+        let outputToConsole = true; // Flag to control where to output messages, default to true
 
         // Load sound effects
         const correctSound = new Audio('sfx/correct.mp3');
@@ -57,22 +59,25 @@
             noteImagesDiv.innerHTML = ''; // Clear existing images
 
             // Add the G-clef image first
-            const gClefImg = document.createElement('img');
-            gClefImg.src = './images/g-clef.png';
-            gClefImg.alt = 'G-clef';
-            gClefImg.onerror = () => logMessage('Failed to load image: ./images/g-clef.png');
+            const gClefImg = createImageElement('./images/g-clef.png', 'G-clef');
             noteImagesDiv.appendChild(gClefImg);
 
             // Add the generated notes
             randomNotes.forEach(note => {
-                const img = document.createElement('img');
-                img.src = `./images/${note}.png`;
-                img.alt = note;
-                img.onerror = () => logMessage(`Failed to load image: ./images/${note}.png`);
+                const img = createImageElement(`./images/${note}.png`, note);
                 noteImagesDiv.appendChild(img);
             });
 
             logMessage('Note images updated.');
+        }
+
+        // Function to create an image element
+        function createImageElement(src, alt) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = alt;
+            img.onerror = () => logMessage(`Failed to load image: ${src}`);
+            return img;
         }
 
         // Function to initialize MIDI access
@@ -151,18 +156,28 @@
                 if (currentNoteIndex >= randomNotes.length) {
                     logMessage('All notes played correctly!');
                     correctSound.play();
+                    updateStatusBar('All notes played correctly!');
                     currentNoteIndex = 0;
                     generateRandomNotes();
+                } else {
+                    updateStatusBar(`Correct note: ${note}`);
                 }
             } else {
                 logMessage(`Incorrect note: ${note}`);
                 incorrectSound.play();
+                updateStatusBar(`Incorrect note: ${note}`);
                 // Revert all notes to their non-greyed version
                 randomNotes.forEach((note, index) => {
                     noteImages[index + 1].src = `./images/${note}.png`; // +1 to skip the G-clef image
                 });
                 currentNoteIndex = 0;
             }
+        }
+
+        // Function to update the status bar
+        function updateStatusBar(message) {
+            const statusBar = document.getElementById('status-bar');
+            statusBar.textContent = `Status: ${message}`;
         }
 
         // Function to start the session
@@ -172,6 +187,12 @@
             generateRandomNotes();
             preloadSounds(); // Preload sounds after user interaction
             initializeMIDI(); // Initialize MIDI access
+        }
+
+        // Function to toggle output to console
+        function toggleOutput() {
+            outputToConsole = !outputToConsole;
+            logMessage(`Output to console: ${outputToConsole}`);
         }
 
         // Detect if the user is on a mobile device
@@ -196,14 +217,16 @@
             }
         });
 
-        document.addEventListener('click', () => {
-            startSession();
+        document.addEventListener('click', (event) => {
+            if (event.target.id !== 'toggle-output') {
+                startSession();
+            }
         });
 
         // Event listener for toggling output to console
-        document.getElementById('toggle-output').addEventListener('click', () => {
-            outputToConsole = !outputToConsole;
-            logMessage(`Output to console: ${outputToConsole}`);
+        document.getElementById('toggle-output').addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the click from propagating to the document
+            toggleOutput();
         });
 
         // Initial log message
