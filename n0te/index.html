@@ -14,7 +14,7 @@
     <h1>N0te _c</h1>
     <h2>Play these notes:</h2>
     <div id="note-images">
-        <img src="images/g-clef.png" alt="G-clef">
+        <img src="./images/g-clef.png" alt="G-clef">
     </div>
     <h2>Your input:</h2>
     <pre id="output"></pre>
@@ -55,12 +55,23 @@
         function updateNoteImages() {
             const noteImagesDiv = document.getElementById('note-images');
             noteImagesDiv.innerHTML = ''; // Clear existing images
+
+            // Add the G-clef image first
+            const gClefImg = document.createElement('img');
+            gClefImg.src = './images/g-clef.png';
+            gClefImg.alt = 'G-clef';
+            gClefImg.onerror = () => logMessage('Failed to load image: ./images/g-clef.png');
+            noteImagesDiv.appendChild(gClefImg);
+
+            // Add the generated notes
             randomNotes.forEach(note => {
                 const img = document.createElement('img');
-                img.src = `images/${note}.png`;
+                img.src = `./images/${note}.png`;
                 img.alt = note;
+                img.onerror = () => logMessage(`Failed to load image: ./images/${note}.png`);
                 noteImagesDiv.appendChild(img);
             });
+
             logMessage('Note images updated.');
         }
 
@@ -128,18 +139,29 @@
 
         // Function to check note input
         function checkNoteInput(note) {
+            const noteImagesDiv = document.getElementById('note-images');
+            const noteImages = noteImagesDiv.getElementsByTagName('img');
+
             if (note === randomNotes[currentNoteIndex]) {
                 logMessage(`Correct note: ${note}`);
-                correctSound.play();
+                // Grey out the correct note image
+                noteImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the G-clef image
+
                 currentNoteIndex++;
                 if (currentNoteIndex >= randomNotes.length) {
                     logMessage('All notes played correctly!');
+                    correctSound.play();
                     currentNoteIndex = 0;
                     generateRandomNotes();
                 }
             } else {
                 logMessage(`Incorrect note: ${note}`);
                 incorrectSound.play();
+                // Revert all notes to their non-greyed version
+                randomNotes.forEach((note, index) => {
+                    noteImages[index + 1].src = `./images/${note}.png`; // +1 to skip the G-clef image
+                });
+                currentNoteIndex = 0;
             }
         }
 
