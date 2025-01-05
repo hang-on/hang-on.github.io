@@ -55,7 +55,7 @@
             randomNotes = [];
             for (let i = 0; i < 8; i++) { // Generate 8 random notes
                 const randomNote = notes[Math.floor(Math.random() * notes.length)];
-                randomNotes.push(randomNote);
+                randomNotes.push(randomNote.toLowerCase()); // Convert to lowercase
             }
             logMessage(`Random notes generated: ${randomNotes.join(', ')}`);
             updateNoteImages();
@@ -141,7 +141,7 @@
                 if (!activeNotes.has(note)) {
                     activeNotes.add(note);
                     logMessage(`Note on: ${playedNote} (velocity: ${velocity})`);
-                    checkNoteInput(playedNote);
+                    checkNoteInput(playedNote.toLowerCase()); // Convert to lowercase
                 }
             } else if (command === 128 || (command === 144 && velocity === 0)) { // Note off
                 if (activeNotes.has(note)) {
@@ -156,7 +156,9 @@
             const noteImagesDiv = document.getElementById('note-images');
             const noteImages = noteImagesDiv.getElementsByTagName('img');
 
-            if (note === randomNotes[currentNoteIndex]) {
+            logMessage(`Checking note input: ${note} against ${randomNotes[currentNoteIndex].toLowerCase()}`); // Debugging log
+
+            if (note === randomNotes[currentNoteIndex].toLowerCase()) { // Convert to lowercase
                 logMessage(`Correct note: ${note}`);
                 // Grey out the correct note image
                 noteImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the G-clef image
