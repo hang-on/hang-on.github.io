@@ -7,13 +7,14 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/core-js-bundle/minified.js"></script> <!-- Add this line -->
+    <script src="https://cdn.jsdelivr.net/npm/webmidi"></script> <!-- Add this line -->
 </head>
 <body>
     <header class="header">
         <div id="welcome-message" class="welcome-message">
             Welcome to N0te. Press 'S' or tap the screen to begin the session.
         </div>
-        <h1 class="title">N0te *</h1>
+        <h1 class="title">N0te '    </h1>
     </header>
     <main class="main-content">
         <section class="notes-section">
@@ -103,30 +104,28 @@
 
         // Function to initialize MIDI access
         function initializeMIDI() {
-            if (navigator.requestMIDIAccess) {
-                navigator.requestMIDIAccess({ sysex: false }).then(midiAccess => {
-                    console.log(midiAccess);
-                    const inputs = midiAccess.inputs.values();
-                    let inputCount = 0;
-                    for (let input of inputs) {
-                        input.onmidimessage = onMIDIMessage;
-                        logMIDIMessage(`MIDI input added: ${input.name}`);
-                        inputCount++;
-                    }
-                    if (inputCount === 0) {
-                        logMIDIMessage('No MIDI inputs detected.');
-                    } else {
-                        logMIDIMessage(`Total MIDI inputs detected: ${inputCount}`);
-                    }
-                    logMIDIMessage('MIDI access granted');
-                }).catch(err => {
-                    logMIDIMessage(`Failed to get MIDI access: ${err}`);
-                    alert(`Failed to get MIDI access: ${err}`);
+            WebMidi.enable(function (err) {
+                if (err) {
+                    logMIDIMessage(`Failed to enable WebMidi: ${err}`);
+                    alert(`Failed to enable WebMidi: ${err}`);
+                    return;
+                }
+
+                const inputs = WebMidi.inputs;
+                let inputCount = 0;
+                inputs.forEach(input => {
+                    input.addListener('midimessage', 'all', onMIDIMessage);
+                    logMIDIMessage(`MIDI input added: ${input.name}`);
+                    inputCount++;
                 });
-            } else {
-                logMIDIMessage('Web MIDI API not supported in this browser.');
-                alert('Web MIDI API not supported in this browser.');
-            }
+
+                if (inputCount === 0) {
+                    logMIDIMessage('No MIDI inputs detected.');
+                } else {
+                    logMIDIMessage(`Total MIDI inputs detected: ${inputCount}`);
+                }
+                logMIDIMessage('MIDI access granted');
+            }, true); // Enable sysex
         }
 
         // Function to handle incoming MIDI messages
