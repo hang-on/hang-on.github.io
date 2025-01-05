@@ -24,7 +24,7 @@
         <section class="status-section">
             <div id="status-bar-container" class="status-bar-container">
                 <div id="status-bar" class="status-bar">Status: Waiting for input...</div>
-                <button id="toggle-output" class="toggle-output">Toggle Output to Console</button>
+                <button id="toggle-output" class="toggle-output">Toggle Console Output</button>
             </div>
         </section>
         <section class="midi-section">
@@ -32,7 +32,7 @@
             <pre id="midi-messages" class="midi-messages"></pre>
         </section>
         <section class="input-section">
-            <h2 class="subtitle">Your input:</h2>
+            <h2 class="subtitle">Output:</h2>
             <pre id="output" class="output"></pre>
         </section>
     </main>
@@ -214,7 +214,18 @@
         // Function to toggle output to console
         function toggleOutput() {
             outputToConsole = !outputToConsole;
+            updateToggleButtonLabel();
             logMessage(`Output to console: ${outputToConsole}`);
+        }
+
+        // Function to update the toggle button label
+        function updateToggleButtonLabel() {
+            const toggleButton = document.getElementById('toggle-output');
+            if (outputToConsole) {
+                toggleButton.textContent = 'Show Output on Screen';
+            } else {
+                toggleButton.textContent = 'Send Output to Console';
+            }
         }
 
         // Detect if the user is on a mobile device
@@ -272,6 +283,9 @@
 
         // Update the welcome message based on device type
         updateWelcomeMessage();
+
+        // Set initial button label
+        updateToggleButtonLabel();
     </script>
 </body>
 </html>
