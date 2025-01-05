@@ -235,7 +235,7 @@
 
         // Detect if the user is on a mobile device
         function isMobileDevice() {
-            return /Mobi|Android/i.test(navigator.userAgent);
+            return /Mobi|Android|iPad/i.test(navigator.userAgent);
         }
 
         // Function to update the welcome message based on device type
@@ -266,7 +266,7 @@
 
         // Event listener for starting the session
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'S' || event.key === 's') {
+            if (!isMobileDevice() && (event.key === 'S' || event.key === 's')) {
                 startSession();
             }
         });
