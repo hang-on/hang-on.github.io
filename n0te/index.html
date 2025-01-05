@@ -8,23 +8,34 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="welcome-message" class="welcome-message">
-        Welcome to N0te. Press 'S' or tap the screen to begin the session.
-    </div>
-    <h1 class="title">N0te *i</h1>
-    <h2 class="subtitle">Play these notes:</h2>
-    <div id="note-images" class="note-images">
-        <img src="./images/g-clef.png" alt="G-clef">
-    </div>
-    <div id="status-bar-container" class="status-bar-container">
-        <div id="status-bar" class="status-bar">Status: Waiting for input...</div>
-        <button id="toggle-output" class="toggle-output">Toggle Output to Console</button>
-    </div>
-    <h2 class="subtitle">Your input:</h2>
-    <pre id="output" class="output"></pre>
-    <h2 class="subtitle">MIDI Initialization Messages:</h2>
-    <pre id="midi-messages" class="midi-messages"></pre>
-
+    <header class="header">
+        <div id="welcome-message" class="welcome-message">
+            Welcome to N0te. Press 'S' or tap the screen to begin the session.
+        </div>
+        <h1 class="title">N0te *</h1>
+    </header>
+    <main class="main-content">
+        <section class="notes-section">
+            <h2 class="subtitle">Play these notes:</h2>
+            <div id="note-images" class="note-images">
+                <img src="./images/g-clef.png" alt="G-clef">
+            </div>
+        </section>
+        <section class="status-section">
+            <div id="status-bar-container" class="status-bar-container">
+                <div id="status-bar" class="status-bar">Status: Waiting for input...</div>
+                <button id="toggle-output" class="toggle-output">Toggle Output to Console</button>
+            </div>
+        </section>
+        <section class="midi-section">
+            <h2 class="subtitle">MIDI Initialization Messages:</h2>
+            <pre id="midi-messages" class="midi-messages"></pre>
+        </section>
+        <section class="input-section">
+            <h2 class="subtitle">Your input:</h2>
+            <pre id="output" class="output"></pre>
+        </section>
+    </main>
     <script src="midiNoteMap.js"></script>
     <script>
         const notes = ['c4', 'd4', 'e4', 'f4', 'g4', 'a4', 'b4', 'c5', 'd5'];
