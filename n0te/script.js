@@ -2,7 +2,6 @@ const notes = ['c4', 'd4', 'e4', 'f4', 'g4', 'a4', 'b4', 'c5', 'd5', 'e5', 'f5',
 let randomNotes = [];
 let currentNoteIndex = 0;
 let activeNotes = new Set();
-let outputToConsole = true; // Flag to control where to output messages, default to true
 let sessionStarted = false; // Flag to track if the session has started
 
 // Load sound effects
@@ -173,24 +172,7 @@ function startSession() {
     initializeMIDI(); // Initialize MIDI access
 }
 
-// Function to toggle output to console
-function toggleOutput() {
-    outputToConsole = !outputToConsole;
-    updateToggleButtonLabel();
-    logMessage(`Output to console: ${outputToConsole}`);
-}
-
-// Function to update the toggle button label
-function updateToggleButtonLabel() {
-    const toggleButton = document.getElementById('toggle-output');
-    if (outputToConsole) {
-        toggleButton.textContent = 'Show Output on Screen';
-    } else {
-        toggleButton.textContent = 'Send Output to Console';
-    }
-}
-
-// Detect if the user is on a mobile device
+// Function to detect if the user is on a mobile device
 function isMobileDevice() {
     return /Mobi|Android|iPad/i.test(navigator.userAgent);
 }
@@ -207,12 +189,7 @@ function updateWelcomeMessage() {
 
 // Function to log messages
 function logMessage(message) {
-    const outputElement = document.getElementById('output');
-    if (outputToConsole) {
-        console.log(message);
-    } else {
-        outputElement.textContent += message + '\n';
-    }
+    console.log(message);
 }
 
 // Function to log MIDI messages
@@ -234,17 +211,8 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// Event listener for toggling output to console
-document.getElementById('toggle-output').addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent the click from propagating to the document
-    toggleOutput();
-});
-
 // Initial log message
 logMessage('Note images updated.');
 
 // Update the welcome message based on device type
 updateWelcomeMessage();
-
-// Set initial button label
-updateToggleButtonLabel();
