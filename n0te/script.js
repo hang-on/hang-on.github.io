@@ -147,16 +147,32 @@ function onMIDIMessage(event) {
 
 // Function to check note input
 function checkNoteInput(note) {
-    const noteImagesDiv = document.getElementById('note-images');
-    const noteImages = noteImagesDiv.getElementsByTagName('img');
+    const gClefImagesDiv = document.getElementById('note-images');
+    const gClefImages = gClefImagesDiv.getElementsByTagName('img');
+    const fClefImagesDiv = document.getElementById('f-clef-images');
+    const fClefImages = fClefImagesDiv.getElementsByTagName('img');
 
-    logMessage(`Checking note input: ${note} against ${gClefNotes[currentNoteIndex].toLowerCase()}`); // Debugging log
+    logMessage(`Checking note input: ${note}`);
 
-    if (note === gClefNotes[currentNoteIndex].toLowerCase()) { // Convert to lowercase
-        logMessage(`Correct note: ${note}`);
-        // Grey out the correct note image
-        noteImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the G-clef image
+    let correctNote = false;
 
+    // Check G-clef notes
+    if (note === gClefNotes[currentNoteIndex].toLowerCase()) {
+        logMessage(`Correct G-clef note: ${note}`);
+        gClefImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the G-clef image
+        fClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
+        correctNote = true;
+    }
+
+    // Check F-clef notes
+    if (note === fClefNotes[currentNoteIndex].toLowerCase()) {
+        logMessage(`Correct F-clef note: ${note}`);
+        fClefImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the F-clef image
+        gClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
+        correctNote = true;
+    }
+
+    if (correctNote) {
         currentNoteIndex++;
         if (currentNoteIndex >= gClefNotes.length) {
             logMessage('All notes played correctly!');
@@ -173,7 +189,10 @@ function checkNoteInput(note) {
         updateStatusBar(`Incorrect note: ${note}`);
         // Revert all notes to their non-greyed version
         gClefNotes.forEach((note, index) => {
-            noteImages[index + 1].src = `./images/${note}.png`; // +1 to skip the G-clef image
+            gClefImages[index + 1].src = `./images/${note}.png`; // +1 to skip the G-clef image
+        });
+        fClefNotes.forEach((note, index) => {
+            fClefImages[index + 1].src = `./images/${note}.png`; // +1 to skip the F-clef image
         });
         currentNoteIndex = 0;
     }
