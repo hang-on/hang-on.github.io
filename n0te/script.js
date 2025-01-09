@@ -1,5 +1,7 @@
 const notes = ['c4', 'd4', 'e4', 'f4', 'g4', 'a4', 'b4', 'c5', 'd5', 'e5', 'f5', 'g5', 'a5', 'b5', 'c6'];
-let randomNotes = [];
+const fClefNotesOptions = ['a2', 'b2']; // Add more F-clef notes here as needed
+let gClefNotes = [];
+let fClefNotes = [];
 let currentNoteIndex = 0;
 let activeNotes = new Set();
 let sessionStarted = false; // Flag to track if the session has started
@@ -23,12 +25,21 @@ function preloadSound(sound, successMessage, errorMessage) {
 // Function to generate random notes
 function generateRandomNotes() {
     logMessage('Generating random notes...');
-    randomNotes = [];
+    gClefNotes = [];
+    fClefNotes = [];
     for (let i = 0; i < 8; i++) { // Generate 8 random notes
-        const randomNote = notes[Math.floor(Math.random() * notes.length)];
-        randomNotes.push(randomNote.toLowerCase()); // Convert to lowercase
+        if (Math.random() < 0.3) { // 30% chance to generate a blank on the G-clef and a note on the F-clef
+            gClefNotes.push('blank');
+            const randomFClefNote = fClefNotesOptions[Math.floor(Math.random() * fClefNotesOptions.length)];
+            fClefNotes.push(randomFClefNote);
+        } else {
+            const randomNote = notes[Math.floor(Math.random() * notes.length)];
+            gClefNotes.push(randomNote.toLowerCase()); // Convert to lowercase
+            fClefNotes.push('blank'); // Add 'blank' to the corresponding slot on the F-clef
+        }
     }
-    logMessage(`Random notes generated: ${randomNotes.join(', ')}`);
+    logMessage(`G-clef notes generated: ${gClefNotes.join(', ')}`);
+    logMessage(`F-clef notes generated: ${fClefNotes.join(', ')}`);
     updateNoteImages();
 }
 
@@ -42,9 +53,23 @@ function updateNoteImages() {
     noteImagesDiv.appendChild(gClefImg);
 
     // Add the generated notes
-    randomNotes.forEach(note => {
+    gClefNotes.forEach(note => {
         const img = createImageElement(`./images/${note}.png`, note);
         noteImagesDiv.appendChild(img);
+    });
+
+    // Update F-clef images
+    const fClefImagesDiv = document.getElementById('f-clef-images');
+    fClefImagesDiv.innerHTML = ''; // Clear existing images
+
+    // Add the F-clef image first
+    const fClefImg = createImageElement('./images/f-clef.png', 'F-clef');
+    fClefImagesDiv.appendChild(fClefImg);
+
+    // Add the generated F-clef notes
+    fClefNotes.forEach(note => {
+        const img = createImageElement(`./images/${note}.png`, note);
+        fClefImagesDiv.appendChild(img);
     });
 
     logMessage('Note images updated.');
@@ -125,15 +150,15 @@ function checkNoteInput(note) {
     const noteImagesDiv = document.getElementById('note-images');
     const noteImages = noteImagesDiv.getElementsByTagName('img');
 
-    logMessage(`Checking note input: ${note} against ${randomNotes[currentNoteIndex].toLowerCase()}`); // Debugging log
+    logMessage(`Checking note input: ${note} against ${gClefNotes[currentNoteIndex].toLowerCase()}`); // Debugging log
 
-    if (note === randomNotes[currentNoteIndex].toLowerCase()) { // Convert to lowercase
+    if (note === gClefNotes[currentNoteIndex].toLowerCase()) { // Convert to lowercase
         logMessage(`Correct note: ${note}`);
         // Grey out the correct note image
         noteImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the G-clef image
 
         currentNoteIndex++;
-        if (currentNoteIndex >= randomNotes.length) {
+        if (currentNoteIndex >= gClefNotes.length) {
             logMessage('All notes played correctly!');
             correctSound.play().catch(e => logMessage(`Failed to play correct sound: ${e.message}`));
             updateStatusBar('All notes played correctly!');
@@ -147,7 +172,7 @@ function checkNoteInput(note) {
         incorrectSound.play().catch(e => logMessage(`Failed to play incorrect sound: ${e.message}`));
         updateStatusBar(`Incorrect note: ${note}`);
         // Revert all notes to their non-greyed version
-        randomNotes.forEach((note, index) => {
+        gClefNotes.forEach((note, index) => {
             noteImages[index + 1].src = `./images/${note}.png`; // +1 to skip the G-clef image
         });
         currentNoteIndex = 0;
