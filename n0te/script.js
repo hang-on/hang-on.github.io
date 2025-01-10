@@ -1,5 +1,5 @@
 const gClefNotePool = ['c4', 'd4', 'e4', 'f4', 'g4', 'a4', 'b4', 'c5', 'd5', 'e5', 'f5', 'g5', 'a5', 'b5', 'c6'];
-const fClefNotePool = ['a2', 'b2', 'g2']; // Add more F-clef notes here as needed
+const fClefNotePool = ['a2', 'b2', 'g2', 'f2']; // Add more F-clef notes here as needed
 let gClefNotes = [];
 let fClefNotes = [];
 let currentNoteIndex = 0;
@@ -238,6 +238,34 @@ function updateWelcomeMessage() {
         welcomeMessageElement.textContent = "Welcome to N0te. Tap the screen to begin the session.";
     } else {
         welcomeMessageElement.textContent = "Welcome to N0te. Press 'S' to begin the session.";
+    }
+
+    // Display 8 blank images on both the G-clef and F-clef rows
+    const noteImagesDiv = document.getElementById('note-images');
+    noteImagesDiv.innerHTML = ''; // Clear existing images
+
+    // Add the G-clef image first
+    const gClefImg = createImageElement('./images/g-clef.png', 'G-clef');
+    noteImagesDiv.appendChild(gClefImg);
+
+    // Add 8 blank images
+    for (let i = 0; i < 8; i++) {
+        const blankImg = createImageElement('./images/blank.png', 'Blank');
+        noteImagesDiv.appendChild(blankImg);
+    }
+
+    // Update F-clef images
+    const fClefImagesDiv = document.getElementById('f-clef-images');
+    fClefImagesDiv.innerHTML = ''; // Clear existing images
+
+    // Add the F-clef image first
+    const fClefImg = createImageElement('./images/f-clef.png', 'F-clef');
+    fClefImagesDiv.appendChild(fClefImg);
+
+    // Add 8 blank images
+    for (let i = 0; i < 8; i++) {
+        const blankImg = createImageElement('./images/blank.png', 'Blank');
+        fClefImagesDiv.appendChild(blankImg);
     }
 }
 
