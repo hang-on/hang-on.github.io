@@ -1,5 +1,5 @@
-const notes = ['c4', 'd4', 'e4', 'f4', 'g4', 'a4', 'b4', 'c5', 'd5', 'e5', 'f5', 'g5', 'a5', 'b5', 'c6'];
-const fClefNotesOptions = ['a2', 'b2']; // Add more F-clef notes here as needed
+const gClefNotePool = ['c4', 'd4', 'e4', 'f4', 'g4', 'a4', 'b4', 'c5', 'd5', 'e5', 'f5', 'g5', 'a5', 'b5', 'c6'];
+const fClefNotePool = ['a2', 'b2', 'g2']; // Add more F-clef notes here as needed
 let gClefNotes = [];
 let fClefNotes = [];
 let currentNoteIndex = 0;
@@ -30,10 +30,10 @@ function generateRandomNotes() {
     for (let i = 0; i < 8; i++) { // Generate 8 random notes
         if (Math.random() < 0.3) { // 30% chance to generate a blank on the G-clef and a note on the F-clef
             gClefNotes.push('blank');
-            const randomFClefNote = fClefNotesOptions[Math.floor(Math.random() * fClefNotesOptions.length)];
+            const randomFClefNote = fClefNotePool[Math.floor(Math.random() * fClefNotePool.length)];
             fClefNotes.push(randomFClefNote);
         } else {
-            const randomNote = notes[Math.floor(Math.random() * notes.length)];
+            const randomNote = gClefNotePool[Math.floor(Math.random() * gClefNotePool.length)];
             gClefNotes.push(randomNote.toLowerCase()); // Convert to lowercase
             fClefNotes.push('blank'); // Add 'blank' to the corresponding slot on the F-clef
         }
@@ -54,7 +54,8 @@ function updateNoteImages() {
 
     // Add the generated notes
     gClefNotes.forEach(note => {
-        const img = createImageElement(`./images/${note}.png`, note);
+        const imgSrc = note === 'blank' ? './images/blank.png' : `./images/g_clef_notes/${note}.png`;
+        const img = createImageElement(imgSrc, note);
         noteImagesDiv.appendChild(img);
     });
 
@@ -68,7 +69,8 @@ function updateNoteImages() {
 
     // Add the generated F-clef notes
     fClefNotes.forEach(note => {
-        const img = createImageElement(`./images/${note}.png`, note);
+        const imgSrc = note === 'blank' ? './images/blank.png' : `./images/f_clef_notes/${note}.png`;
+        const img = createImageElement(imgSrc, note);
         fClefImagesDiv.appendChild(img);
     });
 
@@ -159,7 +161,7 @@ function checkNoteInput(note) {
     // Check G-clef notes
     if (note === gClefNotes[currentNoteIndex].toLowerCase()) {
         logMessage(`Correct G-clef note: ${note}`);
-        gClefImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the G-clef image
+        gClefImages[currentNoteIndex + 1].src = `./images/g_clef_notes/${note}_greyed.png`; // +1 to skip the G-clef image
         fClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
         correctNote = true;
     }
@@ -167,7 +169,7 @@ function checkNoteInput(note) {
     // Check F-clef notes
     if (note === fClefNotes[currentNoteIndex].toLowerCase()) {
         logMessage(`Correct F-clef note: ${note}`);
-        fClefImages[currentNoteIndex + 1].src = `./images/${note}_greyed.png`; // +1 to skip the F-clef image
+        fClefImages[currentNoteIndex + 1].src = `./images/f_clef_notes/${note}_greyed.png`; // +1 to skip the F-clef image
         gClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
         correctNote = true;
     }
@@ -189,10 +191,18 @@ function checkNoteInput(note) {
         updateStatusBar(`Incorrect note: ${note}`);
         // Revert all notes to their non-greyed version
         gClefNotes.forEach((note, index) => {
-            gClefImages[index + 1].src = `./images/${note}.png`; // +1 to skip the G-clef image
+            if (note === 'blank') {
+                gClefImages[index + 1].src = `./images/blank.png`; // +1 to skip the G-clef image
+            } else {
+                gClefImages[index + 1].src = `./images/g_clef_notes/${note}.png`; // +1 to skip the G-clef image
+            }
         });
         fClefNotes.forEach((note, index) => {
-            fClefImages[index + 1].src = `./images/${note}.png`; // +1 to skip the F-clef image
+            if (note === 'blank') {
+                fClefImages[index + 1].src = `./images/blank.png`; // +1 to skip the F-clef image
+            } else {
+                fClefImages[index + 1].src = `./images/f_clef_notes/${note}.png`; // +1 to skip the F-clef image
+            }
         });
         currentNoteIndex = 0;
     }
