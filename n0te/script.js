@@ -1,10 +1,13 @@
 const gClefNotePool = ['c4', 'd4', 'e4', 'f4', 'g4', 'a4', 'b4', 'c5', 'd5', 'e5', 'f5', 'g5', 'a5', 'b5', 'c6'];
 const fClefNotePool = ['a2', 'b2', 'g2', 'f2']; // Add more F-clef notes here as needed
+const commonNotes = ['a', 'b', 'g', 'f']; // Common notes in both pools
 let gClefNotes = [];
 let fClefNotes = [];
 let currentNoteIndex = 0;
 let activeNotes = new Set();
 let sessionStarted = false; // Flag to track if the session has started
+let simultaneousNotes = new Set(); // Track simultaneous notes
+let simultaneousNoteTimeout; // Timeout for simultaneous note input
 
 // Load sound effects
 const correctSound = new Audio('sfx/correct.mp3');
@@ -28,10 +31,15 @@ function generateRandomNotes() {
     gClefNotes = [];
     fClefNotes = [];
     for (let i = 0; i < 8; i++) { // Generate 8 random notes
-        if (Math.random() < 0.3) { // 30% chance to generate a blank on the G-clef and a note on the F-clef
+        const randomChance = Math.random();
+        if (randomChance < 0.3) { // 30% chance to generate a blank on the G-clef and a note on the F-clef
             gClefNotes.push('blank');
             const randomFClefNote = fClefNotePool[Math.floor(Math.random() * fClefNotePool.length)];
             fClefNotes.push(randomFClefNote);
+        } else if (randomChance < 0.5) { // 20% chance to generate the same note in both slots
+            const commonNote = commonNotes[Math.floor(Math.random() * commonNotes.length)];
+            gClefNotes.push(`${commonNote}4`); // G-clef note in the 4th octave
+            fClefNotes.push(`${commonNote}2`); // F-clef note in the 2nd octave
         } else {
             const randomNote = gClefNotePool[Math.floor(Math.random() * gClefNotePool.length)];
             gClefNotes.push(randomNote.toLowerCase()); // Convert to lowercase
@@ -162,7 +170,9 @@ function checkNoteInput(note) {
     if (note === gClefNotes[currentNoteIndex].toLowerCase()) {
         logMessage(`Correct G-clef note: ${note}`);
         gClefImages[currentNoteIndex + 1].src = `./images/g_clef_notes/${note}_greyed.png`; // +1 to skip the G-clef image
-        fClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
+        if (fClefNotes[currentNoteIndex] === 'blank') {
+            fClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
+        }
         correctNote = true;
     }
 
@@ -170,11 +180,40 @@ function checkNoteInput(note) {
     if (note === fClefNotes[currentNoteIndex].toLowerCase()) {
         logMessage(`Correct F-clef note: ${note}`);
         fClefImages[currentNoteIndex + 1].src = `./images/f_clef_notes/${note}_greyed.png`; // +1 to skip the F-clef image
-        gClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
+        if (gClefNotes[currentNoteIndex] === 'blank') {
+            gClefImages[currentNoteIndex + 1].src = `./images/blank_greyed.png`; // Turn the corresponding blank image grey
+        }
         correctNote = true;
     }
 
-    if (correctNote) {
+    // Handle simultaneous notes
+    if (gClefNotes[currentNoteIndex] !== 'blank' && fClefNotes[currentNoteIndex] !== 'blank') {
+        if (correctNote) {
+            simultaneousNotes.add(note);
+            if (simultaneousNotes.size === 2) {
+                logMessage('Both simultaneous notes played correctly!');
+                simultaneousNotes.clear();
+                clearTimeout(simultaneousNoteTimeout);
+                currentNoteIndex++;
+                if (currentNoteIndex >= gClefNotes.length) {
+                    logMessage('All notes played correctly!');
+                    correctSound.play().catch(e => logMessage(`Failed to play correct sound: ${e.message}`));
+                    updateStatusBar('All notes played correctly!');
+                    currentNoteIndex = 0;
+                    generateRandomNotes();
+                } else {
+                    updateStatusBar(`Correct note: ${note}`);
+                }
+            } else {
+                simultaneousNoteTimeout = setTimeout(() => {
+                    logMessage('Simultaneous note input failed.');
+                    incorrectSound.play().catch(e => logMessage(`Failed to play incorrect sound: ${e.message}`));
+                    updateStatusBar('Simultaneous note input failed.');
+                    resetNotes();
+                }, 500); // Half-second window
+            }
+        }
+    } else if (correctNote) {
         currentNoteIndex++;
         if (currentNoteIndex >= gClefNotes.length) {
             logMessage('All notes played correctly!');
@@ -189,23 +228,33 @@ function checkNoteInput(note) {
         logMessage(`Incorrect note: ${note}`);
         incorrectSound.play().catch(e => logMessage(`Failed to play incorrect sound: ${e.message}`));
         updateStatusBar(`Incorrect note: ${note}`);
-        // Revert all notes to their non-greyed version
-        gClefNotes.forEach((note, index) => {
-            if (note === 'blank') {
-                gClefImages[index + 1].src = `./images/blank.png`; // +1 to skip the G-clef image
-            } else {
-                gClefImages[index + 1].src = `./images/g_clef_notes/${note}.png`; // +1 to skip the G-clef image
-            }
-        });
-        fClefNotes.forEach((note, index) => {
-            if (note === 'blank') {
-                fClefImages[index + 1].src = `./images/blank.png`; // +1 to skip the F-clef image
-            } else {
-                fClefImages[index + 1].src = `./images/f_clef_notes/${note}.png`; // +1 to skip the F-clef image
-            }
-        });
-        currentNoteIndex = 0;
+        resetNotes();
     }
+}
+
+// Function to reset notes to their non-greyed version
+function resetNotes() {
+    const gClefImagesDiv = document.getElementById('note-images');
+    const gClefImages = gClefImagesDiv.getElementsByTagName('img');
+    const fClefImagesDiv = document.getElementById('f-clef-images');
+    const fClefImages = fClefImagesDiv.getElementsByTagName('img');
+
+    gClefNotes.forEach((note, index) => {
+        if (note === 'blank') {
+            gClefImages[index + 1].src = `./images/blank.png`; // +1 to skip the G-clef image
+        } else {
+            gClefImages[index + 1].src = `./images/g_clef_notes/${note}.png`; // +1 to skip the G-clef image
+        }
+    });
+    fClefNotes.forEach((note, index) => {
+        if (note === 'blank') {
+            fClefImages[index + 1].src = `./images/blank.png`; // +1 to skip the F-clef image
+        } else {
+            fClefImages[index + 1].src = `./images/f_clef_notes/${note}.png`; // +1 to skip the F-clef image
+        }
+    });
+    currentNoteIndex = 0;
+    simultaneousNotes.clear();
 }
 
 // Function to update the status bar
