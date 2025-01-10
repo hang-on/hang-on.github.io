@@ -37,9 +37,12 @@ function generateRandomNotes() {
             const randomFClefNote = fClefNotePool[Math.floor(Math.random() * fClefNotePool.length)];
             fClefNotes.push(randomFClefNote);
         } else if (randomChance < 0.5) { // 20% chance to generate the same note in both slots
-            const commonNote = commonNotes[Math.floor(Math.random() * commonNotes.length)];
-            gClefNotes.push(`${commonNote}4`); // G-clef note in the 4th octave
-            fClefNotes.push(`${commonNote}2`); // F-clef note in the 2nd octave
+            const randomFClefNote = fClefNotePool[Math.floor(Math.random() * fClefNotePool.length)];
+            const noteBase = randomFClefNote.slice(0, -1); // Get the note base (e.g., 'a', 'b', 'g', 'f')
+            const matchingGClefNotes = gClefNotePool.filter(note => note.startsWith(noteBase));
+            const randomGClefNote = matchingGClefNotes[Math.floor(Math.random() * matchingGClefNotes.length)];
+            gClefNotes.push(randomGClefNote.toLowerCase()); // Convert to lowercase
+            fClefNotes.push(randomFClefNote);
         } else {
             const randomNote = gClefNotePool[Math.floor(Math.random() * gClefNotePool.length)];
             gClefNotes.push(randomNote.toLowerCase()); // Convert to lowercase
