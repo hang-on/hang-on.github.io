@@ -61,11 +61,14 @@ body {
     margin: 10px 0;
 }
 
-.note-images {
+.note-row {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
+}
+
+.note-images {
+    flex-grow: 1;
 }
 
 .status-bar-container {
@@ -108,4 +111,62 @@ body {
     max-height: 150px;
     overflow-y: auto;
     margin-bottom: 20px;
+}
+
+.switches {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--hookers-green);
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--ecru);
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--atomic-tangerine);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.switch-label {
+    margin-left: 70px; /* Adjust this value to properly align the text */
+    color: var(--ecru);
 }
