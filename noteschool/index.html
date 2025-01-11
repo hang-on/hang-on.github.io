@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note School</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.3"></script> <!-- Ensure correct version -->
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">Note School</h1>
+    </header>
+    <main class="main-content">
+        <section class="notes-section">
+            <h2 class="subtitle">Play these notes:</h2>
+            <div id="note-images" class="note-images">
+                <!-- Note images will be dynamically added here -->
+            </div>
+        </section>
+        <section class="status-section">
+            <div id="status-bar-container" class="status-bar-container">
+                <div id="status-bar" class="status-bar">Status: Waiting for input...</div>
+            </div>
+        </section>
+        <section class="midi-section">
+            <h2 class="subtitle">MIDI Initialization Messages:</h2>
+            <pre id="midi-messages" class="midi-messages"></pre>
+        </section>
+    </main>
+    <script src="midi.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
