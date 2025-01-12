@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note School</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/core-js-bundle/minified.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.3"></script> <!-- Ensure correct version -->
 </head>
 <body>
@@ -23,12 +25,9 @@
                 <div id="status-bar" class="status-bar">Status: Waiting for input...</div>
             </div>
         </section>
-        <section class="midi-section">
-            <h2 class="subtitle">MIDI Initialization Messages:</h2>
-            <pre id="midi-messages" class="midi-messages"></pre>
-        </section>
     </main>
+    <script src="main.js"></script>
+    <script src="midiNoteMap.js"></script>
     <script src="midi.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
