@@ -1,7 +1,7 @@
 let activeNotes = new Set();
 let noteToMidiMap = {};
-for (let key in midiNoteMap) {
-    noteToMidiMap[midiNoteMap[key]] = key;
+for (let key in noteMap) {
+    noteToMidiMap[noteMap[key]] = key;
 }
 
 // Function to initialize MIDI access
@@ -39,16 +39,11 @@ function initializeMIDI() {
 function onMIDIMessage(event) {
     // MIDI message structure: [command, midiNote, velocity]
     const [command, midiNote, velocity] = event.data;
-
-    // Ignore Active Sensing messages (command 254)
-    if (command === 254) {
-        return;
-    }
-
+    // Scientific Pitch Notation (spr)
     const sprNote = noteToMidiMap[midiNote];
 
     if (sprNote === undefined) {
-        console.log(`Note ${midiNote} is not mapped to any known note.`);
+        console.log(`Note ${midiNote} is not mapped to any note on the midi-to-note map.`);
         return;
     }
 
