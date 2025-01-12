@@ -9,17 +9,22 @@ function initializeMIDI() {
     WebMidi.enable(function (err) {
         if (err) {
             console.error(`Failed to enable WebMidi: ${err}`);
-            alert(`Failed to enable WebMidi: ${err}`);
+            document.getElementById('error-message').innerText = `Failed to enable WebMidi: ${err}`;
             return;
         }
 
         const inputs = WebMidi.inputs;
         let inputCount = 0;
-        inputs.forEach(input => {
-            input.addListener('midimessage', 'all', onMIDIMessage);
+        for (const input of inputs) {
+            input.addListener('midimessage', 'all', (event) => {
+                const [command] = event.data;
+                if (command === 144 || command === 128) { // Note on or Note off
+                    onMIDIMessage(event);
+                }
+            });
             console.log(`MIDI input added: ${input.name}`);
             inputCount++;
-        });
+        }
 
         if (inputCount === 0) {
             console.log('No MIDI inputs detected.');
@@ -32,6 +37,7 @@ function initializeMIDI() {
 
 // Function to handle incoming MIDI messages
 function onMIDIMessage(event) {
+    // MIDI message structure: [command, midiNote, velocity]
     const [command, midiNote, velocity] = event.data;
 
     // Ignore Active Sensing messages (command 254)
