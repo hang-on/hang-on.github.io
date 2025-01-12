@@ -15,6 +15,9 @@ for (let note in sprToMidi) {
     midiToSpr[sprToMidi[note]] = note;
 }
 
+const NOTE_ON = 144;
+const NOTE_OFF = 128;
+
 let activeNotes = new Set();
 
 // Function to initialize MIDI access
@@ -31,7 +34,7 @@ function initializeMIDI() {
         for (const input of inputs) {
             input.addListener('midimessage', 'all', (event) => {
                 const [command] = event.data;
-                if (command === 144 || command === 128) { // Note on or Note off
+                if (command === NOTE_ON || command === NOTE_OFF) {
                     onMIDIMessage(event);
                 }
             });
@@ -60,12 +63,12 @@ function onMIDIMessage(event) {
         return;
     }
 
-    if (command === 144 && velocity > 0) { // Note on
+    if (command === NOTE_ON && velocity > 0) { 
         if (!activeNotes.has(sprNote)) {
             activeNotes.add(sprNote);
             console.log(`Note on: ${sprNote} (velocity: ${velocity})`);
         }
-    } else if (command === 128 || (command === 144 && velocity === 0)) { // Note off
+    } else if (command === NOTE_OFF || (command === NOTE_ON && velocity === 0)) {
         if (activeNotes.has(sprNote)) {
             activeNotes.delete(sprNote);
             console.log(`Note off: ${sprNote}`);
