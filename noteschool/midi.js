@@ -1,3 +1,9 @@
+let activeNotes = new Set();
+let noteToMidiMap = {};
+for (let key in midiNoteMap) {
+    noteToMidiMap[midiNoteMap[key]] = key;
+}
+
 // Function to initialize MIDI access
 function initializeMIDI() {
     WebMidi.enable(function (err) {
@@ -33,7 +39,7 @@ function onMIDIMessage(event) {
         return;
     }
 
-    const playedNote = Object.keys(midiNoteMap).find(key => midiNoteMap[key] === note);
+    const playedNote = noteToMidiMap[note];
 
     console.log(`MIDI message received: ${event.data}`);
     console.log(`Command: ${command}, Note: ${note}, Velocity: ${velocity}`);
@@ -49,7 +55,6 @@ function onMIDIMessage(event) {
         if (!activeNotes.has(note)) {
             activeNotes.add(note);
             console.log(`Note on: ${playedNote} (velocity: ${velocity})`);
-            checkNoteInput(playedNote.toLowerCase()); // Convert to lowercase
         }
     } else if (command === 128 || (command === 144 && velocity === 0)) { // Note off
         if (activeNotes.has(note)) {
