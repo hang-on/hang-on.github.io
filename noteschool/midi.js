@@ -41,25 +41,26 @@ function onMIDIMessage(event) {
 
     const sprNote = noteToMidiMap[midiNote];
 
-    console.log(`MIDI message received: ${event.data}`);
-    console.log(`Command: ${command}, Note: ${midiNote}, Velocity: ${velocity}`);
-    console.log(`Played Note: ${sprNote}`);
-    console.log(`Active Notes: ${Array.from(activeNotes).join(', ')}`);
-
     if (sprNote === undefined) {
         console.log(`Note ${midiNote} is not mapped to any known note.`);
         return;
     }
 
     if (command === 144 && velocity > 0) { // Note on
-        if (!activeNotes.has(midiNote)) {
-            activeNotes.add(midiNote);
+        if (!activeNotes.has(sprNote)) {
+            activeNotes.add(sprNote);
             console.log(`Note on: ${sprNote} (velocity: ${velocity})`);
         }
     } else if (command === 128 || (command === 144 && velocity === 0)) { // Note off
-        if (activeNotes.has(midiNote)) {
-            activeNotes.delete(midiNote);
+        if (activeNotes.has(sprNote)) {
+            activeNotes.delete(sprNote);
             console.log(`Note off: ${sprNote}`);
         }
     }
+
+    console.log(`MIDI message received: ${event.data}`);
+    console.log(`Command: ${command}, Note: ${midiNote}, Velocity: ${velocity}`);
+    console.log(`Played Note: ${sprNote}`);
+    console.log(`Active Notes: ${Array.from(activeNotes).join(', ')}`);
+
 }
