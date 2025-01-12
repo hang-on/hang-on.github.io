@@ -32,33 +32,33 @@ function initializeMIDI() {
 
 // Function to handle incoming MIDI messages
 function onMIDIMessage(event) {
-    const [command, note, velocity] = event.data;
+    const [command, midiNote, velocity] = event.data;
 
     // Ignore Active Sensing messages (command 254)
     if (command === 254) {
         return;
     }
 
-    const sprNote = noteToMidiMap[note];
+    const sprNote = noteToMidiMap[midiNote];
 
     console.log(`MIDI message received: ${event.data}`);
-    console.log(`Command: ${command}, Note: ${note}, Velocity: ${velocity}`);
+    console.log(`Command: ${command}, Note: ${midiNote}, Velocity: ${velocity}`);
     console.log(`Played Note: ${sprNote}`);
     console.log(`Active Notes: ${Array.from(activeNotes).join(', ')}`);
 
     if (sprNote === undefined) {
-        console.log(`Note ${note} is not mapped to any known note.`);
+        console.log(`Note ${midiNote} is not mapped to any known note.`);
         return;
     }
 
     if (command === 144 && velocity > 0) { // Note on
-        if (!activeNotes.has(note)) {
-            activeNotes.add(note);
+        if (!activeNotes.has(midiNote)) {
+            activeNotes.add(midiNote);
             console.log(`Note on: ${sprNote} (velocity: ${velocity})`);
         }
     } else if (command === 128 || (command === 144 && velocity === 0)) { // Note off
-        if (activeNotes.has(note)) {
-            activeNotes.delete(note);
+        if (activeNotes.has(midiNote)) {
+            activeNotes.delete(midiNote);
             console.log(`Note off: ${sprNote}`);
         }
     }
